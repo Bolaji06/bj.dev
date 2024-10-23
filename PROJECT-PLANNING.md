@@ -1,5 +1,6 @@
 
 # Project Name: bj.dev (My Portfolio Website)
+**Expected completion: approx. 2 months**
 
 ## Project Overview
 
@@ -23,7 +24,8 @@ The Developer Portfolio Website is a personal web application showcasing my skil
 3. About Section: Personal story, coding journey, skill set, and achievements.
 4. Blog Section: Articles written on web development, coding tutorials, or personal experiences.
 5. Contact Section: A form for inquiries, and social media links.
-6. Admin Panel: Backend for managing projects, blog posts, and inquiries.
+6. Tools Section: List of tools, why I love using them and where I used them.
+7. Admin Panel: Backend for managing projects, blog posts, and inquiries.
 
 ## Project Milestones
 ### 1. Phase 1: Project Setup
@@ -40,7 +42,7 @@ The Developer Portfolio Website is a personal web application showcasing my skil
 **Expected Completion: 1 week**
 
 ### 1. Phase 2: Backend Development (Hono.js)
-- Models: Define the MongoDB schemas for projects, blogs, and inquiries using Prisma.
+- Models: Define the MongoDB schemas for projects and inquiries using Prisma.
 - APIs: Implement RESTful API endpoints for the frontend:
   - Projects: GET, POST, PUT, DELETE
   - Blogs: GET, POST, PUT, DELETE
@@ -69,14 +71,14 @@ The Developer Portfolio Website is a personal web application showcasing my skil
 CRUD Operations: Implement pages for creating, updating, and deleting projects.
 Authentication: Secure the admin panel with JWT-based authentication.
 Testing: Write tests for authenticated routes using Jest.
-Expected Completion: 2 weeks
+
+**Expected Completion: 2 weeks**
 
 
 ### 1. Phase 6: Deployment
 - CI/CD: Set up continuous integration with GitHub Actions.
 - Frontend: Deploy to Vercel.
 - Backend: Deploy to Render with automatic deployment triggered by CI.
-
 
 **Expected Completion: 1 week**
 
