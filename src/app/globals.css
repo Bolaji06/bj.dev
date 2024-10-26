@@ -6,6 +6,7 @@
   --background: #ffffff;
   --foreground: #111827;
   --text-primary: #e2e8f0;
+  --radius: 8px;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -13,7 +14,7 @@
     --background: #111827;
     --foreground: #ededed;
     --text-primary: #e2e8f0;
-    --brand: #fbbf24;
+    --brand: #FFA500;
   }
 }
 
@@ -47,4 +48,8 @@ body {
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #efae2c;
+}
+
+.animate-fill-gradient {
+  background-size: 100% 200%; /* Extend the background vertically */
 }

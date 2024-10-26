@@ -24,7 +24,7 @@ export default function NavBar() {
 
   return (
     <>
-      <nav className="fixed w-full py-3 px-10 bg-background/65 border-gray-800 border-b">
+      <nav className="fixed w-full py-3 px-10 backdrop-blur-md bg-background/90 border-gray-800 border-b">
         <div className="flex justify-between">
           <Link href={"/"}>
             <Image
@@ -45,7 +45,7 @@ export default function NavBar() {
                       key={link.title}
                       href={link.href}
                       className={`text-sm font-medium text-slate-200 ${clsx({
-                        "text-amber-400 font-medium border-b-2 border-primary-brand":
+                        "text-primary-brand font-medium border-b-2 border-primary-brand":
                           pathname === link.href,
                       })}`}
                     >
@@ -66,7 +66,8 @@ export default function NavBar() {
           </button>
         </div>
       </nav>
-      { toggleNav && <nav>
+      { toggleNav && <nav className={`fixed min-h-screen w-full overflow-y-hidden
+        transition-transform duration-300 ease-in-out`}>
         <MobileNav closeMobileNav={closeMobileNav} pathname={pathname}/>
       </nav> }
     </>

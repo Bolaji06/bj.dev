@@ -10,7 +10,18 @@ const config: Config = {
   ],
   theme: {
   	extend: {
+		keyframes: {
+			fillUp: {
+				'0%': { backgroundPosition: '0% 100%' }, // Start at bottom
+				'100%': { backgroundPosition: '0% 0%' }, // Fill to the top
+			  },
+		  },
+		  animation: {
+			'fill-gradient': 'fillUp 3s ease-in forwards infinite', // Customize duration and easing
+		  },
   		colors: {
+			gradientRed: '#FF0000',
+        	gradientOrange: '#FFA500', 
   			background: 'var(--background)',
   			foreground: 'hsl(var(--foreground))',
   			text_primary: 'var(--text-primary)',
@@ -28,7 +39,7 @@ const config: Config = {
   				foreground: 'hsl(var(--primary-foreground))'
   			},
   			secondary: {
-  				DEFAULT: 'hsl(var(--secondary))',
+  				DEFAULT: '#0284c7',
   				foreground: 'hsl(var(--secondary-foreground))'
   			},
   			muted: {

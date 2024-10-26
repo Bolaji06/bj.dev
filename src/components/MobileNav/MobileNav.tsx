@@ -16,10 +16,10 @@ export default function MobileNav({ closeMobileNav, pathname }: MobileNavProps) 
 
   return (
     <>
-      <nav className="lg:hidden bg-background/60 backdrop-blur-sm relative w-screen h-screen overflow-hidden
-      transition-all duration-800 ease-in-out">
-        <div className="relative">
-          <div className="max-w-52 w-full mx-auto mt-6">
+      <nav className="-translate-x-[1000] lg:hidden bg-background/95 z-50 backdrop-blur-md relative w-screen min-h-screen
+      transition-transform duration-800 ease-in-out">
+        <div className="relative z-50">
+          <div className="max-w-52 w-full mx-auto py-6">
             <SocialLinks className="justify-between" size={30}/>
           </div>
 
@@ -31,7 +31,7 @@ export default function MobileNav({ closeMobileNav, pathname }: MobileNavProps) 
                  key={link.title}
                  href={link.href}
                  className={`font-medium text-lg text-slate-200 ${clsx({
-                  "text-amber-400 text-3xl font-medium border-b-4 border-primary-brand transition-all duration-200":
+                  "text-primary-brand text-3xl font-medium border-b-4 border-primary-brand transition-all duration-200":
                     pathname === link.href,
                 })}`}
               >
