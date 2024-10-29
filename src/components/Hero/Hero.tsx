@@ -8,7 +8,7 @@ export default function Hero() {
   return (
     <>
       <section>
-        <div className="py-10 mt-6 px-6 max-w-3xl">
+        <div className="py-10 mt-6 max-w-3xl">
           <h1 className="text-3xl md:text-6xl font-bold md:leading-[4rem]">
             Hi, I am{" "}
             <span
@@ -30,13 +30,13 @@ export default function Hero() {
           </p>
 
           <div className="flex flex-col md:flex-row w-full gap-3 mt-2 py-4">
-            <Button className="w-full md:w-40 inline-flex justify-center hover:bg-opacity-65 items-center py-6 gap-2 px-2 font-medium">
+            <Button className="w-full md:w-40 inline-flex hover:bg-opacity-65">
                <IoDocumentText size={20}/> Resume
             </Button>
-            <Button className="w-full md:w-40 inline-flex justify-center items-center py-6 gap-2 px-4 font-medium bg-transparent hover:bg-sky-100/10 border border-secondary">
+            <Button className="w-full md:w-40 inline-flex bg-transparent hover:bg-sky-100/10 border border-secondary">
                <IoMail size={20}/> Contact Me
             </Button>
-            <Button className="hidden md:inline-flex justify-center items-center py-6 gap-2 px-4 font-medium bg-transparent hover:bg-slate-100/15">
+            <Button className="hidden md:inline-flex bg-transparent hover:bg-slate-100/15">
                <HiBriefcase size={20}/> My Works
             </Button>
           </div>
