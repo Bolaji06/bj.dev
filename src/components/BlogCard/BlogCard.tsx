@@ -1,13 +1,15 @@
+import { formatTimestamp } from "@/utils/utils";
 import Link from "next/link";
 import { FaBookOpen } from "react-icons/fa6";
 
 interface BlogCardProps {
-    id: number;
+    id?: number;
+    slug: string;
     title: string;
     description: string;
-    timestamp: string
+    published_at: string;
 }
-export default function BlogCard({ id, title, description, timestamp }: BlogCardProps) {
+export default function BlogCard({ slug, title, description, published_at }: BlogCardProps) {
   return (
     <>
       <section className="rounded-md px-3 py-2">
@@ -18,10 +20,10 @@ export default function BlogCard({ id, title, description, timestamp }: BlogCard
           </div>
 
           <div className=" w-full">
-            <p className="text-xs text-gray-400">{timestamp}</p>
+            <p className="text-xs text-gray-400">{formatTimestamp(published_at)}</p>
             <h2 className="text-lg sm:text-xl text-text_primary font-medium">{title}</h2>
             <p className="text-sm">{description}</p>
-            <Link className="text-sm text-secondary hover:underline" href={`/blog/${id}`}>Read more</Link>
+            <Link className="text-sm text-secondary hover:underline" href={`/blog/${slug}`}>Read more</Link>
           </div>
         </div>
       </section>
