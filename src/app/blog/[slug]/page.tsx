@@ -43,7 +43,7 @@ export default async function BlogPage({
           </div>
         </header>
 
-        <article className={`${robotoMono.className} text-lg max-w-3xl overflow-x-hidden leading-[2rem] antialiased`} dangerouslySetInnerHTML={{ __html: blogPostData.body_html}}>
+        <article className={`${robotoMono.className} text-lg max-w-3xl overflow-x-hidden leading-[2rem] antialiased mb-20`} dangerouslySetInnerHTML={{ __html: blogPostData.body_html}}>
 
         </article>
       </section>
