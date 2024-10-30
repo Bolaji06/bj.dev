@@ -7,8 +7,6 @@ import { IBlog } from "@/definition/definition";
 export default async function Home() {
   const blogPosts = await fetchBlogPost(1, 4);
 
-  //console.log(blogPosts);
-
   return (
     <>
       <main className="px-6">
@@ -43,9 +41,10 @@ export default async function Home() {
                 <BlogCard 
                 key={blog.id}
                 id={blog.id}
+                slug={blog.slug}
                 title={blog.title}
                 description={blog.description}
-                timestamp={blog.timestamp}/>
+                published_at={blog.published_at}/>
               )
             })
           }

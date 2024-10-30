@@ -23,8 +23,9 @@ export async function fetchBlogPost(pageNumber: number, amount: number){
     }
 }
 
-export async function getBlogPost(id: string){
-    const API = `https://dev.to/api/articles/${id}`;
+export async function getBlogPost(slug: string){
+    
+    const API = `https://dev.to/api/articles/bolajibolajoko51/${slug}`;
     try{
         const response = await fetch(API);
         const data = await response.json();

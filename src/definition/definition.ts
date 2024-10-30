@@ -1,9 +1,10 @@
 
 export interface IBlog {
     id: number;
+    slug: string;
     title: string;
     description: string;
-    timestamp: string;
+    published_at: string;
 }
 
 export interface IBlogPostDetails {
@@ -11,6 +12,7 @@ export interface IBlogPostDetails {
     published_at: string;
     public_reactions_count: number;
     body_html: string;
+    body_markdown: string;
     url: string;
     reading_time_minutes: number;
 

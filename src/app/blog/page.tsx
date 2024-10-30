@@ -4,7 +4,7 @@ import { IBlog } from "@/definition/definition";
 import Link from "next/link";
 
 export default async function Page() {
-  const blogPosts = await fetchBlogPost(1, 10);
+  const blogPosts = await fetchBlogPost(1, 30);
 
   return (
     <>
@@ -33,9 +33,10 @@ export default async function Page() {
               <BlogCard
                 key={blog.id}
                 id={blog.id}
+                slug={blog.slug}
                 title={blog.title}
                 description={blog.description}
-                timestamp={blog.timestamp}
+                published_at={blog.published_at}
               />
             );
           })}

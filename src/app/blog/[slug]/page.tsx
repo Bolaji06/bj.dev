@@ -7,16 +7,20 @@ import { IBlogPostDetails } from "@/definition/definition";
 import Link from "next/link";
 
 import { robotoMono } from "@/app/fonts/font";
+import { formatTimestamp } from "@/utils/utils";
 
 
 export default async function BlogPage({
   params,
 }: {
-  params: { id: string };
+  params: { slug: string };
 }): Promise<React.JSX.Element> {
-  const blogId = await params;
-  const { id } = blogId;
-  const blogPostData: IBlogPostDetails = await getBlogPost(id);
+
+  const blogSlug = await params;
+  const { slug } = blogSlug;
+
+  const blogPostData: IBlogPostDetails = await getBlogPost(slug);
+
 
 
   return (
@@ -28,7 +32,7 @@ export default async function BlogPage({
             <div className="flex items-center gap-2 text-gray-300">
               <TfiWrite />
               <p className="">
-                Published: <span>{blogPostData.published_at}</span>
+                Published: <span>{formatTimestamp(blogPostData.published_at)}</span>
               </p>
             </div>
             <div className="flex items-center gap-6 text-gray-300 py-4">
