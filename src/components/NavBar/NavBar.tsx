@@ -1,5 +1,5 @@
 "use client";
-import Image from "next/image";
+
 import logo from "../../../public/logo.png";
 import Link from "next/link";
 import { navLinks } from "@/utils/links";
@@ -9,31 +9,26 @@ import clsx from "clsx";
 import { FaHamburger } from "react-icons/fa";
 import MobileNav from "../MobileNav/MobileNav";
 import { useState } from "react";
+import Logo from "../Logo/Logo";
 
 export default function NavBar() {
-  const [toggleNav, setToggleNav] = useState<boolean>(false)
+  const [toggleNav, setToggleNav] = useState<boolean>(false);
 
-  function openMobileNav(){
+  function openMobileNav() {
     setToggleNav(true);
   }
 
-  function closeMobileNav(){
+  function closeMobileNav() {
     setToggleNav(false);
   }
   const pathname = usePathname();
 
   return (
     <>
-      <nav className="fixed w-full py-3 px-10 backdrop-blur-md bg-background/90 border-gray-800 border-b">
+      <nav data-testid="navbar-lg" className="fixed w-full py-3 px-10 backdrop-blur-md bg-background/90 border-gray-800 border-b">
         <div className="flex justify-between">
           <Link href={"/"}>
-            <Image
-              src={logo}
-              alt="bj.dev logo"
-              width={40}
-              height={40}
-              className="aspect-video"
-            />
+            <Logo className="aspect-video" src={logo} />
           </Link>
 
           <div className="hidden lg:flex justify-between items-center">
@@ -44,9 +39,9 @@ export default function NavBar() {
                     <Link
                       key={link.title}
                       href={link.href}
-                      className={`text-sm font-medium text-slate-200 ${clsx({
-                        "text-primary-brand font-medium border-b-2 border-primary-brand":
-                          pathname === link.href,
+                      className={`text-sm font-medium text-slate-200 hover:text-primary-brand ${clsx({
+                        "text-amber-500 font-medium  border-b-2 border-primary-brand":
+                          pathname === link.href
                       })}`}
                     >
                       {link.title}
@@ -61,15 +56,22 @@ export default function NavBar() {
             </div>
           </div>
 
-          <button onClick={openMobileNav} className="block lg:hidden bg-transparent border-none text-2xl cursor-pointer">
-             <FaHamburger spacing={30} />
+          <button
+            onClick={openMobileNav}
+            className="block lg:hidden bg-transparent border-none text-2xl cursor-pointer"
+          >
+            <FaHamburger spacing={30} />
           </button>
         </div>
       </nav>
-      { toggleNav && <nav className={`fixed min-h-screen w-full overflow-y-hidden
-        transition-transform duration-300 ease-in-out`}>
-        <MobileNav closeMobileNav={closeMobileNav} pathname={pathname}/>
-      </nav> }
+      {toggleNav && (
+        <nav
+          className={`fixed min-h-screen w-full overflow-y-hidden
+        transition-transform duration-300 ease-in-out`}
+        >
+          <MobileNav closeMobileNav={closeMobileNav} pathname={pathname} />
+        </nav>
+      )}
     </>
   );
 }

@@ -30,10 +30,11 @@ export default function MobileNav({ closeMobileNav, pathname }: MobileNavProps) 
                  <Link
                  key={link.title}
                  href={link.href}
-                 className={`font-medium text-lg text-slate-200 ${clsx({
-                  "text-primary-brand text-3xl font-medium border-b-4 border-primary-brand transition-all duration-200":
+                 className={`font-medium text-lg text-slate-200 hover:text-primary-brand ${clsx({
+                  "text-amber-500 text-4xl font-medium border-b-4 border-primary-brand transition-all duration-200":
                     pathname === link.href,
                 })}`}
+                onClick={closeMobileNav}
               >
                   {link.title}
                  </Link>

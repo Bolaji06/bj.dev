@@ -1,6 +1,5 @@
-import React from "react";
 
-export default function Layout({ children }: { children: React.ReactNode }){
+export default function BlogLayout({ children }: { children: React.ReactNode }): React.JSX.Element{
 
     return (
         <>
