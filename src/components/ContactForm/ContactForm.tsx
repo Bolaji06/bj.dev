@@ -46,6 +46,7 @@ export default function ContactForm() {
             id="name"
             name="name"
             onChange={handleContactInput}
+            onFocus={() => setInputError(null)}
             value={inputState.name}
           />
           {inputError && (
@@ -64,6 +65,7 @@ export default function ContactForm() {
             id="email"
             name="email"
             onChange={handleContactInput}
+            onFocus={() => setInputError(null)}
             value={inputState.email}
           />
           {inputError && (
@@ -83,6 +85,7 @@ export default function ContactForm() {
             id="message"
             name="message"
             onChange={handleContactInput}
+            onFocus={() => setInputError(null)}
             value={inputState.message}
           />
           {inputError && (

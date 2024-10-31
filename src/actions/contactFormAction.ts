@@ -1,7 +1,7 @@
 "use server";
 
 import { contactFormSchema } from "@/definition/validation"
-import { ZodError } from "zod";
+
 
 export async function contactFormAction(prevState: unknown, formData: FormData){
     const parseContactSchema = contactFormSchema.safeParse({
@@ -33,14 +33,8 @@ export async function contactFormAction(prevState: unknown, formData: FormData){
         
 
     }catch(error){
-        if (error instanceof ZodError){
-            const validateInput = error.errors.map((issues) => {
-                return {
-                    message: issues.message,
-                    path: issues.path,
-                }
-            })
-            return validateInput;
+        if (error instanceof Error){
+            return "Something went wrong " + error.message; 
         }
     }
 
