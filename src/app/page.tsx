@@ -1,5 +1,6 @@
 import BlogCard from "@/components/BlogCard/BlogCard";
 import ContactForm from "@/components/ContactForm/ContactForm";
+import FloatingButton from "@/components/FloatingButton/FloatingButton";
 import Hero from "@/components/Hero/Hero";
 import ProjectCard from "@/components/ProjectCard/ProjectCard";
 import { fetchBlogPost } from "@/data/fetchBlogPosts";
@@ -56,7 +57,7 @@ export default async function Home() {
 
         <div className="w-full h-[1px] bg-gray-800 mx-auto mt-36" />
         <section className="py-20">
-          <header className="mx-auto">
+          <header id="contact" className="mx-auto scroll-mt-24">
             <div className="flex item-center justify-center gap-6 text-text_primary">
               <IoLogoWechat size={35} />
               <h1 className="text-3xl font-semibold">{"Let's Chat"}</h1>
@@ -73,6 +74,8 @@ export default async function Home() {
             <ContactForm />
           </div>
         </section>
+
+        <FloatingButton />
       </main>
     </>
   );

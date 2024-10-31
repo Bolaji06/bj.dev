@@ -35,7 +35,7 @@ export default async function BlogPage({
                 Published: <span>{formatTimestamp(blogPostData.published_at)}</span>
               </p>
             </div>
-            <div className="flex items-center gap-6 text-gray-300 py-4">
+            <div className="flex items-center flex-wrap gap-6 text-gray-300 py-4">
                 <p className="inline-flex items-center gap-2"><IoMdTime /> <span className="">{blogPostData.reading_time_minutes} mins</span></p>
                 <Link href={blogPostData.url} className="inline-flex items-center gap-2 hover:underline"><MdLogoDev /> <span className=""> Read on dev.to</span></Link>
                 <p className="inline-flex items-center gap-2"><MdOutlineAddReaction /> <span className="">{blogPostData.public_reactions_count} reactions</span></p>
