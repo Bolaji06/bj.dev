@@ -17,3 +17,8 @@ export interface IBlogPostDetails {
     reading_time_minutes: number;
 
 }
+
+export interface IContactFormError {
+    message: string;
+    path: string[];
+}
