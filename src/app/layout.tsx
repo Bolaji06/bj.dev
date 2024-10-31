@@ -31,7 +31,7 @@ export default function RootLayout({
       <body
         className={`${poppins.className} ${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <main>
+        <main className="scroll-smooth">
           <NavBar />
           <section className="max-w-4xl mx-auto">
             {children}
