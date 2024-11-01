@@ -1,3 +1,6 @@
+// Copyright (c) bj.dev
+// Licensed under the MIT License.
+
 "use client";
 
 import { useRouter } from "next/navigation";
