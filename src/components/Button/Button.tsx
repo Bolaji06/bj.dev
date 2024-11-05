@@ -34,7 +34,7 @@ export default React.forwardRef<HTMLButtonElement, ButtonProps>(function Button(
   return (
     <>
       <button
-        className={`${className} bg-secondary text-white rounded-md text-center h-10 flex justify-center items-center gap-2 font-medium px-4 py-6`}
+        className={`${className} hover:bg-opacity-80 bg-secondary text-white rounded-md text-center h-10 flex justify-center items-center gap-2 font-medium px-4 py-6`}
         ref={ref}
         {...props}
         data-testid={"custom-button"}
