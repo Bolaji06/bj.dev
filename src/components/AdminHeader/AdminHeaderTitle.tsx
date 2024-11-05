@@ -6,8 +6,8 @@ interface HeaderTitleProps extends React.HTMLAttributes<HTMLHeadingElement> {
 export default forwardRef<HTMLHeadingElement, HeaderTitleProps>(
   function AdminHeaderTitle({ title, className, ...props }, ref) {
     return (
-      <header>
-      <h2 className={`text-text_primary text-xl font-medium py-3 ${className}`} ref={ref} {...props}>
+      <header data-testid="headerContainer">
+      <h2 data-testid="headerTitle" className={`text-text_primary text-xl font-medium py-3 ${className}`} ref={ref} {...props}>
         {title}
       </h2>
       </header>
