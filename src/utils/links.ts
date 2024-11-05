@@ -42,3 +42,5 @@ export const socialLinks = [
         icon: IoLogoLinkedin
     }
 ]
+
+export const tabLists = ["User", "Project", "Experience", "Skills", "Stack"];
