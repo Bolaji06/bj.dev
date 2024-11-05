@@ -1,5 +1,5 @@
 
-interface InputErrorProps {
+export interface InputErrorProps {
     message: string;
     path: string[];
     name: string;

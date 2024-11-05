@@ -3,7 +3,7 @@ import { poppins } from "./fonts/font";
 import localFont from "next/font/local";
 import "./globals.css";
 import NavBar from "@/components/NavBar/NavBar";
-import Footer from "@/components/footer/footer";
+import Footer from "@/components/Footer/Footer";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -33,12 +33,9 @@ export default function RootLayout({
       >
         <main className="scroll-smooth">
           <NavBar />
-          <section className="max-w-4xl mx-auto">
-            {children}
-          </section>
+          <section className="max-w-4xl mx-auto">{children}</section>
         </main>
         <Footer />
-        
       </body>
     </html>
   );

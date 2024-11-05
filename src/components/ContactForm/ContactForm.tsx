@@ -7,9 +7,11 @@ import { ChangeEvent, useActionState, useEffect, useState } from "react";
 import { IContactFormError } from "@/definition/definition";
 import InputError from "../InputError/InputError";
 import { contactFormSchemaType } from "@/definition/validation";
+import clsx from "clsx";
+import { Loader2 } from "lucide-react";
 
 export default function ContactForm() {
-  const [state, contactAction] = useActionState(contactFormAction, null);
+  const [state, contactAction, isPending] = useActionState(contactFormAction, null);
   const [inputError, setInputError] = useState<IContactFormError | null>(null);
   const [inputState, setInputState] = useState<contactFormSchemaType>({
     name: "",
@@ -98,8 +100,10 @@ export default function ContactForm() {
         </div>
 
         <div className="py-2">
-          <Button type="submit" className="w-full">
-            Send
+          <Button type="submit" className={`w-full flex items-center gap-3 ${clsx({'cursor-not-allowed text-gray-200 bg-opacity-50': isPending})}`}>
+          { isPending && <Loader2 size={18} className="animate-spin"/> }
+            { isPending ? "Sending email" : "Send" }
+            
           </Button>
         </div>
       </form>
