@@ -3,7 +3,7 @@ export default function Layout({ children }: { children: React.ReactNode }): Rea
 
     return (
         <>
-            <main>
+            <main className="px-10">
                 { children }
             </main>
         </>

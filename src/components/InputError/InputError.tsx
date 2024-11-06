@@ -4,6 +4,7 @@ export interface InputErrorProps {
     path: string[];
     name: string;
 }
+
 export default function InputError({
   message,
   path,
@@ -11,7 +12,7 @@ export default function InputError({
 }: InputErrorProps): React.JSX.Element {
   return (
     <>
-      {path[0] === name && <p className="text-sm text-red-500">{message}</p>}
+      {path?.[0] === name && <p className="text-sm text-red-500">{message}</p>}
     </>
   );
 }
