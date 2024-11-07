@@ -22,3 +22,17 @@ export interface IContactFormError {
     message: string;
     path: string[];
 }
+
+export interface IUser {
+    id: number;
+    name: string;
+    email: string;
+    bio: string;
+    photo: string;
+    links: string[]
+}
+
+export interface IUserResponse {
+    success: boolean;
+    user: IUser
+}

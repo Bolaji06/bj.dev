@@ -10,6 +10,7 @@ import { IoLogoWechat } from "react-icons/io5";
 export default async function Home() {
   const blogPosts = await fetchBlogPost(1, 4);
 
+
   return (
     <>
       <main className="px-6">
@@ -39,7 +40,7 @@ export default async function Home() {
               I explore things that fascinates me in great details
             </p>
           </header>
-          {/* <div className="grid lg:grid-cols-2 gap-4  pt-10">
+          <div className="grid lg:grid-cols-2 gap-4  pt-10">
             {blogPosts.map((blog: IBlog) => {
               return (
                 <BlogCard
@@ -52,7 +53,7 @@ export default async function Home() {
                 />
               );
             })}
-          </div> */}
+          </div>
         </section>
 
         <div className="w-full h-[1px] bg-gray-800 mx-auto mt-36" />

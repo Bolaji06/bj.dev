@@ -15,7 +15,7 @@ export default function ProjectForm() {
             <div>
               <Label id="title">
                 Project title
-                <Input name="password" />
+                <Input name="title" />
               </Label>
             </div>
 
