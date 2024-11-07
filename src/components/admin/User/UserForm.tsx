@@ -24,9 +24,17 @@ export default function UserForm({ user }: { user: IUser }) {
     setSocialLinksInput(e.target.value);
   }
 
-  function addSocialLink() {
-    setSocialLinkList((prevState) => [...prevState, socialLinksInput]);
-    setSocialLinksInput("");
+  function addSocialLink(item: string) {
+    setSocialLinkList((prevState) => {
+      if (!prevState.includes(item)) {
+        return [...prevState, item];
+      }
+      return [...prevState];
+    });
+
+    if (socialLinkList.includes(item)) {
+      toast(`${item} already in the list!`);
+    }
   }
 
   function removeSocialLink(item: string) {
@@ -78,12 +86,16 @@ export default function UserForm({ user }: { user: IUser }) {
                     value={socialLinksInput}
                     onChange={onChangeSocialLinks}
                   />
-                  <Button onClick={addSocialLink} className="h-3" type="button">
+                  <Button
+                    onClick={() => addSocialLink(socialLinksInput)}
+                    className="h-3"
+                    type="button"
+                  >
                     Add
                   </Button>
                 </div>
               </Label>
-              <div className="inline-flex gap-1 items-center mt-1">
+              <div className="inline-flex gap-1 items-center flex-wrap mt-1">
                 {socialLinkList.map((link) => (
                   <p
                     key={link}
