@@ -4,7 +4,7 @@
 import { cookies } from "next/headers";
 
 export async function addProjectAction(prevState: unknown, formData: FormData){
-    const API_ENDPOINT = 'http://localhost:7000/api/project';
+    const API_ENDPOINT = `${process.env.BASE_API_ENDPOINT}/project`;
 
     const hasToken = (await cookies()).has("bj.dev-token");
     if(!hasToken){

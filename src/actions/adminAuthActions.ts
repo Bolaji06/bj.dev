@@ -1,6 +1,5 @@
 "use server";
 
-import { authLogin, authRegister, localBaseEndpoint } from "@/const/const";
 import { adminAuthSchema } from "@/definition/validation";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
@@ -30,7 +29,10 @@ export async function adminLoginAction(prevState: unknown, formData: FormData) {
   };
 
   try {
-    const response = await fetch(`${localBaseEndpoint}${authLogin}`, options);
+    const response = await fetch(
+      `${process.env.BASE_API_ENDPOINT}/auth/login`,
+      options
+    );
     const data = await response.json();
 
     if (data.success) {
@@ -74,7 +76,7 @@ export async function adminRegisterAction(
 
   try {
     const response = await fetch(
-      `${localBaseEndpoint}${authRegister}`,
+      `${process.env.BASE_API_ENDPOINT}/auth/register`,
       options
     );
     const data = await response.json();
