@@ -9,7 +9,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { IUser } from "@/definition/definition";
 import { X } from "lucide-react";
-import { ChangeEvent, useActionState, useEffect, useState } from "react";
+import { ChangeEvent, useActionState, useEffect, useRef, useState } from "react";
 import toast from "react-hot-toast";
 
 export default function UserForm({ user }: { user: IUser }) {
@@ -19,14 +19,23 @@ export default function UserForm({ user }: { user: IUser }) {
   const [socialLinksInput, setSocialLinksInput] = useState<string>("");
 
   const [state, action, isPending] = useActionState(userAction, {});
+  const hasMount = useRef(false);
 
   function onChangeSocialLinks(e: ChangeEvent<HTMLInputElement>) {
     setSocialLinksInput(e.target.value);
   }
 
-  function addSocialLink() {
-    setSocialLinkList((prevState) => [...prevState, socialLinksInput]);
-    setSocialLinksInput("");
+  function addSocialLink(item: string) {
+    setSocialLinkList((prevState) => {
+      if (!prevState.includes(item)) {
+        return [...prevState, item];
+      }
+      return [...prevState];
+    });
+
+    if (socialLinkList.includes(item)) {
+      toast(`${item} already in the list!`);
+    }
   }
 
   function removeSocialLink(item: string) {
@@ -36,17 +45,22 @@ export default function UserForm({ user }: { user: IUser }) {
   }
 
   useEffect(() => {
-    if (!state.success) {
-      toast.error(
-        <div className="capitalize font-medium">{state.message}</div>,
-        { duration: 4000 }
-      );
+    if (hasMount.current){
+      if(state.success){
+        toast.success(
+          <div className="capitalize font-medium">{state.message}</div>,
+          { duration: 4000 }
+        );
+      }else if(state.success === false){
+        toast.error(
+          <div className="capitalize font-medium">{state.message}</div>,
+          { duration: 4000 }
+        );
+      }
+    }else {
+      hasMount.current = false;
     }
-    toast.success(
-      <div className="capitalize font-medium">{state.message}</div>,
-      { duration: 4000 }
-    );
-  }, [state.success]);
+  }, [state]);
 
   return (
     <>
@@ -78,12 +92,16 @@ export default function UserForm({ user }: { user: IUser }) {
                     value={socialLinksInput}
                     onChange={onChangeSocialLinks}
                   />
-                  <Button onClick={addSocialLink} className="h-3" type="button">
+                  <Button
+                    onClick={() => addSocialLink(socialLinksInput)}
+                    className="h-3"
+                    type="button"
+                  >
                     Add
                   </Button>
                 </div>
               </Label>
-              <div className="inline-flex gap-1 items-center mt-1">
+              <div className="inline-flex gap-1 items-center flex-wrap mt-1">
                 {socialLinkList.map((link) => (
                   <p
                     key={link}
