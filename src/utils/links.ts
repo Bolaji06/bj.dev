@@ -43,4 +43,4 @@ export const socialLinks = [
     }
 ]
 
-export const tabLists = ["User", "Project", "Experience", "Skills", "Stack"];
+export const tabLists = ["User", "Project", "Experience",];
