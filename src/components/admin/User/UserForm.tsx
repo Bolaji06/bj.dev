@@ -9,7 +9,13 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { IUser } from "@/definition/definition";
 import { X } from "lucide-react";
-import { ChangeEvent, useActionState, useEffect, useRef, useState } from "react";
+import {
+  ChangeEvent,
+  useActionState,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import toast from "react-hot-toast";
 
 export default function UserForm({ user }: { user: IUser }) {
@@ -26,15 +32,17 @@ export default function UserForm({ user }: { user: IUser }) {
   }
 
   function addSocialLink(item: string) {
-    setSocialLinkList((prevState) => {
-      if (!prevState.includes(item)) {
-        return [...prevState, item];
-      }
-      return [...prevState];
-    });
+    if (socialLinksInput.length) {
+      setSocialLinkList((prevState) => {
+        if (!prevState.includes(item)) {
+          return [...prevState, item];
+        }
+        return [...prevState];
+      });
 
-    if (socialLinkList.includes(item)) {
-      toast(`${item} already in the list!`);
+      if (socialLinkList.includes(item)) {
+        toast(`${item} already in the list!`);
+      }
     }
   }
 
@@ -45,23 +53,24 @@ export default function UserForm({ user }: { user: IUser }) {
   }
 
   useEffect(() => {
-    if (hasMount.current){
-      if(state.success){
+    if (hasMount.current) {
+      if (state.success) {
         toast.success(
           <div className="capitalize font-medium">{state.message}</div>,
           { duration: 4000 }
         );
-      }else if(state.success === false){
+      } else if (state.success === false) {
         toast.error(
           <div className="capitalize font-medium">{state.message}</div>,
           { duration: 4000 }
         );
       }
-    }else {
+    } else {
       hasMount.current = false;
     }
   }, [state]);
 
+  console.log(state);
   return (
     <>
       <section>

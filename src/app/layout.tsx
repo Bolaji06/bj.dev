@@ -4,7 +4,6 @@ import localFont from "next/font/local";
 import "./globals.css";
 import NavBar from "@/components/NavBar/NavBar";
 import Footer from "@/components/Footer/Footer";
-import { Toaster } from "react-hot-toast";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -35,7 +34,7 @@ export default function RootLayout({
         <main className="scroll-smooth">
           <NavBar />
           <section className="max-w-4xl mx-auto">{children}</section>
-          <Toaster />
+          
         </main>
         <Footer />
       </body>

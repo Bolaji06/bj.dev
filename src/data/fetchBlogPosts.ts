@@ -27,7 +27,7 @@ export async function getBlogPost(slug: string){
     
     const API = `https://dev.to/api/articles/bolajibolajoko51/${slug}`;
     try{
-        const response = await fetch(API);
+        const response = await fetch(API, { cache: "force-cache" });
         const data = await response.json();
         return data;
 

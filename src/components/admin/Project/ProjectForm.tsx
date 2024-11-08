@@ -28,16 +28,19 @@ export default function ProjectForm() {
   const hasMount = useRef(false);
 
   function addStack(item: string) {
-    setStackList((prevState) => {
-      if (prevState.includes(item)) {
-        return [...prevState];
+    if(stackInput.length){
+      setStackList((prevState) => {
+        if (prevState.includes(item)) {
+          return [...prevState];
+        }
+        setStackInput("");
+        return [...prevState, item];
+      });
+      if (stackLists.includes(item)) {
+        toast(`${item} already in the list!`);
       }
-      setStackInput("");
-      return [...prevState, item];
-    });
-    if (stackLists.includes(item)) {
-      toast(`${item} already in the list!`);
     }
+    
   }
 
   function removeStack(item: string) {
