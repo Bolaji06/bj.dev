@@ -8,7 +8,13 @@ import Label from "@/components/Label/Label";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { X } from "lucide-react";
-import { ChangeEvent, useActionState, useEffect, useState } from "react";
+import {
+  ChangeEvent,
+  useActionState,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import toast from "react-hot-toast";
 
 export default function ProjectForm() {
@@ -19,6 +25,7 @@ export default function ProjectForm() {
   function onChangeStackInput(e: ChangeEvent<HTMLInputElement>) {
     setStackInput(e.target.value);
   }
+  const hasMount = useRef(false);
 
   function addStack(item: string) {
     setStackList((prevState) => {
@@ -40,17 +47,23 @@ export default function ProjectForm() {
   }
 
   useEffect(() => {
-    if (!state.success) {
-      toast.error(
-        <div className="capitalize font-medium">{state.message}</div>,
-        { duration: 4000 }
-      );
+    if (hasMount.current) {
+      if (state.success) {
+        toast.success(
+          <div className="capitalize font-medium">{state.message}</div>,
+          { duration: 4000 }
+        );
+        
+      } else if(state.success === false) {
+        toast.error(
+          <div className="capitalize font-medium">{state.message}</div>,
+          { duration: 4000 }
+        );
+      }
+    } else {
+      hasMount.current = true;
     }
-    toast.success(
-      <div className="capitalize font-medium">{state.message}</div>,
-      { duration: 4000 }
-    );
-  }, [state?.success]);
+  }, [state]);
 
   console.log(state);
   return (
@@ -94,17 +107,19 @@ export default function ProjectForm() {
             <div>
               <Label id="stacks">Stack used</Label>
               <div className="flex items-center gap-3">
-                <Input
-                  
-                  value={stackInput}
-                  onChange={onChangeStackInput}
-                />
+                <Input value={stackInput} onChange={onChangeStackInput} />
                 <Button type="button" onClick={() => addStack(stackInput)}>
                   Add
                 </Button>
               </div>
               <div>
-                <input type="hidden" aria-hidden readOnly value={stackLists} name="stacks"/>
+                <input
+                  type="hidden"
+                  aria-hidden
+                  readOnly
+                  value={stackLists}
+                  name="stacks"
+                />
               </div>
               <div className="flex items-center flex-wrap gap-2 mt-2">
                 {stackLists.map((stack) => {
