@@ -12,7 +12,7 @@ import { formatTimestamp } from "@/utils/utils";
 export default async function BlogPage({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }): Promise<React.JSX.Element> {
   const blogSlug = await params;
   const { slug } = blogSlug;

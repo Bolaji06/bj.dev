@@ -1,11 +1,10 @@
 
-
-export default function ProjectPage(): React.JSX.Element{
+export default function ToolsPage(): React.JSX.Element{
 
     return(
         <>
             <section>
-                Project Page
+                Tools Page
             </section>
         </>
     )
