@@ -13,7 +13,7 @@ import { ChangeEvent, useActionState, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 
 export default function UserForm({ user }: { user: IUser }) {
-  const userLinks = user.links.length ? user.links[0].split(",") : [];
+  const userLinks = user?.links?.length ? user?.links[0].split(",") : [];
 
   const [socialLinkList, setSocialLinkList] = useState<string[]>(userLinks);
   const [socialLinksInput, setSocialLinksInput] = useState<string>("");
@@ -36,12 +36,16 @@ export default function UserForm({ user }: { user: IUser }) {
   }
 
   useEffect(() => {
-    if (state.success) {
-      toast.success(
+    if (!state.success) {
+      toast.error(
         <div className="capitalize font-medium">{state.message}</div>,
         { duration: 4000 }
       );
     }
+    toast.success(
+      <div className="capitalize font-medium">{state.message}</div>,
+      { duration: 4000 }
+    );
   }, [state.success]);
 
   return (
@@ -54,14 +58,14 @@ export default function UserForm({ user }: { user: IUser }) {
             <div>
               <Label id="fullName">
                 Full Name
-                <Input name="fullName" defaultValue={user.name} />
+                <Input name="fullName" defaultValue={user?.name} />
               </Label>
             </div>
 
             <div>
               <Label id="photo">
                 Photo URL
-                <Input name="photo" defaultValue={user.photo} />
+                <Input name="photo" defaultValue={user?.photo} />
               </Label>
             </div>
 
@@ -106,7 +110,7 @@ export default function UserForm({ user }: { user: IUser }) {
           <div>
             <Label id="bio">
               Bio.
-              <Textarea name="bio" defaultValue={user.bio} />
+              <Textarea name="bio" defaultValue={user?.bio} />
             </Label>
           </div>
 

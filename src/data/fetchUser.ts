@@ -16,12 +16,15 @@ export async function getUser() {
     const cookieToken = (await cookies()).get("bj.dev-token")?.value as string;
     const payload:IJwt = decrypt(cookieToken)
 
-  const API_ENDPOINT = `http://localhost:7000/api/user/${payload?.id}`;
+  const API_ENDPOINT = `${process.env.BASE_API_ENDPOINT}/user/${payload?.id}`;
   const options = {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
     },
+    next: {
+      tags: ["user"]
+    }
   };
 
   try {

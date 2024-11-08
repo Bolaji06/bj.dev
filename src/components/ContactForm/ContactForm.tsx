@@ -9,6 +9,7 @@ import InputError from "../InputError/InputError";
 import { contactFormSchemaType } from "@/definition/validation";
 
 import FormButton from "../FormButton/FormButton";
+import toast from "react-hot-toast";
 
 export default function ContactForm() {
   const [state, contactAction, isPending] = useActionState(
@@ -40,6 +41,23 @@ export default function ContactForm() {
     });
   }
 
+  useEffect(() => {
+    if (!state?.success) {
+      toast.error(
+        <div className="text-sm capitalize font-medium">{state?.message}</div>,
+        {
+          duration: 4000,
+        }
+      );
+    }
+    toast.success(
+      <div className="text-sm capitalize font-medium">{state?.message}</div>,
+      {
+        duration: 4000,
+      }
+    );
+  }, [state?.success]);
+
   return (
     <>
       <form action={contactAction} className="space-y-4">
@@ -69,6 +87,7 @@ export default function ContactForm() {
           <Input
             id="email"
             name="email"
+            type="email"
             onChange={handleContactInput}
             onFocus={() => setInputError(null)}
             value={inputState.email}

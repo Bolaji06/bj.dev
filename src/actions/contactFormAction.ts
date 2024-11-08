@@ -21,11 +21,14 @@ export async function contactFormAction(prevState: unknown, formData: FormData){
     }
     const options = {
         method: "POST",
-        body: JSON.stringify(parseContactSchema)
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(parseContactSchema.data)
     }
 
     try{
-        const response = await fetch('api', options);
+        const response = await fetch(`${process.env.BASE_API_ENDPOINT}/send-email`, options);
         const data = await response.json();
 
         console.log(data);
