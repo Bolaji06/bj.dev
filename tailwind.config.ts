@@ -22,9 +22,10 @@ const config: Config = {
   		colors: {
 			gradientRed: '#FF0000',
         	gradientOrange: '#FFA500', 
-  			background: 'var(--background)',
+  			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
-  			text_primary: 'var(--text-primary)',
+			mute_foreground: 'hsl(var(--mute-foreground))',
+			text_primary: 'hsl(var(--text-primary)',
   			card: {
   				DEFAULT: 'hsl(var(--card))',
   				foreground: 'hsl(var(--card-foreground))'
@@ -34,8 +35,8 @@ const config: Config = {
   				foreground: 'hsl(var(--popover-foreground))'
   			},
   			primary: {
-  				DEFAULT: 'var(--brand)',
-				brand: 'var(--brand)',
+  				DEFAULT: 'hsl(var(--brand))',
+				brand: 'hsl(var(--brand))',
   				foreground: 'hsl(var(--primary-foreground))'
   			},
   			secondary: {
@@ -48,14 +49,16 @@ const config: Config = {
   			},
   			accent: {
   				DEFAULT: 'hsl(var(--accent))',
-  				foreground: 'hsl(var(--accent-foreground))'
+  				foreground: 'hsl(var(--foreground))'
   			},
   			destructive: {
   				DEFAULT: 'hsl(var(--destructive))',
   				foreground: 'hsl(var(--destructive-foreground))'
   			},
-  			border: 'hsl(var(--border))',
+  			border: 'hsl(var(--border-b))',
   			input: 'hsl(var(--input))',
+			input_active: 'hsl(var(--input-active))',
+			input_border: 'hsl',
   			ring: 'hsl(var(--ring))',
   			chart: {
   				'1': 'hsl(var(--chart-1))',

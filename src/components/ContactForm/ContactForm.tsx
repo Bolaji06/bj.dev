@@ -122,7 +122,7 @@ export default function ContactForm() {
         </div>
 
         <div className="py-2">
-          <FormButton isPending={isPending}>
+          <FormButton isPending={isPending} className="text-white">
             {isPending ? "Sending email" : "Send"}
           </FormButton>
         </div>

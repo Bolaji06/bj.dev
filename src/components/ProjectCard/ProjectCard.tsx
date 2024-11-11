@@ -31,7 +31,7 @@ export default function ProjectCard() {
             Organi | E-commerce Store
           </h2>
           <p
-            className="py-3 text-sm text-gray-400 max-w-full truncate"
+            className="py-3 text-sm text-gray-500 max-w-full truncate"
             data-testid="ProjectCardDescription"
           >
             Organi is a one stop for all your groceries and fashion items
@@ -62,7 +62,7 @@ export default function ProjectCard() {
           data-testid="ProjectCardFooter"
           className="flex flex-col gap-3 md:flex-row md:justify-between md:items-center pt-6 pb-6 md:pb-14"
         >
-          <Button className="px-0 bg-primary-brand text-sm font-medium text-center">
+          <Button className="px-0 bg-primary-brand text-white text-sm font-medium text-center">
             <Link
               href={"/"}
               className="w-full inline-flex gap-2 justify-center items-center px-4 py-3 text-center"
@@ -72,14 +72,14 @@ export default function ProjectCard() {
               <ArrowRight size={18} />
             </Link>
           </Button>
-          <Button className="px-0 border bg-transparent border-secondary text-sm font-medium">
+          <Button className="px-0 border bg-transparent border-secondary text-sm font-medium group">
             <Link
               href={"/"}
               className="w-full inline-flex gap-2 justify-center items-center px-4 py-3"
               data-testid="ProjectCardLiveLink"
             >
               Live project
-              <GlobeIcon size={18} />
+              <GlobeIcon size={18} className="group-hover:animate-spin"/>
             </Link>
           </Button>
         </div>
