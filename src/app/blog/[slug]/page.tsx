@@ -27,16 +27,16 @@ export default async function BlogPage({
           <h1 className="text-4xl text-text_primary font-semibold max-w-lg leading-[3rem]">
             {blogPostData.title}
           </h1>
-          <div className="text-sm">
-            <div className="flex items-center gap-2 text-gray-300">
+          <div className="text-sm text-mute-foreground">
+            <div className="flex items-center gap-2 text-mute_foreground">
               <TfiWrite />
-              <p className="">
+              <p>
                 Published:{" "}
                 <span>{formatTimestamp(blogPostData.published_at)}</span>
               </p>
             </div>
-            <div className="flex items-center flex-wrap gap-6 text-gray-300 py-4">
-              <p className="inline-flex items-center gap-2">
+            <div className="flex items-center flex-wrap gap-6 py-4">
+              <p className="inline-flex items-center gap-2 text-mute_foreground">
                 <IoMdTime />{" "}
                 <span className="">
                   {blogPostData.reading_time_minutes} mins
@@ -44,11 +44,11 @@ export default async function BlogPage({
               </p>
               <Link
                 href={blogPostData.url}
-                className="inline-flex items-center gap-2 hover:underline"
+                className="inline-flex items-center gap-2 hover:underline text-mute_foreground"
               >
                 <MdLogoDev /> <span className=""> Read on dev.to</span>
               </Link>
-              <p className="inline-flex items-center gap-2">
+              <p className="inline-flex items-center gap-2 text-mute_foreground">
                 <MdOutlineAddReaction />{" "}
                 <span className="">
                   {blogPostData.public_reactions_count} reactions

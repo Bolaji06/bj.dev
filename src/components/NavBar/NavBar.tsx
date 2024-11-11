@@ -25,7 +25,10 @@ export default function NavBar() {
 
   return (
     <>
-      <nav data-testid="navbar-lg" className="fixed w-full py-3 px-4 sm:px-10 backdrop-blur-md bg-background/90 border-gray-800 border-b">
+      <nav
+        data-testid="navbar-lg"
+        className="fixed w-full py-3 px-4 sm:px-10 backdrop-blur-md bg-background/90 border-b border-border"
+      >
         <div className="flex justify-between">
           <Link href={"/"}>
             <Logo className="aspect-video" src={logo} />
@@ -39,10 +42,11 @@ export default function NavBar() {
                     <Link
                       key={link.title}
                       href={link.href}
-                      className={`text-sm font-medium text-slate-200 hover:text-primary-brand ${clsx({
-                        "text-amber-500 font-medium  border-b-2 border-primary-brand":
-                          pathname === link.href
-                      })}`}
+                      className={`text-sm font-medium text-foreground hover:text-primary-brand
+                         ${clsx({
+                          "text-primary-brand font-medium border-b-2 border-primary-brand":
+                            pathname === link.href,
+                        })}`}
                     >
                       {link.title}
                     </Link>

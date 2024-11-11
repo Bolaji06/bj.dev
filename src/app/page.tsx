@@ -23,7 +23,7 @@ export default async function Home() {
             <h1 className="font-semibold text-3xl text-text_primary">
               Recent Projects
             </h1>
-            <p className="text-xs text-gray-400">
+            <p className="text-sm text-gray-500">
               View projects I have done in the past which best represent my
               talent.
             </p>
@@ -36,7 +36,7 @@ export default async function Home() {
         <section className="py-10">
           <header className="mx-auto w-full text-center py-10">
             <h2 className="text-3xl font-semibold">Latest Blog Posts</h2>
-            <p className="text-sm py-6 text-gray-400">
+            <p className="text-sm py-6 text-gray-500">
               I explore things that fascinates me in great details
             </p>
           </header>
@@ -56,15 +56,15 @@ export default async function Home() {
           </div>
         </section>
 
-        <div className="w-full h-[1px] bg-gray-800 mx-auto mt-36" />
+        <div className="w-full h-[1px] bg-border mx-auto mt-36" />
         <section className="py-20">
           <header id="contact" className="mx-auto scroll-mt-24">
-            <div className="flex item-center justify-center gap-6 text-text_primary">
+            <div className="flex item-center justify-center gap-6">
               <IoLogoWechat size={35} />
-              <h1 className="text-3xl font-semibold">{"Let's Chat"}</h1>
+              <h1 className="text-3xl font-semibold text-text_primary">{"Let's Chat"}</h1>
             </div>
             <div className="py-10 max-w-md mx-auto">
-                <p className="text-center text-sm text-gray-400">
+                <p className="text-center text-sm text-gray-500 leading-relaxed">
                   Contact me about any work opportunities, projects, questions
                   or feedback you may have. Even if you just want to say hi. I
                   always reply within 24 hours, usually even faster!

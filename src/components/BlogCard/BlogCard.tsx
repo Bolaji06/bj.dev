@@ -20,7 +20,7 @@ export default function BlogCard({ slug, title, description, published_at }: Blo
           </div>
 
           <div className=" w-full">
-            <p className="text-xs text-gray-400">{formatTimestamp(published_at)}</p>
+            <p className="text-xs text-gray-500">{formatTimestamp(published_at)}</p>
             <h2 className="text-lg sm:text-xl text-text_primary font-medium">{title}</h2>
             <p className="text-sm">{description}</p>
             <Link role="link" className="text-sm text-secondary hover:underline" href={`/blog/${slug}`}>Read more</Link>
