@@ -36,3 +36,19 @@ export interface IUserResponse {
     success: boolean;
     user: IUser
 }
+
+export interface IProject {
+    id?: number;
+    title: string;
+    description: string;
+    about?: string;
+    url: string;
+    githubUrl?: string;
+    thumbnail: string;
+    stacks: string[];
+}
+
+export interface IProjectResponse {
+    success: boolean;
+    projects: IProject[]
+}

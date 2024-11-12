@@ -132,7 +132,7 @@ export default function ProjectForm() {
                       className="flex items-center gap-1 rounded-sm text-xs bg-gray-700 p-1"
                     >
                       {stack}
-                      <span onClick={() => removeStack(stack)}>
+                      <span onClick={() => removeStack(stack)} className="cursor-pointer">
                         <X size={13} />
                       </span>
                     </p>

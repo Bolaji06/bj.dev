@@ -3,18 +3,17 @@ import { JwtPayload } from "jwt-decode";
 import { cookies } from "next/headers";
 
 interface IJwt extends JwtPayload {
-    id?: number;
-    name?: string;
+  id?: number;
+  name?: string;
 }
 
 export async function getUser() {
-
-    const hasCookie = (await cookies()).has("bj.dev-token");
-    if(!hasCookie){
-        return "Token is missing";
-    }
-    const cookieToken = (await cookies()).get("bj.dev-token")?.value as string;
-    const payload:IJwt = decrypt(cookieToken)
+  const hasCookie = (await cookies()).has("bj.dev-token");
+  if (!hasCookie) {
+    return "Token is missing";
+  }
+  const cookieToken = (await cookies()).get("bj.dev-token")?.value as string;
+  const payload: IJwt = decrypt(cookieToken);
 
   const API_ENDPOINT = `${process.env.BASE_API_ENDPOINT}/user/${payload?.id}`;
   const options = {
@@ -23,8 +22,8 @@ export async function getUser() {
       "Content-Type": "application/json",
     },
     next: {
-      tags: ["user"]
-    }
+      tags: ["user"],
+    },
   };
 
   try {
