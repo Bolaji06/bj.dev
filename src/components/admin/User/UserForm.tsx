@@ -103,7 +103,7 @@ export default function UserForm({ user }: { user: IUser }) {
                   />
                   <Button
                     onClick={() => addSocialLink(socialLinksInput)}
-                    className="h-3"
+                    className="h-3 text-white"
                     type="button"
                   >
                     Add
@@ -114,7 +114,7 @@ export default function UserForm({ user }: { user: IUser }) {
                 {socialLinkList.map((link) => (
                   <p
                     key={link}
-                    className="flex items-center gap-1 bg-gray-600 text-xs p-1 rounded-sm"
+                    className="flex text-mute_foreground items-center gap-1 bg-gray-200 text-xs p-1 rounded-sm"
                   >
                     {link}
                     <span onClick={() => removeSocialLink(link)}>

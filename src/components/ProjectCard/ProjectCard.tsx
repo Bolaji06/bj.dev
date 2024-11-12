@@ -1,11 +1,19 @@
 import Image from "next/image";
-import organi from "../../../public/organi.png";
+
 import Button from "../Button/Button";
 import { ArrowRight, GlobeIcon } from "lucide-react";
 import Link from "next/link";
 import { myProjectsData } from "@/data/project";
+import { IProject } from "@/definition/definition";
 
-export default function ProjectCard() {
+export default function ProjectCard({
+  
+  title,
+  description,
+  thumbnail,
+  url,
+  
+}: IProject) {
   return (
     <>
       <section className="w-full mb-12 mt-3" data-testid="ProjectCardContainer">
@@ -14,7 +22,7 @@ export default function ProjectCard() {
           data-testid="ProjectCardImageWrapper"
         >
           <Image
-            src={organi}
+            src={thumbnail}
             alt="Organi project thumbnail image"
             width={1000}
             height={1000}
@@ -28,13 +36,13 @@ export default function ProjectCard() {
             className="font-semibold text-text_primary text-lg"
             data-testid="ProjectCardTitle"
           >
-            Organi | E-commerce Store
+           {title}
           </h2>
           <p
             className="py-3 text-sm text-gray-500 max-w-full truncate"
             data-testid="ProjectCardDescription"
           >
-            Organi is a one stop for all your groceries and fashion items
+            {description}
           </p>
         </div>
         <div className="py-2">
@@ -50,7 +58,12 @@ export default function ProjectCard() {
                   data-testid="ProjectCardToolsList"
                 >
                   {item.stack.map((stack) => {
-                    return <p key={stack.tool} className="flex items-center">{<stack.icon />} <span className="px-2">{stack.tool}</span></p>
+                    return (
+                      <p key={stack.tool} className="flex items-center">
+                        {<stack.icon />}{" "}
+                        <span className="px-2">{stack.tool}</span>
+                      </p>
+                    );
                   })}
                 </li>
               );
@@ -64,7 +77,7 @@ export default function ProjectCard() {
         >
           <Button className="px-0 bg-primary-brand text-white text-sm font-medium text-center">
             <Link
-              href={"/"}
+              href={`project/${title}`}
               className="w-full inline-flex gap-2 justify-center items-center px-4 py-3 text-center"
               data-testid="ProjectCardReadMoreLink"
             >
@@ -74,12 +87,13 @@ export default function ProjectCard() {
           </Button>
           <Button className="px-0 border bg-transparent border-secondary text-sm font-medium group">
             <Link
-              href={"/"}
+              href={url}
               className="w-full inline-flex gap-2 justify-center items-center px-4 py-3"
               data-testid="ProjectCardLiveLink"
+              target="_blank"
             >
               Live project
-              <GlobeIcon size={18} className="group-hover:animate-spin"/>
+              <GlobeIcon size={18} className="group-hover:animate-spin" />
             </Link>
           </Button>
         </div>
