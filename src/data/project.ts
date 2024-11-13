@@ -1,38 +1,37 @@
-import { BiLogoTypescript, BiLogoReact } from "react-icons/bi";
+import {
+  BiLogoTypescript,
+  BiLogoReact,
+  BiLogoJavascript,
+  BiLogoMongodb,
+} from "react-icons/bi";
 import { RiNextjsFill, RiTailwindCssFill } from "react-icons/ri";
-import { SiClerk } from "react-icons/si";
+import {
+  SiClerk,
+  SiZod,
+  SiExpress,
+  SiPrisma,
+  SiVite,
+  SiHono,
+  SiVercel,
+  SiRender,
+} from "react-icons/si";
 import { RiSecurePaymentFill } from "react-icons/ri";
+import { IconType } from "react-icons/lib";
 
-export const myProjectsData = [
-  {
-    title: "Organi",
-    description: "Organi is a one stop e-commerce store",
-    stack: [
-      {
-        tool: "TypeScript",
-        icon: BiLogoTypescript,
-      },
-      {
-        tool: "TailwindCSS",
-        icon: RiTailwindCssFill,
-      },
-      {
-        tool: "React",
-        icon: BiLogoReact,
-      },
-      {
-        tool: "Next.js",
-        icon: RiNextjsFill,
-      },
-      {
-        tool: "Clerk",
-        icon: SiClerk,
-      },
-      {
-        tool: "Paystack",
-        icon: RiSecurePaymentFill,
-      }
-    ],
-    live: "https://organi.com",
-  },
-];
+export const stackIcons: Record<string, IconType> = {
+  TypeScript: BiLogoTypescript,
+  Nextjs: RiNextjsFill,
+  Reactjs: BiLogoReact,
+  Clerk: SiClerk,
+  PayStack: RiSecurePaymentFill,
+  TailwindCSS: RiTailwindCssFill,
+  MongoDB: BiLogoMongodb,
+  JavaScript: BiLogoJavascript,
+  Zod: SiZod,
+  Expressjs: SiExpress,
+  Prisma: SiPrisma,
+  Vercel: SiVercel,
+  Render: SiRender,
+  Vite: SiVite,
+  Honojs: SiHono,
+};

@@ -4,6 +4,9 @@ export async function getProjects() {
     headers: {
       "Content-Type": "application/json",
     },
+    next: {
+        tags: ["project"],
+    }
   };
 
   try {
