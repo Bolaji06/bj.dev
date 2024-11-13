@@ -3,17 +3,18 @@ import Image from "next/image";
 import Button from "../Button/Button";
 import { ArrowRight, GlobeIcon } from "lucide-react";
 import Link from "next/link";
-import { myProjectsData } from "@/data/project";
 import { IProject } from "@/definition/definition";
+import { stackIcons } from "@/data/project";
 
 export default function ProjectCard({
-  
   title,
   description,
   thumbnail,
   url,
-  
+  stacks,
 }: IProject) {
+  const stackLists = stacks.map((stack) => stack.split(","))[0];
+
   return (
     <>
       <section className="w-full mb-12 mt-3" data-testid="ProjectCardContainer">
@@ -36,35 +37,33 @@ export default function ProjectCard({
             className="font-semibold text-text_primary text-lg"
             data-testid="ProjectCardTitle"
           >
-           {title}
+            {title}
           </h2>
           <p
-            className="py-3 text-sm text-gray-500 max-w-full truncate"
+            className="py-3 text-sm text-gray-500 max-w-lg truncate"
             data-testid="ProjectCardDescription"
           >
             {description}
           </p>
         </div>
-        <div className="py-2">
+        <div className="py-2 max-w-xl">
           <ul
-            className="flex items-center gap-3 text-xs"
+            className="flex items-center flex-wrap gap-3 text-xs"
             data-testid="ProjectCardToolsWrapper"
           >
-            {myProjectsData.map((item, index) => {
+            {stackLists.map((item, index) => {
+              const Icons = stackIcons[item];
               return (
                 <li
                   key={index}
-                  className="text-xs flex flex-wrap md:flex-nowrap gap-4 items-center"
+                  className="text-xs flex gap-3 items-center"
                   data-testid="ProjectCardToolsList"
                 >
-                  {item.stack.map((stack) => {
-                    return (
-                      <p key={stack.tool} className="flex items-center">
-                        {<stack.icon />}{" "}
-                        <span className="px-2">{stack.tool}</span>
-                      </p>
-                    );
-                  })}
+                  <p className="flex items-center">
+                    {Icons && <Icons size={12} />}
+                    {/* <BiLogoTypescript /> */}
+                    <span className="px-1">{item}</span>
+                  </p>
                 </li>
               );
             })}
