@@ -43,9 +43,14 @@ export interface IProject {
     description: string;
     about?: string;
     url: string;
-    githubUrl?: string;
+    githubUrl: string;
     thumbnail: string;
     stacks: string[];
+}
+
+export interface Project {
+    success: boolean;
+    project: IProject
 }
 
 export interface IProjectResponse {

@@ -38,6 +38,8 @@ export default async function Home() {
                 url={project.url}
                 stacks={project.stacks}
                 thumbnail={project.thumbnail}
+                gitMore="more"
+                githubUrl={project.githubUrl}
               />
             );
           })}
