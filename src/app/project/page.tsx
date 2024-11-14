@@ -36,9 +36,7 @@ export default async function ProjectPage() {
           </div>
         </div>
       </section>
-      {/* <div className="py-10">
-        <Footer />
-      </div> */}
+      
     </>
   );
 }
