@@ -28,13 +28,26 @@ export async function getUser() {
 
   try {
     const response = await fetch(API_ENDPOINT, options);
-    const data = response.json();
+    const data = await response.json();
 
-    console.log(data);
     return data;
   } catch (error) {
     if (error instanceof Error) {
       return "Something went wrong " + error.message;
+    }
+  }
+}
+
+export async function getUserById() {
+  const API_ENDPOINT = `${process.env.BASE_API_ENDPOINT}/user/2`;
+
+  try {
+    const response = await fetch(API_ENDPOINT);
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    if (error instanceof Error) {
+      return "Something went wrong " + error;
     }
   }
 }

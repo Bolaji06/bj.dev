@@ -31,6 +31,10 @@ export interface IUser {
     photo: string;
     links: string[]
 }
+export interface IUserResponse {
+    success: boolean;
+    user: IUser;
+}
 
 export interface IUserResponse {
     success: boolean;
