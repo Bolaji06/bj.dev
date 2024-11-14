@@ -1,4 +1,3 @@
-import Footer from "@/components/Footer/Footer";
 import ProjectCard from "@/components/ProjectCard/ProjectCard";
 import { getProjects } from "@/data/fetchProject";
 import { IProjectResponse } from "@/definition/definition";
@@ -37,9 +36,9 @@ export default async function ProjectPage() {
           </div>
         </div>
       </section>
-      <div className="py-10">
+      {/* <div className="py-10">
         <Footer />
-      </div>
+      </div> */}
     </>
   );
 }
