@@ -11,10 +11,10 @@ export default async function Page() {
       <section className="py-20 px-6">
         <header>
           <div className="space-y-6">
-            <h1 className="text-4xl text-text_primary font-semibold">
+            <h1 className="text-4xl md:text-5xl font-semibold">
               Blog Posts
             </h1>
-            <p className="max-w-lg text-text_primary">
+            <p className="text-xl md:text-2xl font-medium text-primary-brand max-w-lg">
               Posts on technology, coding, development and more. All my posts
               can also be found on
               <Link
