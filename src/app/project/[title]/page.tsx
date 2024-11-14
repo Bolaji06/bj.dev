@@ -2,11 +2,12 @@ import { getProject } from "@/data/fetchProject";
 
 import ProjectCard from "@/components/ProjectCard/ProjectCard";
 import { Project } from "@/definition/definition";
+import Footer from "@/components/Footer/Footer";
 
 export default async function ProjectPage({
   params,
 }: {
-  params: { title: string };
+  params: Promise<{ title: string }>
 }): Promise<React.JSX.Element> {
   const param = await params;
   const title = param.title;
@@ -30,10 +31,12 @@ export default async function ProjectPage({
             gitMore="git"
           />
         </header>
-        <article>
-            {project.about}
-        </article>
+        <article>{project.about}</article>
       </section>
+
+      <div className="py-10">
+        <Footer />
+      </div>
     </>
   );
 }
