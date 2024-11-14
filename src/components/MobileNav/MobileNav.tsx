@@ -30,10 +30,11 @@ export default function MobileNav({ closeMobileNav, pathname }: MobileNavProps) 
                  <Link
                  key={link.title}
                  href={link.href}
-                 className={`font-medium text-lg text-slate-200 hover:text-primary-brand ${clsx({
-                  "text-amber-500 text-4xl font-medium border-b-4 border-primary-brand transition-all duration-200":
-                    pathname === link.href,
-                })}`}
+                 className={`font-medium text-foreground hover:text-primary-brand
+                  ${clsx({
+                   "text-primary-brand font-medium border-b-2 border-primary-brand text-3xl":
+                     pathname === link.href,
+                 })}`}
                 onClick={closeMobileNav}
               >
                   {link.title}
@@ -45,7 +46,7 @@ export default function MobileNav({ closeMobileNav, pathname }: MobileNavProps) 
         </div>
 
         <div className="px-4">
-          <button onClick={closeMobileNav} className="hover:border-orange-500 hover:bg-amber-600/10 flex justify-center items-center bg-transparent border-dashed
+          <button onClick={closeMobileNav} className="hover:border-orange-500 border-primary-brand hover:bg-amber-600/10 flex justify-center items-center bg-transparent border-dashed
            border w-16 aspect-square rounded-full text-center cursor-pointer transition-all duration-200 ease-in-out">
             <X />
           </button>

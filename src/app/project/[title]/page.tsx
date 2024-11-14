@@ -19,7 +19,7 @@ export default async function ProjectPage({
 
   return (
     <>
-      <section className="py-14">
+      <section className="py-14 px-4">
         <header className="py-6">
           <ProjectCard
             title={project.title}
