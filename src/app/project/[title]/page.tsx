@@ -3,7 +3,6 @@ import { getProject } from "@/data/fetchProject";
 import ProjectCard from "@/components/ProjectCard/ProjectCard";
 import { Project } from "@/definition/definition";
 
-import Footer from "../../../components/Footer/Footer"
 
 export default async function ProjectPage({
   params,
@@ -35,9 +34,9 @@ export default async function ProjectPage({
         <article>{project.about}</article>
       </section>
 
-      <div className="py-10">
+      {/* <div className="py-10">
         <Footer />
-      </div>
+      </div> */}
     </>
   );
 }
