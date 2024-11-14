@@ -2,7 +2,8 @@ import { getProject } from "@/data/fetchProject";
 
 import ProjectCard from "@/components/ProjectCard/ProjectCard";
 import { Project } from "@/definition/definition";
-import Footer from "@/components/Footer/Footer";
+
+import Footer from "../../../components/Footer/Footer"
 
 export default async function ProjectPage({
   params,
