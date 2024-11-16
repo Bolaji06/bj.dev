@@ -32,13 +32,16 @@ export default async function ProjectPage({
           />
         </header>
         <article className="prose-stone prose-h3:text-xl">
-          <MDXRemote source={project.about as string } options={{
-            mdxOptions: {
-              remarkPlugins: [],
-              rehypePlugins: [],
-              format: 'mdx',
-            },
-           }}/>
+          <MDXRemote
+            source={project.about as string}
+            options={{
+              mdxOptions: {
+                remarkPlugins: [],
+                rehypePlugins: [],
+                format: "mdx",
+              },
+            }}
+          />
         </article>
       </section>
     </>

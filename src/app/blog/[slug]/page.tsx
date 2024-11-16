@@ -22,7 +22,6 @@ const options = {
     inline: "plaintext",
     block: "javascript",
   },
-  
 };
 
 export default async function BlogPage({
@@ -72,11 +71,6 @@ export default async function BlogPage({
             </div>
           </div>
         </header>
-
-        {/* <article
-          className={`${robotoMono.className} text-lg w-full max-w-3xl overflow-x-hidden leading-[2rem] antialiased mb-20`}
-          dangerouslySetInnerHTML={{ __html: blogPostData.body_html }}
-        ></article> */}
 
         <article
           className={`${robotoMono.className} text-lg w-full max-w-3xl overflow-x-hidden leading-[1.8rem] antialiased mb-20`}

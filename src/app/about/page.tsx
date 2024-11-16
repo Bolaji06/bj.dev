@@ -5,8 +5,6 @@ import { IUserResponse } from "@/definition/definition";
 import Image from "next/image";
 import { IoLogoWechat } from "react-icons/io5";
 
-import TestMdx from "@/app/test-page/page.mdx"
-
 export default async function Page() {
   const user: IUserResponse = await getUserById();
   const userInfo = user.user;
@@ -35,10 +33,7 @@ export default async function Page() {
         </div>
 
         <div className="py-10 mb-20 mx-auto text-center">
-            <p>
-                {userInfo.bio}
-            </p>
-
+          <p>{userInfo.bio}</p>
         </div>
 
         <section className="py-20">
@@ -63,8 +58,6 @@ export default async function Page() {
         </section>
         <FloatingButton />
       </section>
-
-    <TestMdx />
     </>
   );
 }
