@@ -5,9 +5,24 @@ import { MdLogoDev } from "react-icons/md";
 import { MdOutlineAddReaction } from "react-icons/md";
 import { IBlogPostDetails } from "@/definition/definition";
 import Link from "next/link";
+import { MDXRemote } from "next-mdx-remote/rsc";
+import rehypePrettyCode from "rehype-pretty-code";
 
 import { robotoMono } from "@/app/fonts/font";
 import { formatTimestamp } from "@/utils/utils";
+
+/** @type {import('rehype-pretty-code').Options} */
+const options = {
+  theme: {
+    dark: "github-dark-high-contrast",
+    light: "github-light",
+  },
+  keepBackground: true,
+  defaultLang: {
+    inline: "plaintext",
+    block: "javascript",
+  },
+};
 
 export default async function BlogPage({
   params,
@@ -21,8 +36,7 @@ export default async function BlogPage({
 
   return (
     <>
-    
-      <section className="py-20 px-10">
+      <section className="py-20 px-4 md:px-10">
         <header className="space-y-5">
           <h1 className="text-4xl text-text_primary font-semibold max-w-lg leading-[3rem]">
             {blogPostData.title}
@@ -59,9 +73,19 @@ export default async function BlogPage({
         </header>
 
         <article
-          className={`${robotoMono.className} text-lg max-w-3xl overflow-x-hidden leading-[2rem] antialiased mb-20`}
-          dangerouslySetInnerHTML={{ __html: blogPostData.body_html }}
-        ></article>
+          className={`${robotoMono.className} text-lg w-full max-w-3xl overflow-x-hidden leading-[1.8rem] antialiased mb-20`}
+        >
+          <MDXRemote
+            source={blogPostData.body_markdown}
+            options={{
+              mdxOptions: {
+                remarkPlugins: [],
+                rehypePlugins: [[rehypePrettyCode, options]],
+                format: "mdx",
+              },
+            }}
+          />
+        </article>
       </section>
     </>
   );

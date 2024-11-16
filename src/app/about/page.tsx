@@ -33,10 +33,7 @@ export default async function Page() {
         </div>
 
         <div className="py-10 mb-20 mx-auto text-center">
-            <p>
-                {userInfo.bio}
-            </p>
-
+          <p>{userInfo.bio}</p>
         </div>
 
         <section className="py-20">

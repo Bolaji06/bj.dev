@@ -36,7 +36,6 @@ export default async function ProjectPage() {
           </div>
         </div>
       </section>
-      
     </>
   );
 }
