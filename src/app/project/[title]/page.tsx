@@ -2,12 +2,12 @@ import { getProject } from "@/data/fetchProject";
 
 import ProjectCard from "@/components/ProjectCard/ProjectCard";
 import { Project } from "@/definition/definition";
-
+import { MDXRemote } from "next-mdx-remote/rsc";
 
 export default async function ProjectPage({
   params,
 }: {
-  params: Promise<{ title: string }>
+  params: Promise<{ title: string }>;
 }): Promise<React.JSX.Element> {
   const param = await params;
   const title = param.title;
@@ -31,12 +31,16 @@ export default async function ProjectPage({
             gitMore="git"
           />
         </header>
-        <article>{project.about}</article>
+        <article className="prose-stone prose-h3:text-xl">
+          <MDXRemote source={project.about as string } options={{
+            mdxOptions: {
+              remarkPlugins: [],
+              rehypePlugins: [],
+              format: 'mdx',
+            },
+           }}/>
+        </article>
       </section>
-
-      {/* <div className="py-10">
-        <Footer />
-      </div> */}
     </>
   );
 }
