@@ -68,7 +68,6 @@ export default function ProjectForm() {
     }
   }, [state]);
 
-  console.log(state);
   return (
     <>
       <section>
