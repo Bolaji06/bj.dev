@@ -10,6 +10,8 @@ import { contactFormSchemaType } from "@/definition/validation";
 
 import FormButton from "../FormButton/FormButton";
 import toast from "react-hot-toast";
+import { useRef } from "react";
+import { useRouter } from "next/navigation";
 
 export default function ContactForm() {
   const [state, contactAction, isPending] = useActionState(
@@ -22,6 +24,9 @@ export default function ContactForm() {
     message: "",
     email: "",
   });
+
+  const hasMount = useRef(false);
+  const router = useRouter();
 
   useEffect(() => {
     if (state) {
@@ -42,21 +47,24 @@ export default function ContactForm() {
   }
 
   useEffect(() => {
-    if (!state?.success) {
-      toast.error(
-        <div className="text-sm capitalize font-medium">{state?.message}</div>,
-        {
-          duration: 4000,
-        }
-      );
-    }
-    toast.success(
-      <div className="text-sm capitalize font-medium">{state?.message}</div>,
-      {
-        duration: 4000,
+    if (hasMount.current) {
+      if (state?.success) {
+        toast.success(
+          <div className="capitalize font-medium">{state?.message}</div>,
+          { duration: 3000 }
+        );
+        router.push("/thank-you")
+        
+      } else if(state?.success === false) {
+        toast.error(
+          <div className="capitalize font-medium">{state?.message}</div>,
+          { duration: 3000 }
+        );
       }
-    );
-  }, [state?.success]);
+    } else {
+      hasMount.current = true;
+    }
+  }, [state]);
 
   return (
     <>
