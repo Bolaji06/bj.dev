@@ -9,6 +9,7 @@ export interface IBlog {
 
 export interface IBlogPostDetails {
     title: string;
+    desc: string;
     published_at: string;
     public_reactions_count: number;
     body_html: string;

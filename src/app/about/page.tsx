@@ -4,6 +4,62 @@ import { getUserById } from "@/data/fetchUser";
 import { IUserResponse } from "@/definition/definition";
 import Image from "next/image";
 import { IoLogoWechat } from "react-icons/io5";
+import { Metadata } from "next/types";
+
+export const metadata: Metadata = {
+  title: "About Me",
+  description:
+    "bj.dev: I am Bolaji Bolajoko, Full-stack Software developer. I design and create functional web apps, with a focus of good user experience",
+  keywords: [
+    "bj.dev",
+    "Bolaji",
+    "Bolajoko",
+    "Portfolio",
+    "About Bolaji Bolajoko",
+    "My Portfolio",
+    "Hire Full-stack Web developer",
+    "Hire Software developer",
+    "Bolaji Bolajoko",
+    "Web developer",
+    "Frontend developer",
+    "Backend developer",
+    "Full stack Web developer",
+  ],
+  openGraph: {
+    url: "https://bjdev.vercel.app/about",
+    type: "website",
+    title: "bj.dev | Bolaji Bolajoko Portfolio",
+    description:
+      "bj.dev: I am Bolaji Bolajoko, Full-stack Software developer. I design and create functional web apps, with a focus of good user experience",
+    images: [
+      {
+        url: "/opengraph-image.png",
+        width: 1200,
+        height: 630,
+        alt: "bj.dev | Bolaji Bolajoko Portfolio",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "bj.dev | Bolaji Bolajoko Portfolio",
+    description:
+      "bj.dev: I am Bolaji Bolajoko, Full-stack Software developer. I design and create functional web apps, with a focus of good user experience",
+    creator: "bj.dev",
+    site: "bj.dev",
+    images: [
+      {
+        url: "/opengraph-image.png",
+        width: 1200,
+        height: 630,
+        alt: "bj.dev | Bolaji Bolajoko Portfolio",
+      },
+    ],
+  },
+  alternates: {
+    canonical: "https://bjdev.vercel.app",
+  },
+};
 
 export default async function Page() {
   const user: IUserResponse = await getUserById();

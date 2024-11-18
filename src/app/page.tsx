@@ -6,7 +6,63 @@ import ProjectCard from "@/components/ProjectCard/ProjectCard";
 import { fetchBlogPost } from "@/data/fetchBlogPosts";
 import { getProjects } from "@/data/fetchProject";
 import { IBlog, IProject, IProjectResponse } from "@/definition/definition";
+import { Metadata } from "next/types";
 import { IoLogoWechat } from "react-icons/io5";
+
+export const metadata: Metadata = {
+  title: "bj.dev: Portfolio Website, Bolaji Bolajoko Portfolio",
+  description:
+    "bj.dev: I am Bolaji Bolajoko, Full-stack Software developer. I design and create functional web apps, with a focus of good user experience",
+  keywords: [
+    "bj.dev",
+    "Bolaji",
+    "Bolajoko",
+    "Portfolio",
+    "About Bolaji Bolajoko",
+    "My Portfolio",
+    "Hire Full-stack Web developer",
+    "Hire Software developer",
+    "Bolaji Bolajoko",
+    "Web developer",
+    "Frontend developer",
+    "Backend developer",
+    "Full stack Web developer",
+  ],
+  openGraph: {
+    url: "https://bjdev.vercel.app",
+    type: "website",
+    title: "bj.dev | Bolaji Bolajoko Portfolio",
+    description:
+      "bj.dev: I am Bolaji Bolajoko, Full-stack Software developer. I design and create functional web apps, with a focus of good user experience",
+    images: [
+      {
+        url: "/opengraph-image.png",
+        width: 1200,
+        height: 630,
+        alt: "bj.dev | Bolaji Bolajoko Portfolio",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "bj.dev | Bolaji Bolajoko Portfolio",
+    description:
+      "bj.dev: I am Bolaji Bolajoko, Full-stack Software developer. I design and create functional web apps, with a focus of good user experience",
+    creator: "bj.dev",
+    site: "bj.dev",
+    images: [
+      {
+        url: "/opengraph-image.png",
+        width: 1200,
+        height: 630,
+        alt: "bj.dev | Bolaji Bolajoko Portfolio",
+      },
+    ],
+  },
+  alternates: {
+    canonical: "https://bjdev.vercel.app",
+  },
+};
 
 export default async function Home() {
   const projects: IProjectResponse = await getProjects();
