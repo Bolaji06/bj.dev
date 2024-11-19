@@ -31,16 +31,15 @@ export default function Hero() {
 
           <div className="flex flex-col md:flex-row w-full gap-3 mt-2 py-4">
             <Button className="w-full md:w-40 text-white inline-flex hover:bg-opacity-65">
-               <IoDocumentText size={20}/> Resume
+              <IoDocumentText size={20} /> Resume
             </Button>
             <Button className="w-full md:w-40 inline-flex text-text_primary bg-transparent hover:bg-sky-100/10 border border-secondary">
-               <IoMail size={20}/> Contact Me
+              <IoMail size={20} /> Contact Me
             </Button>
             <Button className="hidden md:inline-flex text-text_primary bg-transparent hover:bg-slate-100/15">
-               <HiBriefcase size={20}/> My Works
+              <HiBriefcase size={20} /> My Works
             </Button>
           </div>
-         
         </div>
       </section>
     </>
