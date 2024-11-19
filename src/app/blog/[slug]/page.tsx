@@ -24,7 +24,7 @@ export async function generateMetadata({
 
   return {
     title: `${blogPostData.title}`,
-    description: `${blogPostData.desc}`,
+    description: `${blogPostData.description}`,
     keywords: ["bj.dev blog", blogPostData.title, blogPostData.description],
 
     openGraph: {
@@ -37,7 +37,7 @@ export async function generateMetadata({
           url: ``,
           width: 1024,
           height: 576,
-          alt: `${project?.title}`,
+          alt: `${blogPostData?.title}`,
         },
       ],
     },
@@ -46,8 +46,8 @@ export async function generateMetadata({
       card: "summary_large_image",
       site: "bj.dev",
       creator: "Bolaji Bolajoko",
-      title: `bj.dev Project | ${project?.title}`,
-      description: `${project?.description}`,
+      title: `bj.dev Project | ${blogPostData?.title}`,
+      description: `${blogPostData?.description}`,
 
       images: [
         {

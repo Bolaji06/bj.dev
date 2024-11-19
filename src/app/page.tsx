@@ -10,7 +10,7 @@ import { Metadata } from "next/types";
 import { IoLogoWechat } from "react-icons/io5";
 
 export const metadata: Metadata = {
-  title: "bj.dev: Portfolio Website, Bolaji Bolajoko Portfolio",
+  title: "bj.dev: Bolaji Bolajoko",
   description:
     "bj.dev: I am Bolaji Bolajoko, Full-stack Software developer. I design and create functional web apps, with a focus of good user experience",
   keywords: [

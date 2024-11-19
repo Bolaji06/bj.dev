@@ -2,6 +2,49 @@ import BlogCard from "@/components/BlogCard/BlogCard";
 import { fetchBlogPost } from "@/data/fetchBlogPosts";
 import { IBlog } from "@/definition/definition";
 import Link from "next/link";
+import { Metadata } from "next/types";
+
+export const metadata: Metadata = {
+  title: "Blog Post Lists",
+  description: "Lists of all blog post by Bolaji Bolajoko",
+  keywords: [
+    "bj.dev blog posts",
+    "Bolaji Bolajoko blog posts",
+  ],
+  openGraph: {
+    url: "https://bjdev.vercel.app/blog",
+    type: "website",
+    title: "bj.dev | Blog posts from Bolaji Bolajoko",
+    description: "Curated lists of blog posts from Bolaji Bolajoko",
+    images: [
+      {
+        url: "/opengraph-image.png",
+        width: 1200,
+        height: 630,
+        alt: "bj.dev | Bolaji Bolajoko Portfolio"
+      }
+    ]
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "bj.dev | Blog Post Lists",
+    description: "Curated lists of all blog posts from Bolaji Bolajoko",
+    creator: "bj.dev",
+    site: "bj.dev",
+    images: [
+      {
+        url: "/opengraph-image.png",
+        width: 1200,
+        height: 630,
+        alt: "bj.dev | Bolaji Bolajoko Portfolio",
+      },
+    ],
+  },
+  alternates: {
+    canonical: "https://bjdev.vercel.app"
+  }
+
+}
 
 export default async function Page() {
   const blogPosts = await fetchBlogPost(1, 30);
