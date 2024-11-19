@@ -5,7 +5,7 @@ import Link from "next/link";
 export default function ThankYouPage() {
   return (
     <>
-      <main className="h-screen py-14">
+      <main className="h-screen py-14 px-4">
         <div className="py-10 space-y-8">
           <h1 className="text-4xl font-bold">Thank you! 🎉</h1>
           <p className="py-2 max-w-2xl">
@@ -21,8 +21,8 @@ export default function ThankYouPage() {
         </div>
         <div>
           <Link href={"/"}>
-            <Button>
-              <ArrowLeft />
+            <Button className="group">
+              <ArrowLeft className="group-hover:-translate-x-1 transition-transform ease-in-out duration-500"/>
               Back to home
             </Button>
           </Link>

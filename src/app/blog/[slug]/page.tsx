@@ -10,6 +10,59 @@ import rehypePrettyCode from "rehype-pretty-code";
 
 import { robotoMono } from "@/app/fonts/font";
 import { formatTimestamp } from "@/utils/utils";
+import { Metadata } from "next/types";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const blogSlug = await params;
+  const { slug } = blogSlug;
+
+  const blogPostData: IBlogPostDetails = await getBlogPost(slug);
+
+  return {
+    title: `${blogPostData.title}`,
+    description: `${blogPostData.description}`,
+    keywords: ["bj.dev blog", blogPostData.title, blogPostData.description],
+
+    openGraph: {
+      title: `${blogPostData.title}`,
+      description: `bj.dev blog | ${blogPostData.description}`,
+      type: "article",
+      url: `https://bjdev.vercel.app/project/${blogPostData.title}`,
+      images: [
+        {
+          url: ``,
+          width: 1024,
+          height: 576,
+          alt: `${blogPostData?.title}`,
+        },
+      ],
+    },
+
+    twitter: {
+      card: "summary_large_image",
+      site: "bj.dev",
+      creator: "Bolaji Bolajoko",
+      title: `bj.dev Project | ${blogPostData?.title}`,
+      description: `${blogPostData?.description}`,
+
+      images: [
+        {
+          url: ``,
+          width: 1024,
+          height: 576,
+          alt: `${blogPostData.title}`,
+        },
+      ],
+    },
+    alternates: {
+      canonical: `https://bjdev.vercel.app/blog/${blogPostData.title}`,
+    },
+  };
+}
 
 /** @type {import('rehype-pretty-code').Options} */
 const options = {
