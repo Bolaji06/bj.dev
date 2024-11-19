@@ -4,7 +4,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import NavBar from "@/components/NavBar/NavBar";
 import Footer from "@/components/ui/footer";
-import Provider from "@/components/ProgressBarProvider";
+import ProgressBarProvider from "@/components/ProgressBarProvider";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -71,7 +71,7 @@ export default function RootLayout({
       <body
         className={`${poppins.className} ${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Provider>
+        <ProgressBarProvider>
           <main className="scroll-smooth">
             <NavBar />
             <section className="max-w-4xl mx-auto">{children}</section>
@@ -80,7 +80,7 @@ export default function RootLayout({
           <div className="py-6">
             <Footer />
           </div>
-        </Provider>
+        </ProgressBarProvider>
       </body>
     </html>
   );
