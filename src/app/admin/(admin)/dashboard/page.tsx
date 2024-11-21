@@ -1,4 +1,4 @@
-import PageContent from "@/components/admin/PageContent";
+import UserForm from "@/components/admin/User/UserForm";
 import { getUser } from "@/data/fetchUser";
 import { IUserResponse } from "@/definition/definition";
 
@@ -8,7 +8,7 @@ export default async function AdminPage() {
   return (
     <>
       <main className="py-14">
-        <PageContent user={userData.user} />
+        <UserForm user={userData.user}/>
       </main>
     </>
   );

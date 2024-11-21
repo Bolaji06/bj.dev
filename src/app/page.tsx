@@ -3,6 +3,7 @@ import ContactForm from "@/components/ContactForm/ContactForm";
 import FloatingButton from "@/components/FloatingButton/FloatingButton";
 import Hero from "@/components/Hero/Hero";
 import ProjectCard from "@/components/ProjectCard/ProjectCard";
+import JimmyButton from "@/components/ui/JimmyFloatingButton";
 import { fetchBlogPost } from "@/data/fetchBlogPosts";
 import { getProjects } from "@/data/fetchProject";
 import { IBlog, IProject, IProjectResponse } from "@/definition/definition";
@@ -146,6 +147,7 @@ export default async function Home() {
           </div>
         </section>
 
+          <JimmyButton />
         <FloatingButton />
       </main>
     </>

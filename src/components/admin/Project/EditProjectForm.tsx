@@ -1,41 +1,48 @@
 "use client";
 
-import { addProjectAction } from "@/actions/admin/projectActions";
+import { updateProject } from "@/actions/admin/projectActions";
 import AdminHeaderTitle from "@/components/AdminHeader/AdminHeaderTitle";
 import Button from "@/components/Button/Button";
-import FormButton from "@/components/FormButton/FormButton";
+
 import Label from "@/components/Label/Label";
+import FormButtonClient from "@/components/ui/formButton";
+
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { X } from "lucide-react";
-import {
-  ChangeEvent,
-  useActionState,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import { ChangeEvent, useState } from "react";
 import toast from "react-hot-toast";
 
+interface IProjectFormValues {
+  title: string;
+  description: string;
+  about: string;
+  githubUrl: string;
+  thumbnail: string;
+  url: string;
+  stacks: string[];
+}
 
-export default function ProjectForm() {
+export default function ProjectFormEdit({ ...props }: IProjectFormValues) {
   const [stackInput, setStackInput] = useState<string>("");
-  const [stackLists, setStackList] = useState<string[]>([]);
+  const stackList = props?.stacks?.[0]?.split(",");
+  const [stackLists, setStackList] = useState<string[]>(stackList || []);
 
   const [projectInput, setProjectInput] = useState({
-    title: "",
-    description: "",
-    thumbnail: "",
-    url: "",
-    about: "",
-    githubUrl: "",
+    title: props?.title || "",
+    description: props?.description || "",
+    thumbnail: props?.thumbnail || "",
+    url: props?.url || "",
+    about: props?.about || "",
+    githubUrl: props?.githubUrl || "",
   });
-  const [state, action, isPending] = useActionState(addProjectAction, {});
+
+  const updateActionWithTitle = updateProject.bind(null, props.title);
 
   function onChangeStackInput(e: ChangeEvent<HTMLInputElement>) {
     setStackInput(e.target.value);
   }
-  const hasMount = useRef(false);
+ 
 
   function projectInputOnChange(
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -70,29 +77,11 @@ export default function ProjectForm() {
     });
   }
 
-  useEffect(() => {
-    if (hasMount.current) {
-      if (state.success) {
-        toast.success(
-          <div className="capitalize font-medium">{state.message}</div>,
-          { duration: 4000 }
-        );
-      } else if (state.success === false) {
-        toast.error(
-          <div className="capitalize font-medium">{state.message}</div>,
-          { duration: 4000 }
-        );
-      }
-    } else {
-      hasMount.current = true;
-    }
-  }, [state]);
-
   return (
     <>
       <section>
         <AdminHeaderTitle title="Add new Project" />
-        <form action={action} className="space-y-3">
+        <form action={updateActionWithTitle} className="space-y-3">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
             <div>
               <Label id="title">
@@ -195,9 +184,7 @@ export default function ProjectForm() {
             </Label>
           </div>
           <div>
-            <FormButton isPending={isPending}>
-              {isPending ? "A moment..." : "Add Project"}
-            </FormButton>
+            <FormButtonClient title="Update Project" />
           </div>
         </form>
       </section>

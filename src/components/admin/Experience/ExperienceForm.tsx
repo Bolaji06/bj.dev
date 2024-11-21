@@ -1,3 +1,5 @@
+"use client";
+
 import { ExperienceAction } from "@/actions/admin/experienceAction";
 import AdminHeaderTitle from "@/components/AdminHeader/AdminHeaderTitle";
 import FormButton from "@/components/FormButton/FormButton";

@@ -4,7 +4,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import NavBar from "@/components/NavBar/NavBar";
 import Footer from "@/components/ui/footer";
-import ProgressBarProvider from "@/components/ProgressBarProvider";
+import ProgressBarProvider from "@/components/ui/ProgressBarProvider";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",

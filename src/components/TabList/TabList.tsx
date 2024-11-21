@@ -16,7 +16,7 @@ export default function TabList({ tabName, setTabList}: ITabListProps){
 
     return (
         <>
-           <nav className="">
+           <nav className="py-14">
             <div className="flex gap-2 sm:gap-6 items-center border-b border-gray-800">
                 {
                     tabLists.map((tab) => {

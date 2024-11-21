@@ -43,3 +43,17 @@ export const socialLinks = [
 ];
 
 export const tabLists = ["User", "Project", "Experience"];
+export const adminTabLists = [
+  {
+    name: "User",
+    href: '/admin/dashboard'
+  },
+  {
+    name: "Project",
+    href: "/admin/dashboard/project",
+  },
+  {
+    name: "Experience",
+    href: "/admin/dashboard/experience"
+  }
+]
