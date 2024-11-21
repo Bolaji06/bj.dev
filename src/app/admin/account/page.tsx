@@ -59,6 +59,8 @@ export default function AccountAuthPage() {
     null
   );
 
+  console.log(loginState)
+
   function handleTab(tab: string) {
     setFormTab(tab);
   }

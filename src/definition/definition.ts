@@ -46,7 +46,7 @@ export interface IProject {
     id?: number;
     title: string;
     description: string;
-    about?: string;
+    about: string;
     url: string;
     githubUrl: string;
     thumbnail: string;
