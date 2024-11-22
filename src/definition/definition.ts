@@ -79,3 +79,8 @@ export interface IExperienceResponse {
     success: boolean;
     experience: IExperience[]
 }
+
+export interface TExperienceResponse {
+    success: boolean;
+    experience: IExperience
+}

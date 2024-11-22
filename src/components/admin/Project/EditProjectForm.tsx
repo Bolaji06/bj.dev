@@ -80,7 +80,7 @@ export default function ProjectFormEdit({ ...props }: IProjectFormValues) {
   return (
     <>
       <section>
-        <AdminHeaderTitle title="Add new Project" />
+        <AdminHeaderTitle title="Edit Project" />
         <form action={updateActionWithTitle} className="space-y-3">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
             <div>
