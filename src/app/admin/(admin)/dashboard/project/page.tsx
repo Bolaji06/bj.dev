@@ -1,3 +1,4 @@
+import { deleteProject } from "@/actions/admin/projectActions";
 import ProjectForm from "@/components/admin/Project/ProjectForm";
 import AdminCard from "@/components/ui/AdminCard";
 import { getProjects } from "@/data/fetchProject";
@@ -13,11 +14,13 @@ export default async function Page() {
           <ProjectForm />
         </section>
 
-        <section className="py-6 flex items-center gap-2 w-full max-w-4xl overflow-auto ">
+        <section className="py-6 flex items-center gap-2 w-full max-w-4xl overflow-auto">
           {projectsData.projects.map((project) => {
             return (
               <div key={project.id}>
-                <AdminCard title={project.title} />
+                <AdminCard
+                 title={project.title}
+                 action={deleteProject} />
               </div>
             );
           })}

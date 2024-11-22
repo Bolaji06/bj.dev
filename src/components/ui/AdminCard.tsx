@@ -1,12 +1,13 @@
-import { deleteProject } from "@/actions/admin/projectActions";
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import Link from "next/link";
 import FormButtonClient from "./formButton";
 
 interface IAdminCardProps {
   title: string;
+  action: (title: string) => Promise<any>;
 }
-export default function AdminCard({ title }: IAdminCardProps) {
-  const deleteProjectWithId = deleteProject.bind(null, title);
+export default function AdminCard({ title, action }: IAdminCardProps) {
+  const deleteProjectWithId = action.bind(null, title);
   return (
     <>
       <div className="rounded py-2 px-2 bg-gray-800 max-w-lg">
@@ -19,7 +20,10 @@ export default function AdminCard({ title }: IAdminCardProps) {
           </Link>
 
           <form action={deleteProjectWithId}>
-            <FormButtonClient title="Delete" className="text-red-500 bg-transparent"/>
+            <FormButtonClient
+              title="Delete"
+              className="text-red-500 bg-transparent"
+            />
           </form>
         </div>
       </div>
