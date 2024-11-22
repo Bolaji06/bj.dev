@@ -62,3 +62,20 @@ export interface IProjectResponse {
     success: boolean;
     projects: IProject[]
 }
+
+export interface IExperience {
+    id: number;
+    title: string;
+    company: string;
+    role: string;
+    startDate: string;
+    endDate: string;
+    description: string;
+    userId: number;
+
+
+}
+export interface IExperienceResponse {
+    success: boolean;
+    experience: IExperience[]
+}

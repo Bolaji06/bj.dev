@@ -12,7 +12,7 @@ export default function Hero() {
           <h1 className="text-3xl md:text-6xl font-bold md:leading-[4rem]">
             Hi, I am{" "}
             <span
-              className={`${fredoka.className}  bg-gradient-to-t from-gradientRed via-gradientOrange to-yellow-500 bg-clip-text text-transparent`}
+              className={`${fredoka.className} bg-gradient-to-t from-gradientRed via-gradientOrange to-yellow-500 bg-clip-text text-transparent`}
             >
               Bolaji Bolajoko
             </span>{" "}
