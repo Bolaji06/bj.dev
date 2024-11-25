@@ -3,6 +3,7 @@
 import { getToken } from "@/utils/getToken";
 import { makeApiRequest } from "@/utils/makeApiRequest";
 import { revalidateTag } from "next/cache";
+import { transformFormData } from "./formData";
 
 const API = process.env.BASE_API_ENDPOINT;
 
@@ -13,14 +14,7 @@ export async function addExperience(prevState: unknown, formData: FormData) {
     return "Token is missing";
   }
 
-  const body = {
-    title: formData.get("title"),
-    company: formData.get("company"),
-    role: formData.get("role"),
-    description: formData.get("description"),
-    startDate: new Date(formData.get("startDate") as string).toISOString(),
-    endDate: new Date(formData.get("endDate") as string).toISOString(),
-  };
+  const body = transformFormData(formData);
   const url = `${API}/experience`;
   const method = "POST";
 
@@ -65,14 +59,7 @@ export async function updateExperience(title: string, formData: FormData) {
     return "Token is missing";
   }
 
-  const body = {
-    title: formData.get("title"),
-    company: formData.get("company"),
-    role: formData.get("role"),
-    description: formData.get("description"),
-    startDate: new Date(formData.get("startDate") as string).toISOString(),
-    endDate: new Date(formData.get("endDate") as string).toISOString(),
-  };
+  const body = transformFormData(formData);
 
   const url = `${API}/experience/${title}`;
   const method = "PATCH";
