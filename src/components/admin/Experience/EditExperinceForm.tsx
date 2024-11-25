@@ -23,8 +23,6 @@ export default function EditExperienceForm({ ...props }: IExperience) {
     endDate: props?.endDate?.slice(0, 16) || "",
   });
 
-  console.log(formInput.startDate)
-
   function handleOnChange(
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) {
@@ -82,7 +80,6 @@ export default function EditExperienceForm({ ...props }: IExperience) {
                   name="startDate"
                   type="datetime-local"
                   value={formInput.startDate}
-                  
                   onChange={handleOnChange}
                 />
               </Label>

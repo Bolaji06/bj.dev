@@ -73,22 +73,22 @@ export default function UserForm({ user }: { user: IUser }) {
   console.log(state);
   return (
     <>
-      <section>
+      <section data-testid="user-form-container">
         <AdminHeaderTitle title="About Me" />
 
-        <form action={action} className="space-y-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+        <form action={action} className="space-y-4" data-testid="user-form">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3" data-testid="inputs-container-grid">
             <div>
               <Label id="fullName">
                 Full Name
-                <Input name="fullName" defaultValue={user?.name} />
+                <Input name="fullName" defaultValue={user?.name} data-testid="input-fullname"/>
               </Label>
             </div>
 
             <div>
               <Label id="photo">
                 Photo URL
-                <Input name="photo" defaultValue={user?.photo} />
+                <Input name="photo" defaultValue={user?.photo} data-testid="input-photourl"/>
               </Label>
             </div>
 
@@ -100,11 +100,14 @@ export default function UserForm({ user }: { user: IUser }) {
                     name="socialLinks"
                     value={socialLinksInput}
                     onChange={onChangeSocialLinks}
+                    data-testid="input-socialLink"
                   />
                   <Button
                     onClick={() => addSocialLink(socialLinksInput)}
                     className="h-3 text-white"
                     type="button"
+                    name="social-btn"
+                    role="button"
                   >
                     Add
                   </Button>
@@ -142,7 +145,7 @@ export default function UserForm({ user }: { user: IUser }) {
           </div>
 
           <div>
-            <FormButton isPending={isPending}>Submit</FormButton>
+            <FormButton isPending={isPending} data-testid="submit-btn">Submit</FormButton>
           </div>
         </form>
       </section>
