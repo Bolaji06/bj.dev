@@ -27,17 +27,17 @@ import { FaSquareXTwitter } from "react-icons/fa6";
 export const socialLinks = [
   {
     title: "Github",
-    href: "/github",
+    href: "https://github.com/Bolaji06",
     icon: IoLogoGithub,
   },
   {
     title: "X",
-    href: "/x.com",
+    href: "https://x.com/bj_dev03",
     icon: FaSquareXTwitter,
   },
   {
     title: "Linkedln",
-    href: "/linkedln",
+    href: "https://www.linkedin.com/in/bolaji-bolajoko-0a5b70308/",
     icon: IoLogoLinkedin,
   },
 ];

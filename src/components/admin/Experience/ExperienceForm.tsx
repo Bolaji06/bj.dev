@@ -1,6 +1,6 @@
 "use client";
 
-import { ExperienceAction } from "@/actions/admin/experienceAction";
+import { addExperience } from "@/actions/admin/experienceAction";
 import AdminHeaderTitle from "@/components/AdminHeader/AdminHeaderTitle";
 import FormButton from "@/components/FormButton/FormButton";
 import Label from "@/components/Label/Label";
@@ -16,7 +16,7 @@ import {
 import toast from "react-hot-toast";
 
 export default function ExperienceForm() {
-  const [state, action, isPending] = useActionState(ExperienceAction, {});
+  const [state, action, isPending] = useActionState(addExperience, {});
   const [formInput, setFormInput] = useState({
     title: "",
     role: "",
