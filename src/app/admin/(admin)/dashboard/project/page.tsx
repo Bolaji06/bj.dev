@@ -20,7 +20,8 @@ export default async function Page() {
               <div key={project.id}>
                 <AdminCard
                  title={project.title}
-                 action={deleteProject} />
+                 action={deleteProject}
+                 baseHref="project" />
               </div>
             );
           })}

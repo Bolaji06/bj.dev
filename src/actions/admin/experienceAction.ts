@@ -73,3 +73,42 @@ export async function deleteExperienceAction(title: string) {
     }
   }
 }
+
+export async function updateExperience(title: string, formData: FormData) {
+  const bodyData = {
+    title: formData.get("title"),
+    company: formData.get("company"),
+    role: formData.get("role"),
+    description: formData.get("description"),
+    startDate: new Date(formData.get("startDate") as string).toISOString(),
+    endDate: new Date(formData.get("endDate") as string).toISOString(),
+  };
+  const hasToken = (await cookies()).has("bj.dev-token");
+  if (!hasToken) {
+    return "Token missing";
+  }
+  const token = (await cookies()).get("bj.dev-token")?.value as string;
+
+  const options = {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + token,
+    },
+    body: JSON.stringify(bodyData),
+  };
+  try {
+    const response = await fetch(
+      `${process.env.BASE_API_ENDPOINT}/experience/${title}`,
+      options
+    );
+    const data = await response.json();
+    revalidateTag("experience")
+
+    return data;
+  } catch (error) {
+    if (error instanceof Error) {
+      return "Something went wrong";
+    }
+  }
+}

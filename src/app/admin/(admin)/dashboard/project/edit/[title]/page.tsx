@@ -16,7 +16,7 @@ export default async function Page({
 
   return (
     <>
-      <main>
+      <main className="py-14">
         <ProjectFormEdit {...project} />
       </main>
     </>

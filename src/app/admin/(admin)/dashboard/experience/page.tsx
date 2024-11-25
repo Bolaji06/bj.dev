@@ -1,11 +1,11 @@
 import { deleteExperienceAction } from "@/actions/admin/experienceAction";
 import ExperienceForm from "@/components/admin/Experience/ExperienceForm";
 import AdminCard from "@/components/ui/AdminCard";
-import getExperience from "@/data/fetchExperience";
+import { getExperiences } from "@/data/fetchExperience";
 import { IExperience, IExperienceResponse } from "@/definition/definition";
 
 export default async function ExperiencePage() {
-  const response: IExperienceResponse = await getExperience();
+  const response: IExperienceResponse = await getExperiences();
   const experiences = response.experience;
 
   return (
@@ -22,6 +22,7 @@ export default async function ExperiencePage() {
                 <AdminCard
                   title={experience.title}
                   action={deleteExperienceAction}
+                  baseHref="experience"
                 />
               </div>
             );

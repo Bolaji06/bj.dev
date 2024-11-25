@@ -5,8 +5,9 @@ import FormButtonClient from "./formButton";
 interface IAdminCardProps {
   title: string;
   action: (title: string) => Promise<any>;
+  baseHref: string
 }
-export default function AdminCard({ title, action }: IAdminCardProps) {
+export default function AdminCard({ title, action, baseHref }: IAdminCardProps) {
   const deleteProjectWithId = action.bind(null, title);
   return (
     <>
@@ -14,7 +15,7 @@ export default function AdminCard({ title, action }: IAdminCardProps) {
         <div className="flex items-center gap-6">
           <Link
             className="max-w-44"
-            href={`/admin/dashboard/project/edit/${title}`}
+            href={`/admin/dashboard/${baseHref}/edit/${title}`}
           >
             <p className="w-full truncate">{title}</p>
           </Link>
