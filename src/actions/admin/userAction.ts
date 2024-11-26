@@ -1,36 +1,29 @@
 "use server";
 
+import { getToken } from "@/utils/getToken";
+import { makeApiRequest } from "@/utils/makeApiRequest";
 import { revalidateTag } from "next/cache";
-import { cookies } from "next/headers";
+import { userFormData } from "./formData";
 
-export async function userAction(prevState: unknown, formData: FormData) {
-  const API_ENDPOINT = `${process.env.BASE_API_ENDPOINT}/user`;
+/**
+ * Update user profile information
+ * @param prevState - Current state
+ * @param formData - FormData values
+ * @returns Promise
+ */
+export async function updateUser(prevState: unknown, formData: FormData) {
+  const url = `${process.env.BASE_API_ENDPOINT}/user`;
+  const method = "PATCH";
 
-  const hasToken = (await cookies()).has("bj.dev-token");
-  if (!hasToken) {
-    return "Token is not available";
+  const token = await getToken();
+  if (!token) {
+    return "Token is missing";
   }
 
-  const bodyData = JSON.stringify({
-    name: formData.get("fullName"),
-    photo: formData.get("photo"),
-    links: new Array(formData.get("socials")),
-    bio: formData.get("bio"),
-  });
-
-  const token = (await cookies()).get("bj.dev-token")?.value as string;
-  const options = {
-    method: "PATCH",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: "Bearer " + token,
-    },
-    body: bodyData,
-  };
+  const body = userFormData(formData);
 
   try {
-    const response = await fetch(API_ENDPOINT, options);
-    const data = await response.json();
+    const data = await makeApiRequest({ url, method, token, body });
 
     revalidateTag("user");
     return data;
@@ -39,5 +32,4 @@ export async function userAction(prevState: unknown, formData: FormData) {
       return "Something went wrong " + error.message;
     }
   }
-  
 }

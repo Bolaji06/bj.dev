@@ -1,11 +1,14 @@
 "use server";
 
 import { contactFormSchema } from "@/definition/validation";
+import { makeApiRequest } from "@/utils/makeApiRequest";
 
 export async function contactFormAction(
   prevState: unknown,
   formData: FormData
 ) {
+  const url = `${process.env.BASE_API_ENDPOINT}/send-email`;
+
   const parseContactSchema = contactFormSchema.safeParse({
     name: formData.get("name"),
     email: formData.get("email"),
@@ -21,20 +24,11 @@ export async function contactFormAction(
     });
     return validateInput[0];
   }
-  const options = {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(parseContactSchema.data),
-  };
+  const method = "POST";
+  const body = parseContactSchema.data;
 
   try {
-    const response = await fetch(
-      `${process.env.BASE_API_ENDPOINT}/send-email`,
-      options
-    );
-    const data = await response.json();
+    const data = await makeApiRequest({ url, method, body });
 
     return data;
   } catch (error) {

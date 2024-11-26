@@ -1,17 +1,21 @@
 "use server";
 
 import { adminAuthSchema } from "@/definition/validation";
+import { makeApiRequest } from "@/utils/makeApiRequest";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
+import { loginFormData } from "./admin/formData";
 
 export async function adminLoginAction(prevState: unknown, formData: FormData) {
-  const parseAuthSchema = adminAuthSchema.safeParse({
+  const url = `${process.env.BASE_API_ENDPOINT}/auth/login`;
+
+  const parseSchema = adminAuthSchema.safeParse({
     email: formData.get("email"),
     password: formData.get("password"),
   });
 
-  if (!parseAuthSchema.success) {
-    const validateFormInput = parseAuthSchema.error.errors.map((issues) => {
+  if (!parseSchema.success) {
+    const validateFormInput = parseSchema.error.errors.map((issues) => {
       return {
         message: issues.message,
         path: issues.path,
@@ -19,21 +23,13 @@ export async function adminLoginAction(prevState: unknown, formData: FormData) {
     });
     return validateFormInput[0];
   }
+  const method = "POST";
+  const body = parseSchema.data;
+  
 
-  const options = {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(parseAuthSchema.data),
-  };
 
   try {
-    const response = await fetch(
-      `${process.env.BASE_API_ENDPOINT}/auth/login`,
-      options
-    );
-    const data = await response.json();
+    const data = await makeApiRequest({ url, method, body });
 
     if (data.success) {
       (await cookies()).set("bj.dev-token", data.jwtPayload);
@@ -51,13 +47,15 @@ export async function adminRegisterAction(
   prevState: unknown,
   formData: FormData
 ) {
-  const parseAuthSchema = adminAuthSchema.safeParse({
+  const url = `${process.env.BASE_API_ENDPOINT}/auth/register`;
+
+  const parseSchema = adminAuthSchema.safeParse({
     email: formData.get("email"),
     password: formData.get("password"),
   });
 
-  if (!parseAuthSchema.success) {
-    const validateFormInput = parseAuthSchema.error.errors.map((issues) => {
+  if (!parseSchema.success) {
+    const validateFormInput = parseSchema.error.errors.map((issues) => {
       return {
         message: issues.message,
         path: issues.path,
@@ -66,20 +64,11 @@ export async function adminRegisterAction(
     return validateFormInput[0];
   }
 
-  const options = {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(parseAuthSchema.data),
-  };
+  const body = parseSchema.data;
+  const method = "POST";
 
   try {
-    const response = await fetch(
-      `${process.env.BASE_API_ENDPOINT}/auth/register`,
-      options
-    );
-    const data = await response.json();
+    const data = await makeApiRequest({ url, method, body });
 
     return data;
   } catch (error) {
