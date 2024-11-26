@@ -3,7 +3,7 @@
 import { getToken } from "@/utils/getToken";
 import { makeApiRequest } from "@/utils/makeApiRequest";
 import { revalidateTag } from "next/cache";
-import { transformFormData } from "./formData";
+import { experienceFormData } from "./formData";
 
 const API = process.env.BASE_API_ENDPOINT;
 
@@ -14,7 +14,7 @@ export async function addExperience(prevState: unknown, formData: FormData) {
     return "Token is missing";
   }
 
-  const body = transformFormData(formData);
+  const body = experienceFormData(formData);
   const url = `${API}/experience`;
   const method = "POST";
 
@@ -59,7 +59,7 @@ export async function updateExperience(title: string, formData: FormData) {
     return "Token is missing";
   }
 
-  const body = transformFormData(formData);
+  const body = experienceFormData(formData);
 
   const url = `${API}/experience/${title}`;
   const method = "PATCH";

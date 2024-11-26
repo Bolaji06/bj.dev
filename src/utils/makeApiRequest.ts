@@ -16,7 +16,7 @@ export async function makeApiRequest({
       "Content-Type": "application/json",
       Authorization: "Bearer " + token,
     },
-    body: JSON.stringify(body),
+    body: body && JSON.stringify(body),
   };
 
   const response = await fetch(url, options);

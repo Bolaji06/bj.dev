@@ -10,7 +10,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 
-export default function JimmyButton() {
+export default function AIChatButton() {
   const router = useRouter();
   return (
     <>
