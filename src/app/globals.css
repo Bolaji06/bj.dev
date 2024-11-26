@@ -2,15 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
-
-
 :root {
   --background: #111827;
   --foreground: #ededed;
   --text-primary: #e2e8f0;
   --brand: #ffa500;
   --radius: 12px;
-} 
+}
 
 @media (prefers-color-scheme: light) {
   :root {
@@ -91,13 +89,12 @@ figure [data-rehype-pretty-code-figure] {
 
 pre [data-line] {
   padding: 0 1rem;
-  scrollbar-width: 4px!important;
+  scrollbar-width: 4px !important;
 }
 
 code {
   border-radius: 10px;
   scrollbar-width: 2px;
-  
 }
 
 /* Shiki Theme */
