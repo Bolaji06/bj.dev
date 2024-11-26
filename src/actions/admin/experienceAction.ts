@@ -1,69 +1,48 @@
 "use server";
 
+import { getToken } from "@/utils/getToken";
+import { makeApiRequest } from "@/utils/makeApiRequest";
 import { revalidateTag } from "next/cache";
-import { cookies } from "next/headers";
+import { transformFormData } from "./formData";
 
-export async function ExperienceAction(prevState: unknown, formData: FormData) {
-  const hasToken = (await cookies()).has("bj.dev-token");
+const API = process.env.BASE_API_ENDPOINT;
 
-  if (!hasToken) {
+export async function addExperience(prevState: unknown, formData: FormData) {
+  const token = await getToken();
+
+  if (!token) {
     return "Token is missing";
   }
-  const token = (await cookies()).get("bj.dev-token")?.value as string;
 
-  const bodyData = {
-    title: formData.get("title"),
-    company: formData.get("company"),
-    role: formData.get("role"),
-    description: formData.get("description"),
-    startDate: new Date(formData.get("startDate") as string).toISOString(),
-    endDate: new Date(formData.get("endDate") as string).toISOString(),
-  };
-  const options = {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: "Bearer " + token,
-    },
-    body: JSON.stringify(bodyData),
-  };
+  const body = transformFormData(formData);
+  const url = `${API}/experience`;
+  const method = "POST";
 
   try {
-    const response = await fetch(
-      `${process.env.BASE_API_ENDPOINT}/experience`,
-      options
-    );
-    const data = await response.json();
+    const data = await makeApiRequest({ url, method, body, token });
 
+    revalidateTag("experience");
     return data;
   } catch (error) {
     if (error instanceof Error) {
-      return "Something went wrong " + error.message;
+      return "Something went wrong: " + error.message;
     }
   }
 }
 
 export async function deleteExperienceAction(title: string) {
-  const hasToken = (await cookies()).has("bj.dev-token");
+  const token = await getToken();
 
-  if (!hasToken) {
-    return "Missing Token: access denied!";
+  if (!token) {
+    return "Token is missing";
   }
-  const token = (await cookies()).get("bj.dev-token")?.value as string;
-  const options = {
-    method: "DELETE",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: "Bearer " + token,
-    },
-  };
+
+  const url = `${API}/experience/${title}`;
+  const method = "DELETE";
 
   try {
-    const response = await fetch(
-      `${process.env.BASE_API_ENDPOINT}/experience/${title}`,
-      options
-    );
-    const data = await response.json();
+    const data = await makeApiRequest({ url, method, token });
+
     revalidateTag("experience");
 
     return data;
@@ -75,35 +54,20 @@ export async function deleteExperienceAction(title: string) {
 }
 
 export async function updateExperience(title: string, formData: FormData) {
-  const bodyData = {
-    title: formData.get("title"),
-    company: formData.get("company"),
-    role: formData.get("role"),
-    description: formData.get("description"),
-    startDate: new Date(formData.get("startDate") as string).toISOString(),
-    endDate: new Date(formData.get("endDate") as string).toISOString(),
-  };
-  const hasToken = (await cookies()).has("bj.dev-token");
-  if (!hasToken) {
-    return "Token missing";
+  const token = await getToken();
+  if (!token) {
+    return "Token is missing";
   }
-  const token = (await cookies()).get("bj.dev-token")?.value as string;
 
-  const options = {
-    method: "PATCH",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: "Bearer " + token,
-    },
-    body: JSON.stringify(bodyData),
-  };
+  const body = transformFormData(formData);
+
+  const url = `${API}/experience/${title}`;
+  const method = "PATCH";
+
   try {
-    const response = await fetch(
-      `${process.env.BASE_API_ENDPOINT}/experience/${title}`,
-      options
-    );
-    const data = await response.json();
-    revalidateTag("experience")
+    const data = await makeApiRequest({ url, method, token, body });
+
+    revalidateTag("experience");
 
     return data;
   } catch (error) {
