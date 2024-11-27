@@ -15,10 +15,6 @@ export const navLinks = [
     title: "Blog",
     href: "/blog",
   },
-  {
-    title: "My Tools",
-    href: "/tools",
-  },
 ];
 
 import { IoLogoGithub, IoLogoLinkedin } from "react-icons/io";

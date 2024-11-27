@@ -5,6 +5,7 @@ import { IUserResponse } from "@/definition/definition";
 import Image from "next/image";
 import { IoLogoWechat } from "react-icons/io5";
 import { Metadata } from "next/types";
+import { MDXRemote } from "next-mdx-remote/rsc";
 
 export const metadata: Metadata = {
   title: "About Me",
@@ -88,8 +89,8 @@ export default async function Page() {
           </div>
         </div>
 
-        <div className="py-10 mb-20 mx-auto text-center">
-          <p>{userInfo.bio}</p>
+        <div className="py-10 mb-20 mx-auto prose-p:mb-4 prose-h1:text-3xl prose-h2:text-2xl prose-h1:mb-4 prose-h1:font-bold">
+          <MDXRemote source={userInfo.bio} />
         </div>
 
         <section className="py-20">

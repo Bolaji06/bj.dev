@@ -5,6 +5,8 @@ import { Project } from "@/definition/definition";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { Metadata } from "next/types";
 
+import rehypePrettyCode from "rehype-pretty-code";
+
 export async function generateMetadata({
   params,
 }: {
@@ -59,6 +61,18 @@ export async function generateMetadata({
   };
 }
 
+/** @type {import('rehype-pretty-code').Options} */
+const options = {
+  theme: {
+    dark: "github-dark-high-contrast",
+    light: "github-light",
+  },
+  keepBackground: true,
+  defaultLang: {
+    inline: "plaintext",
+    block: "javascript",
+  },
+};
 export default async function ProjectPage({
   params,
 }: {
@@ -86,13 +100,13 @@ export default async function ProjectPage({
             gitMore="git"
           />
         </header>
-        <article className="prose-stone prose-h3:text-xl">
+        <article className="prose-stone prose-h1:text-3xl prose-code:p-2 prose-h1:font-bold prose-h3:text-xl prose-h3:font-bold prose-h1:mb-4 prose-h3:mb-3 prose-p:mb-3 prose-ul:list-disc">
           <MDXRemote
             source={project.about as string}
             options={{
               mdxOptions: {
                 remarkPlugins: [],
-                rehypePlugins: [],
+                rehypePlugins: [[rehypePrettyCode, options]],
                 format: "mdx",
               },
             }}
