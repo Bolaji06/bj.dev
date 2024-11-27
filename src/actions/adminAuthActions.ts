@@ -4,7 +4,6 @@ import { adminAuthSchema } from "@/definition/validation";
 import { makeApiRequest } from "@/utils/makeApiRequest";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
-import { loginFormData } from "./admin/formData";
 
 export async function adminLoginAction(prevState: unknown, formData: FormData) {
   const url = `${process.env.BASE_API_ENDPOINT}/auth/login`;
@@ -25,8 +24,6 @@ export async function adminLoginAction(prevState: unknown, formData: FormData) {
   }
   const method = "POST";
   const body = parseSchema.data;
-  
-
 
   try {
     const data = await makeApiRequest({ url, method, body });
