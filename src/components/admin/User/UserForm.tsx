@@ -1,6 +1,6 @@
 "use client";
 
-import { userAction } from "@/actions/admin/userAction";
+import { updateUser } from "@/actions/admin/userAction";
 import AdminHeaderTitle from "@/components/AdminHeader/AdminHeaderTitle";
 import Button from "@/components/Button/Button";
 import FormButton from "@/components/FormButton/FormButton";
@@ -24,7 +24,7 @@ export default function UserForm({ user }: { user: IUser }) {
   const [socialLinkList, setSocialLinkList] = useState<string[]>(userLinks);
   const [socialLinksInput, setSocialLinksInput] = useState<string>("");
 
-  const [state, action, isPending] = useActionState(userAction, {});
+  const [state, action, isPending] = useActionState(updateUser, {});
   const hasMount = useRef(false);
 
   function onChangeSocialLinks(e: ChangeEvent<HTMLInputElement>) {
@@ -145,7 +145,7 @@ export default function UserForm({ user }: { user: IUser }) {
           </div>
 
           <div>
-            <FormButton isPending={isPending} data-testid="submit-btn">Submit</FormButton>
+            <FormButton isPending={isPending} data-testid="submit-btn">Update Profile</FormButton>
           </div>
         </form>
       </section>

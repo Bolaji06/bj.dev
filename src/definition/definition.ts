@@ -25,7 +25,7 @@ export interface IContactFormError {
 }
 
 export interface IUser {
-    id: number;
+    id?: number;
     name: string;
     email: string;
     bio: string;
@@ -64,16 +64,14 @@ export interface IProjectResponse {
 }
 
 export interface IExperience {
-    id: number;
+    id?: number;
     title: string;
     company: string;
     role: string;
     startDate: string;
     endDate: string;
     description: string;
-    userId: number;
-
-
+    userId?: number;
 }
 export interface IExperienceResponse {
     success: boolean;

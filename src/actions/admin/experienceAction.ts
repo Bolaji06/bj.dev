@@ -7,6 +7,12 @@ import { experienceFormData } from "./formData";
 
 const API = process.env.BASE_API_ENDPOINT;
 
+/**
+ * Server Action to add new experience
+ * @param prevState - Current state 
+ * @param formData - FormData values
+ * @returns Promise
+ */
 export async function addExperience(prevState: unknown, formData: FormData) {
   const token = await getToken();
 
@@ -30,6 +36,11 @@ export async function addExperience(prevState: unknown, formData: FormData) {
   }
 }
 
+/**
+ * Server Action to delete experience by title
+ * @param title - Experience title
+ * @returns Promise
+ */
 export async function deleteExperienceAction(title: string) {
   const token = await getToken();
 
@@ -53,6 +64,12 @@ export async function deleteExperienceAction(title: string) {
   }
 }
 
+/**
+ * Server Action to update experience by title
+ * @param title - experience title
+ * @param formData - FormData values
+ * @returns Promise
+ */
 export async function updateExperience(title: string, formData: FormData) {
   const token = await getToken();
   if (!token) {

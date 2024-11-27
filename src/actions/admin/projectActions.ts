@@ -6,6 +6,12 @@ import { projectFormData } from "./formData";
 
 const API_ENDPOINT = `${process.env.BASE_API_ENDPOINT}/project`;
 
+/**
+ * Server Action that adds new project
+ * @param prevState - current state
+ * @param formData - FormData values
+ * @returns data
+ */
 export async function addProjectAction(prevState: unknown, formData: FormData) {
   const token = await getToken();
   if (!token) {
@@ -28,6 +34,12 @@ export async function addProjectAction(prevState: unknown, formData: FormData) {
   }
 }
 
+/**
+ * Server Action to update project by title
+ * @param title - Project title to be updated
+ * @param formData - FormData values
+ * @returns Promise
+ */
 export async function updateProject(title: string, formData: FormData) {
   const token = await getToken();
   if (!token) {
@@ -49,6 +61,11 @@ export async function updateProject(title: string, formData: FormData) {
   }
 }
 
+/**
+ * Server Action to delete project by title
+ * @param title - Project title to delete
+ * @returns Promise
+ */
 export async function deleteProject(title: string) {
   const token = await getToken();
 
