@@ -14,6 +14,7 @@ import {
   SiHono,
   SiVercel,
   SiRender,
+  SiPostgresql,
 } from "react-icons/si";
 import { RiSecurePaymentFill } from "react-icons/ri";
 import { IconType } from "react-icons/lib";
@@ -34,4 +35,5 @@ export const stackIcons: Record<string, IconType> = {
   Render: SiRender,
   Vite: SiVite,
   Honojs: SiHono,
+  Postgres: SiPostgresql,
 };
