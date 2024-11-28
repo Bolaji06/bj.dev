@@ -64,7 +64,7 @@ export const metadata: Metadata = {
 
 export default async function Page() {
   const user: IUserResponse = await getUserById();
-  const userInfo = user.user;
+  const userInfo = user?.user;
 
   return (
     <>
@@ -79,10 +79,10 @@ export default async function Page() {
           <div className="flex gap-5 justify-center items-center">
             <div className="px-4">
               <Image
-                src={userInfo.photo}
+                src={userInfo?.photo}
                 width={1000}
                 height={1000}
-                alt={userInfo.name + "profile image"}
+                alt={userInfo?.name + "profile image"}
                 className="rounded-full w-full max-w-xs object-cover  aspect-square"
               />
             </div>
@@ -90,7 +90,7 @@ export default async function Page() {
         </div>
 
         <div className="py-10 mb-20 mx-auto prose-p:mb-4 prose-h1:text-3xl prose-h2:text-2xl prose-h1:mb-4 prose-h1:font-bold">
-          <MDXRemote source={userInfo.bio} />
+          <MDXRemote source={userInfo?.bio} />
         </div>
 
         <section className="py-20">
