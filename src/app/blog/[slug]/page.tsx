@@ -126,7 +126,8 @@ export default async function BlogPage({
         </header>
 
         <article
-          className={`${robotoMono.className} text-lg w-full max-w-3xl overflow-x-hidden leading-[1.8rem] antialiased mb-20`}
+          className={`${robotoMono.className} text-lg w-full max-w-3xl overflow-x-hidden leading-[1.8rem] antialiased mb-20
+          prose-p:my-4 prose-code:my-1 prose-blockquote:bg-gray-800 prose-blockquote:p-2 prose-blockquote:rounded-sm prose-h1:text-4xl prose-h2:text-3xl prose-h3:text-xl prose-headings:py-2 prose-headings:font-bold`}
         >
           <MDXRemote
             source={blogPostData.body_markdown}
@@ -139,6 +140,9 @@ export default async function BlogPage({
             }}
           />
         </article>
+        <div className="py-8">
+          <p className="text-center text-gray-700 text-sm">THE END</p>
+        </div>
       </section>
     </>
   );
