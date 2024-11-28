@@ -11,15 +11,14 @@ import { userFormData } from "./formData";
  * @param formData - FormData values
  * @returns Promise
  */
-export async function updateUser(prevState: unknown, formData: FormData) {
-  const url = `${process.env.BASE_API_ENDPOINT}/user`;
+export async function updateUser(userId: string, formData: FormData) {
+  const url = `${process.env.BASE_API_ENDPOINT}/user/${userId}`;
   const method = "PATCH";
 
   const token = await getToken();
   if (!token) {
     return "Token is missing";
   }
-
   const body = userFormData(formData);
 
   try {

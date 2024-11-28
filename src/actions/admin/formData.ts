@@ -45,7 +45,7 @@ export function userFormData(formData: FormData): IUser {
     bio: formData.get("bio")?.toString() || "",
     email: formData.get("email")?.toString() || "",
     photo: formData.get("photo")?.toString() || "",
-    links: [formData.get("link")?.toString() || ""],
+    links: [formData.get("links")?.toString() || ""],
   };
 }
 
