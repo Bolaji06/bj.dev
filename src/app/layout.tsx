@@ -3,7 +3,7 @@ import { poppins } from "./fonts/font";
 import localFont from "next/font/local";
 import "./globals.css";
 import NavBar from "@/components/NavBar/NavBar";
-import Footer from "@/components/ui/footer";
+
 import ProgressBarProvider from "@/components/ui/ProgressBarProvider";
 
 const geistSans = localFont({
@@ -76,10 +76,6 @@ export default function RootLayout({
             <NavBar />
             <section className="max-w-4xl mx-auto">{children}</section>
           </main>
-
-          <div className="py-6">
-            <Footer />
-          </div>
         </ProgressBarProvider>
       </body>
     </html>
