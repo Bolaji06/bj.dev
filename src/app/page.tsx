@@ -1,6 +1,7 @@
 import BlogCard from "@/components/BlogCard/BlogCard";
 import ContactForm from "@/components/ContactForm/ContactForm";
 import FloatingButton from "@/components/FloatingButton/FloatingButton";
+import Footer from "@/components/ui/footer";
 import Hero from "@/components/Hero/Hero";
 import ProjectCard from "@/components/ProjectCard/ProjectCard";
 import AIChatButton from "@/components/ui/ai-btn";
@@ -146,6 +147,9 @@ export default async function Home() {
             <ContactForm />
           </div>
         </section>
+        <div className="py-6 footer">
+            <Footer />
+          </div>
 
         <AIChatButton />
         <FloatingButton />
