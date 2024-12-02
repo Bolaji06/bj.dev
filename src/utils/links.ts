@@ -1,4 +1,4 @@
-export const navLinks = [
+export const navLinks: Record<string, string>[] = [
   {
     title: "Home",
     href: "/",
@@ -15,6 +15,10 @@ export const navLinks = [
     title: "Blog",
     href: "/blog",
   },
+  {
+    "title": "Ask AI",
+    href: "/ai-chat",
+  }
 ];
 
 import { IoLogoGithub, IoLogoLinkedin } from "react-icons/io";
