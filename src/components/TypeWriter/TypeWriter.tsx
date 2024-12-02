@@ -9,9 +9,9 @@ export default function TypeWriter() {
         <ReactTyped
           strings={[
             "Ask about my experience",
-            "Ask about my past project",
+            "Ask about my projects",
             "Ask about my work ethics",
-            "Ask about Me",
+            "Ask about me",
           ]}
           typeSpeed={40}
           backSpeed={50}
