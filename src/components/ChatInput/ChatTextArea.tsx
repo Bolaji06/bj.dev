@@ -3,11 +3,10 @@
 
 import React, { ChangeEvent, SetStateAction } from "react";
 import Button from "../Button/Button";
-import { ArrowUp, Loader2 } from "lucide-react";
+import { ArrowUp } from "lucide-react";
 
 export interface ChatTextAreaProps {
   formAction: (formData: FormData) => void;
-  state: any;
   isPending: boolean;
   textInput: string;
   setTextInput: React.Dispatch<SetStateAction<string>>;
@@ -19,18 +18,16 @@ export default function ChatTextArea({
   textInput,
   setTextInput,
   addMessage,
-  state,
 }: ChatTextAreaProps) {
   function handleOnChange(e: ChangeEvent<HTMLTextAreaElement>) {
     setTextInput(e.target.value);
   }
 
+  // Increase the textarea height when typing on new lines
   function handleOnInput(e: ChangeEvent<HTMLTextAreaElement>) {
     e.target.style.height = "auto";
     e.target.style.height = `${e.target.scrollHeight}px`;
   }
-
-  console.log(state);
 
   return (
     <>
@@ -53,18 +50,14 @@ export default function ChatTextArea({
               <div className="self-start mt-2 px-2">
                 <Button
                   onClick={() =>
-                    addMessage({ sender: "user", text: textInput })
+                    addMessage({ sender: "user", text: textInput.trim() })
                   }
                   aria-label="Send Message"
                   type="submit"
                   className="flex justify-center items-center p-0 w-12 h-12 aspect-square text-3xl disabled:text-slate-500 disabled:bg-slate-700 rounded-[50%]"
-                  disabled={!textInput.length}
+                  disabled={!textInput.length || isPending}
                 >
-                  {isPending ? (
-                    <Loader2 size={20} className="animate-spin" />
-                  ) : (
-                    <ArrowUp size={20} className="w-full" />
-                  )}
+                  <ArrowUp size={20} className="w-full" />
                 </Button>
               </div>
             </form>
