@@ -1,6 +1,6 @@
 "user server";
 
-const API = "http://localhost:7000/api/profile";
+const url = `${process.env.NEXT_PUBLIC_BASE_API_ENDPOINT}/profile`;
 
 export async function sendPrompt(prevState: unknown, formData: FormData) {
   const bodyData = {
@@ -15,14 +15,13 @@ export async function sendPrompt(prevState: unknown, formData: FormData) {
   };
 
   try {
-    const response = await fetch(API, options);
+    const response = await fetch(url, options);
     const data = await response.json();
 
-    console.log(data)
     return data;
   } catch (error) {
     if (error instanceof Error) {
-      console.log(error.message);
+      return "Something went wrong " + error;
     }
   }
 }

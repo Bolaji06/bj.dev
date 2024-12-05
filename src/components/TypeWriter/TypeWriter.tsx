@@ -4,11 +4,12 @@ import { ReactTyped } from "react-typed";
 
 interface TypeWriterProps  {
   streams: string[];
-  className?: string
-  typeSpeed: number | 40
+  className?: string;
+  typeSpeed: number | 40;
+  showCursor: boolean;
 }
 
-export default function TypeWriter({ streams, className, typeSpeed }: TypeWriterProps) {
+export default function TypeWriter({ streams, className, typeSpeed, showCursor }: TypeWriterProps) {
   return (
     <>
       <div className="mx-auto">
@@ -18,6 +19,7 @@ export default function TypeWriter({ streams, className, typeSpeed }: TypeWriter
           backSpeed={50}
           loopCount={4}
           cursorChar="🟠"
+          showCursor={showCursor}
           className={`${className}`}
         />
       </div>

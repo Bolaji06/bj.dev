@@ -8,7 +8,7 @@ import ChatLoader from "../ChatLoader/ChatLoader";
 import TypeWriter from "../TypeWriter/TypeWriter";
 
 interface IMessages {
-  sender: string;
+  sender: "ai" | "user";
   text: string;
 }
 interface ChatLayoutProps {
@@ -27,7 +27,7 @@ export default function ChatLayout({
     if (state?.message) {
       addMessage({ sender: "ai", text: state.message });
     }
-  }, [state.message]);
+  }, [state?.message]);
   return (
     <>
       <div className="px-3 space-y-2 pb-20 pt-4">
@@ -53,7 +53,7 @@ export default function ChatLayout({
                   </div>
 
                   <div className="bg-gray-800 px-5 py-3 rounded-3xl leading-relaxed text-sm">
-                    {msg.text.length && <TypeWriter streams={[msg.text]} typeSpeed={10}/>}
+                    {msg.text.length && <TypeWriter streams={[msg.text]} typeSpeed={10} showCursor={false}/>}
                   </div>
                 </div>
               )}

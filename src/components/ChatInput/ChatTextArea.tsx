@@ -10,7 +10,7 @@ export interface ChatTextAreaProps {
   isPending: boolean;
   textInput: string;
   setTextInput: React.Dispatch<SetStateAction<string>>;
-  addMessage: (message: { sender: string; text: string }) => void;
+  addMessage: (message: { sender: "ai" | "user"; text: string }) => void;
 }
 export default function ChatTextArea({
   formAction,
@@ -29,6 +29,11 @@ export default function ChatTextArea({
     e.target.style.height = `${e.target.scrollHeight}px`;
   }
 
+  function handleButtonClick() {
+    addMessage({ sender: "user", text: textInput.trim() });
+    //setTextInput("");
+  }
+
   return (
     <>
       <section>
@@ -39,7 +44,7 @@ export default function ChatTextArea({
                 <textarea
                   onChange={handleOnChange}
                   onInput={handleOnInput}
-                  placeholder="Ask AI"
+                  placeholder="Ask AI about Bolaji Bolajoko"
                   value={textInput}
                   className="w-full bg-transparent resize-none p-3 min-h-28 max-h-60 h-full focus-within:border-none outline-none text-sm"
                   cols={30}
@@ -49,9 +54,7 @@ export default function ChatTextArea({
 
               <div className="self-start mt-2 px-2">
                 <Button
-                  onClick={() =>
-                    addMessage({ sender: "user", text: textInput.trim() })
-                  }
+                  onClick={handleButtonClick}
                   aria-label="Send Message"
                   type="submit"
                   className="flex justify-center items-center p-0 w-12 h-12 aspect-square text-3xl disabled:text-slate-500 disabled:bg-slate-700 rounded-[50%]"

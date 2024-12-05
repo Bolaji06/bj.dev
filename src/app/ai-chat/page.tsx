@@ -8,11 +8,11 @@ import TypeWriter from "@/components/TypeWriter/TypeWriter";
 export default function ChatPage() {
   const [state, action, isPending] = useActionState(sendPrompt, {});
   const [textInput, setTextInput] = useState("");
-  const [messages, setMessages] = useState<{ sender: string; text: string }[]>(
+  const [messages, setMessages] = useState<{ sender: "ai" | "user"; text: string }[]>(
     []
   );
 
-  function addMessages(message: { sender: string; text: string }) {
+  function addMessages(message: { sender: "ai" | "user"; text: string }) {
     setMessages((prevState) => {
       return [...prevState, message];
     });
@@ -34,12 +34,13 @@ export default function ChatPage() {
                 "Ask about my work ethics",
                 "Ask about me",
               ]}
+              showCursor={true}
               typeSpeed={40}
               className="text-center text-3xl font-semibold text-gray-500"
             />
           </section>
         )}
-        <section>
+        <section className="relative -z-10">
           <ChatLayout
             messages={messages}
             isPending={isPending}
