@@ -38,7 +38,7 @@ export default function ChatTextArea({
     <>
       <section>
         <div className="w-full">
-          <div className="bg-secondary-foreground rounded-t-lg flex border border-gray-500 focus-within:outline focus-within:outline-gray-600">
+          <div className="bg-background rounded-t-lg flex border border-gray-400 focus-within:outline focus-within:outline-gray-500">
             <form action={formAction} className="w-full flex gap-3">
               <div className="w-full rounded-t-lg">
                 <textarea
@@ -46,7 +46,7 @@ export default function ChatTextArea({
                   onInput={handleOnInput}
                   placeholder="Ask AI about Bolaji Bolajoko"
                   value={textInput}
-                  className="w-full bg-transparent resize-none p-3 min-h-28 max-h-60 h-full focus-within:border-none outline-none text-sm"
+                  className="w-full bg-transparent resize-none p-3 min-h-28 max-h-60 h-full focus-within:border-none outline-none text-sm rounded-t-lg"
                   cols={30}
                   name="text-input"
                 />
