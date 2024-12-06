@@ -23,7 +23,7 @@ export default function ChatPage() {
       <main className="py-14 max-w-3xl w-full mx-auto relative">
         <div className="flex justify-center items-center fixed top-12 mx-auto -translate-x-1/2 left-1/2">
         <div className="mx-auto p-1 bg-gray-700/50 rounded-b-md">
-          <p className="text-[.6rem] text-gray-500">Powered by Llama 3.2</p>
+          <p className="text-[.6rem] text-gray-500">Powered by Llama 3</p>
         </div>
         </div>
         {!messages.length && (
@@ -40,7 +40,7 @@ export default function ChatPage() {
             />
           </section>
         )}
-        <section className="relative -z-10">
+        <section className="relative -z-10 mt-4">
           <ChatLayout
             messages={messages}
             isPending={isPending}
@@ -48,8 +48,8 @@ export default function ChatPage() {
             state={state}
           />
         </section>
-        <section className="max-w-lg relative bg-primary-brand bg-gray-800">
-          <div className="fixed bottom-0 max-w-3xl w-full z-50 bg-gray-800 rounded-t-md">
+        <section className="max-w-lg relative">
+          <div className="fixed bottom-0 max-w-3xl w-full z-50">
             <ChatTextArea
               formAction={action}
               isPending={isPending}
