@@ -20,7 +20,7 @@ export default function ChatPage() {
 
   return (
     <>
-      <main className="py-14 max-w-3xl w-full mx-auto relative">
+      <main className="py-14 max-w-3xl w-full mx-auto">
         <div className="flex justify-center items-center fixed top-12 mx-auto -translate-x-1/2 left-1/2">
         <div className="mx-auto p-1 bg-gray-700/50 rounded-b-md">
           <p className="text-[.6rem] text-gray-500">Powered by Llama 3</p>
