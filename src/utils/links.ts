@@ -16,7 +16,7 @@ export const navLinks: Record<string, string>[] = [
     href: "/blog",
   },
   {
-    "title": "Ask AI",
+    title: "Ask AI",
     href: "/ai-chat",
   }
 ];
