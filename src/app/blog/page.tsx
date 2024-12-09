@@ -1,5 +1,5 @@
 import BlogCard from "@/components/BlogCard/BlogCard";
-import { fetchBlogPost } from "@/data/fetchBlogPosts";
+import { fetchAllBlogPosts } from "@/data/fetchBlogPosts";
 import { IBlog } from "@/definition/definition";
 import Link from "next/link";
 import { Metadata } from "next/types";
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
 }
 
 export default async function Page() {
-  const blogPosts = await fetchBlogPost(1, 30);
+  const blogPosts = await fetchAllBlogPosts(1, 30);
 
   return (
     <>
