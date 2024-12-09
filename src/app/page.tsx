@@ -5,7 +5,7 @@ import Footer from "@/components/ui/footer";
 import Hero from "@/components/Hero/Hero";
 import ProjectCard from "@/components/ProjectCard/ProjectCard";
 import AIChatButton from "@/components/ui/ai-btn";
-import { fetchBlogPost } from "@/data/fetchBlogPosts";
+import { fetchAllBlogPosts } from "@/data/fetchBlogPosts";
 import { getProjects } from "@/data/fetchProject";
 import { IBlog, IProject, IProjectResponse } from "@/definition/definition";
 import { Metadata } from "next/types";
@@ -68,7 +68,7 @@ export const metadata: Metadata = {
 
 export default async function Home() {
   const projects: IProjectResponse = await getProjects();
-  const blogPosts = await fetchBlogPost(1, 4);
+  const blogPosts = await fetchAllBlogPosts(1, 4);
 
   return (
     <>
