@@ -46,7 +46,7 @@ export const metadata: Metadata = {
     ],
   },
   title: {
-    default: "bj.dev ",
+    default: "Bolaji Bolajoko ",
     template: "%s | Portfolio",
   },
   description:

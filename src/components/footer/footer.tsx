@@ -7,7 +7,7 @@ import { FaReact } from "react-icons/fa";
 export default function Footer() {
   return (
     <>
-      <footer
+      <div
         data-testid="footerContainer"
         className="my-10 flex justify-center items-center flex-col"
       >
@@ -36,7 +36,7 @@ export default function Footer() {
             </p>
           </div>
         </div>
-      </footer>
+      </div>
     </>
   );
 }

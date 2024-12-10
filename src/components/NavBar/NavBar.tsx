@@ -70,7 +70,7 @@ export default function NavBar() {
       </nav>
       {toggleNav && (
         <nav
-          className={`fixed min-h-screen w-full overflow-y-hidden
+          className={`fixed z-50 min-h-screen w-full overflow-y-hidden
         transition-transform duration-300 ease-in-out`}
         >
           <MobileNav closeMobileNav={closeMobileNav} pathname={pathname} />

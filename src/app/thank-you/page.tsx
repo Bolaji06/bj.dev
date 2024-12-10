@@ -1,4 +1,5 @@
 import Button from "@/components/Button/Button";
+import Footer from "@/components/Footer/Footer";
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 
@@ -22,12 +23,15 @@ export default function ThankYouPage() {
         <div>
           <Link href={"/"}>
             <Button className="group">
-              <ArrowLeft className="group-hover:-translate-x-1 transition-transform ease-in-out duration-500"/>
+              <ArrowLeft className="group-hover:-translate-x-1 transition-transform ease-in-out duration-500" />
               Back to home
             </Button>
           </Link>
         </div>
       </main>
+      <footer className="py-6 footer">
+        <Footer />
+      </footer>
     </>
   );
 }

@@ -12,7 +12,7 @@ import { Metadata } from "next/types";
 import { IoLogoWechat } from "react-icons/io5";
 
 export const metadata: Metadata = {
-  title: "bj.dev: Bolaji Bolajoko",
+  title: "Bolaji Bolajoko",
   description:
     "bj.dev: I am Bolaji Bolajoko, Full-stack Software developer. I design and create functional web apps, with a focus of good user experience",
   keywords: [
@@ -147,13 +147,12 @@ export default async function Home() {
             <ContactForm />
           </div>
         </section>
-        <div className="py-6 footer">
-            <Footer />
-          </div>
-
         <AIChatButton />
         <FloatingButton />
       </main>
+      <footer className="py-6 footer">
+        <Footer />
+      </footer>
     </>
   );
 }

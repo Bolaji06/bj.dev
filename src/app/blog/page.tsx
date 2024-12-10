@@ -1,4 +1,5 @@
 import BlogCard from "@/components/BlogCard/BlogCard";
+import Footer from "@/components/Footer/Footer";
 import { fetchAllBlogPosts } from "@/data/fetchBlogPosts";
 import { IBlog } from "@/definition/definition";
 import Link from "next/link";
@@ -7,10 +8,7 @@ import { Metadata } from "next/types";
 export const metadata: Metadata = {
   title: "Blog Post Lists",
   description: "Lists of all blog post by Bolaji Bolajoko",
-  keywords: [
-    "bj.dev blog posts",
-    "Bolaji Bolajoko blog posts",
-  ],
+  keywords: ["bj.dev blog posts", "Bolaji Bolajoko blog posts"],
   openGraph: {
     url: "https://bjdev.vercel.app/blog",
     type: "website",
@@ -21,9 +19,9 @@ export const metadata: Metadata = {
         url: "/opengraph-image.png",
         width: 1200,
         height: 630,
-        alt: "bj.dev | Bolaji Bolajoko Portfolio"
-      }
-    ]
+        alt: "bj.dev | Bolaji Bolajoko Portfolio",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
@@ -41,10 +39,9 @@ export const metadata: Metadata = {
     ],
   },
   alternates: {
-    canonical: "https://bjdev.vercel.app"
-  }
-
-}
+    canonical: "https://bjdev.vercel.app",
+  },
+};
 
 export default async function Page() {
   const blogPosts = await fetchAllBlogPosts(1, 30);
@@ -54,9 +51,7 @@ export default async function Page() {
       <section className="py-20 px-6">
         <header>
           <div className="space-y-6">
-            <h1 className="text-4xl md:text-5xl font-semibold">
-              Blog Posts
-            </h1>
+            <h1 className="text-4xl md:text-5xl font-semibold">Blog Posts</h1>
             <p className="text-xl md:text-2xl font-medium text-primary-brand max-w-lg">
               Posts on technology, coding, development and more. All my posts
               can also be found on
@@ -85,6 +80,9 @@ export default async function Page() {
           })}
         </section>
       </section>
+      <footer className="py-6 footer">
+        <Footer />
+      </footer>
     </>
   );
 }
