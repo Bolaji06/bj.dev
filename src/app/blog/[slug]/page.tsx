@@ -11,6 +11,7 @@ import rehypePrettyCode from "rehype-pretty-code";
 import { robotoMono } from "@/app/fonts/font";
 import { formatTimestamp } from "@/utils/utils";
 import { Metadata } from "next/types";
+import Footer from "@/components/Footer/Footer";
 
 export async function generateMetadata({
   params,
@@ -144,6 +145,9 @@ export default async function BlogPage({
           <p className="text-center text-gray-700 text-sm">THE END</p>
         </div>
       </section>
+      <footer className="py-6 footer">
+        <Footer />
+      </footer>
     </>
   );
 }

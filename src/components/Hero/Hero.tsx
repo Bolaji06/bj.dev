@@ -3,6 +3,7 @@ import Button from "../Button/Button";
 
 import { IoDocumentText, IoMail } from "react-icons/io5";
 import { HiBriefcase } from "react-icons/hi2";
+import Link from "next/link";
 
 export default function Hero() {
   return (
@@ -30,14 +31,33 @@ export default function Hero() {
           </p>
 
           <div className="flex flex-col md:flex-row w-full gap-3 mt-2 py-4">
-            <Button className="w-full md:w-40 text-white inline-flex hover:bg-opacity-65">
-              <IoDocumentText size={20} /> Resume
+            <Button className="w-full px-0 md:w-40 text-white hover:bg-opacity-65">
+              <Link
+                href={"./assets/bolaji_bolajoko_resume.pdf"}
+                download
+                className="w-full flex gap-1 justify-center items-center"
+              >
+                <IoDocumentText size={20} />
+                Resume
+              </Link>
             </Button>
-            <Button className="w-full md:w-40 inline-flex text-text_primary bg-transparent hover:bg-sky-100/10 border border-secondary">
-              <IoMail size={20} /> Contact Me
+            <Button className="w-full px-0 md:w-40 text-text_primary bg-transparent hover:bg-sky-100/10 border border-secondary">
+              <Link
+                href={"#contact"}
+                download
+                className="w-full flex gap-1 justify-center items-center"
+              >
+                <IoMail size={20} /> Contact Me
+              </Link>
             </Button>
             <Button className="hidden md:inline-flex text-text_primary bg-transparent hover:bg-slate-100/15">
-              <HiBriefcase size={20} /> My Works
+              <Link
+                href={"/project"}
+                download
+                className="w-full flex gap-2 scroll-smooth justify-center items-center"
+              >
+                <HiBriefcase size={20} /> My Works
+              </Link>
             </Button>
           </div>
         </div>

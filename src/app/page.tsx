@@ -5,14 +5,14 @@ import Footer from "@/components/ui/footer";
 import Hero from "@/components/Hero/Hero";
 import ProjectCard from "@/components/ProjectCard/ProjectCard";
 import AIChatButton from "@/components/ui/ai-btn";
-import { fetchBlogPost } from "@/data/fetchBlogPosts";
+import { fetchAllBlogPosts } from "@/data/fetchBlogPosts";
 import { getProjects } from "@/data/fetchProject";
 import { IBlog, IProject, IProjectResponse } from "@/definition/definition";
 import { Metadata } from "next/types";
 import { IoLogoWechat } from "react-icons/io5";
 
 export const metadata: Metadata = {
-  title: "bj.dev: Bolaji Bolajoko",
+  title: "Bolaji Bolajoko",
   description:
     "bj.dev: I am Bolaji Bolajoko, Full-stack Software developer. I design and create functional web apps, with a focus of good user experience",
   keywords: [
@@ -68,7 +68,7 @@ export const metadata: Metadata = {
 
 export default async function Home() {
   const projects: IProjectResponse = await getProjects();
-  const blogPosts = await fetchBlogPost(1, 4);
+  const blogPosts = await fetchAllBlogPosts(1, 4);
 
   return (
     <>
@@ -147,13 +147,12 @@ export default async function Home() {
             <ContactForm />
           </div>
         </section>
-        <div className="py-6 footer">
-            <Footer />
-          </div>
-
         <AIChatButton />
         <FloatingButton />
       </main>
+      <footer className="py-6 footer">
+        <Footer />
+      </footer>
     </>
   );
 }

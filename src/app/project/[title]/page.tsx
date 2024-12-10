@@ -6,6 +6,7 @@ import { MDXRemote } from "next-mdx-remote/rsc";
 import { Metadata } from "next/types";
 
 import rehypePrettyCode from "rehype-pretty-code";
+import Footer from "@/components/Footer/Footer";
 
 export async function generateMetadata({
   params,
@@ -113,6 +114,9 @@ export default async function ProjectPage({
           />
         </article>
       </section>
+      <footer className="py-6 footer">
+        <Footer />
+      </footer>
     </>
   );
 }

@@ -6,6 +6,7 @@ import Image from "next/image";
 import { IoLogoWechat } from "react-icons/io5";
 import { Metadata } from "next/types";
 import { MDXRemote } from "next-mdx-remote/rsc";
+import Footer from "@/components/Footer/Footer";
 
 export const metadata: Metadata = {
   title: "About Me",
@@ -115,6 +116,9 @@ export default async function Page() {
         </section>
         <FloatingButton />
       </section>
+      <footer className="py-6 footer">
+        <Footer />
+      </footer>
     </>
   );
 }

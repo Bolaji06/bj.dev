@@ -16,7 +16,7 @@ export default function MobileNav({ closeMobileNav, pathname }: MobileNavProps) 
 
   return (
     <>
-      <nav className="-translate-x-[1000] lg:hidden bg-background/95 z-50 backdrop-blur-md relative w-screen min-h-screen
+      <nav className="-translate-x-[1000] lg:hidden bg-background/95 backdrop-blur-md relative w-screen min-h-screen
       transition-transform duration-800 ease-in-out">
         <div className="relative z-50">
           <div className="max-w-52 w-full mx-auto py-6">
