@@ -16,9 +16,9 @@ export const navLinks: Record<string, string>[] = [
     href: "/blog",
   },
   {
-    title: "Ask AI",
-    href: "/ai-chat",
-  }
+   title: "Bug Buster",
+   href: "/bug-buster"
+  },
 ];
 
 import { IoLogoGithub, IoLogoLinkedin } from "react-icons/io";

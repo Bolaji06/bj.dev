@@ -11,6 +11,7 @@ import MobileNav from "../MobileNav/MobileNav";
 import { useState } from "react";
 import Logo from "../Logo/Logo";
 
+
 export default function NavBar() {
   const [toggleNav, setToggleNav] = useState<boolean>(false);
 
@@ -38,6 +39,8 @@ export default function NavBar() {
             <ul className="border-r border-gray-700">
               <li className="flex items-center gap-8 last:mr-5">
                 {navLinks.map((link) => {
+                  const isActive = (pathname === "/" && link.href === "/") ||
+                  (pathname.startsWith(link.href) && link.href !== "/")
                   return (
                     <Link
                       key={link.title}
@@ -45,7 +48,7 @@ export default function NavBar() {
                       className={`text-sm font-medium text-foreground hover:text-primary-brand
                          ${clsx({
                           "text-primary-brand font-medium border-b-2 border-primary-brand":
-                            pathname === link.href,
+                            isActive
                         })}`}
                     >
                       {link.title}
