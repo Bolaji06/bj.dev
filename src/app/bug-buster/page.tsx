@@ -1,9 +1,14 @@
+import { getBugBusterList } from "@/data/fetchBugBuster";
+import { IBugBuster, IBugBusterListResponse } from "@/definition/definition";
 import Link from "next/link";
 
 export default async function BugBusterPage() {
+  const bugBusters: IBugBusterListResponse = await getBugBusterList();
+
+  const bugBusterList = bugBusters.bugList;
   return (
     <>
-      <section className="py-20 px-4">
+      <section className="py-16 px-4">
         <header>
           <div className="space-y-4">
             <h1 className="text-4xl md:text-5xl font-semibold">Bug Buster</h1>
@@ -13,16 +18,15 @@ export default async function BugBusterPage() {
           </div>
         </header>
 
-        <div className="py-4 mt-2 border-b border-border w-full max-w-2xl">
+        {bugBusterList.map((bugBuster: IBugBuster) => (
           <Link
-            className="font-medium hover:text-slate-500 transition-colors duration-200 ease-in-out"
-            href={"/"}
+            key={bugBuster.id}
+            className="py-4 flex flex-col mt-2 border-b border-border w-full max-w-2xl font-medium hover:text-slate-500 transition-colors duration-200 ease-in-out"
+            href={`/bug-buster/${bugBuster.id}`}
           >
-            MDX: Unexpected character , (U+002C) in name, expected a name
-            character such as letters, digits, $, or _; whitespace before
-            attributes; or the end of the tag
+            {bugBuster.title}
           </Link>
-        </div>
+        ))}
       </section>
     </>
   );
