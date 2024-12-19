@@ -14,7 +14,15 @@ export const contactFormSchema = z.object({
 export const adminAuthSchema = z.object({
     email: emailSchema,
     password: passwordSchema,
+});
+
+export const addBugBusterSchema = z.object({
+    title: z.string({ required_error: 'Title is required'}).min(5, { message: "Must be 5 character long" }),
+    backstory: z.string({}).optional(),
+    tags: z.array(z.string().min(1), { required_error: "Add at least one tag"}),
+    solution: z.string({ required_error: "Buster is required: How you solved the bug" }),
 })
 
 export type contactFormSchemaType = z.infer<typeof contactFormSchema>;
 export type adminAuthSchemaType = z.infer<typeof adminAuthSchema>;
+export type addBugBusterSchema = z.infer<typeof addBugBusterSchema>;
