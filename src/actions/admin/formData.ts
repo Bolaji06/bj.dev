@@ -1,5 +1,6 @@
 import { IExperience, IProject, IUser } from "@/definition/definition";
-import { adminAuthSchema } from "@/definition/validation";
+import { addBugBusterSchema, adminAuthSchema } from "@/definition/validation";
+
 
 /**
  * Experience formData payload
@@ -66,4 +67,24 @@ export function loginFormData(formData: FormData){
     return validateFormInput[0];
   }
   return parseSchema;
+}
+
+export function addBugBusterFormData(formData: FormData){
+
+  const parseBugBuster = addBugBusterSchema.safeParse({
+    title: formData.get("title"),
+    backstory: formData.get("backstory"),
+    tags: new Array(formData.get("tags")),
+    solution: formData.get("solution")
+  });
+
+  if(!parseBugBuster.success){
+    return parseBugBuster.error.errors.map((issues) => {
+      return {
+        path: issues.path,
+        message: issues.message
+      }
+    })
+  }
+  return parseBugBuster.data;
 }

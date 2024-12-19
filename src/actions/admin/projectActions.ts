@@ -56,7 +56,7 @@ export async function updateProject(title: string, formData: FormData) {
     return data;
   } catch (error) {
     if (error instanceof Error) {
-      return "Something went wrong " + error.message;
+      return "Something went wrong";
     }
   }
 }
@@ -83,7 +83,7 @@ export async function deleteProject(title: string) {
     return data;
   } catch (error) {
     if (error instanceof Error) {
-      return "Something went wrong " + error.message;
+      return "Something went wrong";
     }
   }
 }
