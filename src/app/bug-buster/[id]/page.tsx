@@ -1,5 +1,6 @@
 import { getBugBuster } from "@/data/fetchBugBuster";
 import { IBugBusterResponse } from "@/definition/definition";
+import { formatTimestamp } from "@/utils/utils";
 
 export default async function BusterDetails({
   params,
@@ -11,6 +12,8 @@ export default async function BusterDetails({
   const bugBusterData: IBugBusterResponse = await getBugBuster(bugBusterId);
 
   const bugBuster = bugBusterData.bug;
+
+  const isUpdated = bugBuster.createdAt === bugBuster.updatedAt;
 
   return (
     <>
@@ -27,13 +30,13 @@ export default async function BusterDetails({
             </div>
             <div className="py-2 flex space-x-3 text-xs text-mute_foreground">
               <p className="">
-                Created: <span>{bugBuster.createdAt}</span>
+                Created: <span>{formatTimestamp(bugBuster.createdAt)}</span>
               </p>
-              {/* {bugBuster.createdAt === bugBuster.updatedAt && (
+              {isUpdated && (
                 <p className="">
-                  Updated: <span>{bugBuster.createdAt}</span>
+                  Updated: <span>{formatTimestamp(bugBuster.updatedAt)}</span>
                 </p>
-              )} */}
+              )}
             </div>
           </div>
         </header>
