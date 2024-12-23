@@ -9,17 +9,19 @@ export async function contactFormAction(
 ) {
   const url = `${process.env.BASE_API_ENDPOINT}/send-email`;
 
-  const parseContactSchema = contactFormSchema.safeParse({
+  const rawData = {
     name: formData.get("name"),
     email: formData.get("email"),
-    message: formData.get("message"),
-  });
+    message: formData.get("message")
+  }
+  const parseContactSchema = contactFormSchema.safeParse(rawData);
 
   if (!parseContactSchema.success) {
     const validateInput = parseContactSchema.error.errors.map((issues) => {
       return {
         message: issues.message,
         path: issues.path,
+        input: rawData
       };
     });
     return validateInput[0];
@@ -37,3 +39,23 @@ export async function contactFormAction(
     }
   }
 }
+
+import { createServerAction } from "zsa";
+export const contactFormActionWithZsa = createServerAction()
+  .input(contactFormSchema, { type: "formData" })
+  .timeout(2000)
+  .handler(async (body) => {
+    const url = `${process.env.BASE_API_ENDPOINT}/send-email`;
+    const method = "POST";
+
+    try {
+      const data = await makeApiRequest({ url, method, body });
+      return data;
+    } catch (error) {
+      if (error instanceof Error) {
+        console.log(error.message);
+        return error.message;
+      }
+    }
+  });
+

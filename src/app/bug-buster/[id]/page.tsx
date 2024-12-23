@@ -15,6 +15,8 @@ export default async function BusterDetails({
 
   const isUpdated = bugBuster.createdAt === bugBuster.updatedAt;
 
+  //const tagsSpliter = bugBuster.tags[0].split(",");
+
   return (
     <>
       <section className="py-14 px-4 max-w-3xl w-full">

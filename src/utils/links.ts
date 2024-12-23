@@ -55,5 +55,9 @@ export const adminTabLists = [
   {
     name: "Experience",
     href: "/admin/dashboard/experience"
+  },
+  {
+    name: "Bug Buster",
+    href: "/admin/dashboard/bug-buster"
   }
 ]
