@@ -13,9 +13,7 @@ export default async function BusterDetails({
 
   const bugBuster = bugBusterData.bug;
 
-  const isUpdated = bugBuster.createdAt === bugBuster.updatedAt;
-
-  //const tagsSpliter = bugBuster.tags[0].split(",");
+  const isUpdated = bugBuster?.createdAt === bugBuster?.updatedAt;
 
   return (
     <>

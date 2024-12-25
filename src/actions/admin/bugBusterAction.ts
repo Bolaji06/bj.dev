@@ -59,7 +59,7 @@ export async function updateBugBuster(id: string, formData: FormData) {
   const body = {
     title: formData.get("title"),
     backstory: formData.get("backstory"),
-    tags: JSON.stringify(formData.get("tags")),
+    tags: formData.get("tags"),
     solution: formData.get("solution"),
   };
   const url = `${API}/bug/${id}`;
@@ -68,6 +68,7 @@ export async function updateBugBuster(id: string, formData: FormData) {
   try {
     const data = await makeApiRequest({ url, method, token, body });
     revalidateTag("bug-busters");
+
     return data;
   } catch (error) {
     if (error instanceof Error) {
