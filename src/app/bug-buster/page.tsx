@@ -1,10 +1,10 @@
-import { getBugBusterList } from "@/data/fetchBugBuster";
+import { fetchBugBusterList } from "@/data/fetchBugBuster";
 import { IBugBusterListResponse } from "@/definition/definition";
 import Link from "next/link";
 import { Suspense } from "react";
 
 export default async function BugBusterPage() {
-  const bugBusters: IBugBusterListResponse = await getBugBusterList();
+  const bugBusters: IBugBusterListResponse = await fetchBugBusterList();
 
   const bugBusterList = bugBusters.bugList;
 

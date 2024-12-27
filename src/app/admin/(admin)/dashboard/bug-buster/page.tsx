@@ -2,11 +2,11 @@
 import BugBusterForm from "@/components/admin/BugBuster/BugBusterForm";
 import AdminHeaderTitle from "@/components/AdminHeader/AdminHeaderTitle";
 //import AdminCardBug from "@/components/ui/AdminCardBug";
-import { getBugBusterList } from "@/data/fetchBugBuster";
+import { fetchBugBusterList } from "@/data/fetchBugBuster";
 import { IBugBusterListResponse } from "@/definition/definition";
 
 export default async function AdminBugBusterPage() {
-  const bugBusters: IBugBusterListResponse = await getBugBusterList();
+  const bugBusters: IBugBusterListResponse = await fetchBugBusterList();
 
   const bugBusterList = bugBusters.bugList;
 

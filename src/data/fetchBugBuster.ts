@@ -1,22 +1,5 @@
 const API = `${process.env.NEXT_PUBLIC_BASE_API_ENDPOINT}`;
 
-export async function getBugBusterList() {
-  try {
-    const response = await fetch(`${API}/bug`);
-    if (!response.ok) {
-      return "Error fetching bug buster";
-    }
-    const data = await response.json();
-
-    return data;
-  } catch (error) {
-    if (error instanceof Error) {
-      console.log("Server error " + error.message);
-      return "Server error";
-    }
-  }
-}
-
 export async function getBugBuster(id: string) {
   try {
     const response = await fetch(`${API}/bug/${id}`);
@@ -24,6 +7,24 @@ export async function getBugBuster(id: string) {
       return "Error fetching bug buster";
     }
     const data = await response.json();
+    return data;
+  } catch (error) {
+    if (error instanceof Error) {
+      return "Server error";
+    }
+  }
+}
+
+export async function fetchBugBusterList() {
+  try {
+    const response = await fetch(`${API}/bug`, {
+      next: { tags: ["bug-busters"] },
+    });
+    if (!response.ok) {
+      return "Error fetching bug buster";
+    }
+    const data = await response.json();
+
     return data;
   } catch (error) {
     if (error instanceof Error) {
