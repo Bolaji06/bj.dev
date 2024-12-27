@@ -10,7 +10,7 @@ export default function BugBusterList({ bugBusterList }: BugBusterListProps) {
   return (
     <>
       <div>
-        {bugBusterList.map((bugBuster) => (
+        {bugBusterList && bugBusterList.map((bugBuster) => (
           <Link
             key={bugBuster.id}
             className="py-4 flex flex-col mt-2 border-b border-border w-full max-w-2xl font-medium hover:text-slate-500 transition-colors duration-200 ease-in-out"
