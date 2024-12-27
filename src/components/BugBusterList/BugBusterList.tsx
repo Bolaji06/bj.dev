@@ -1,12 +1,12 @@
-import { fetchBugBusterList } from "@/data/fetchBugBuster";
-import { IBugBusterListResponse } from "@/definition/definition";
+"use client";
+
+import { IBugBuster } from "@/definition/definition";
 import Link from "next/link";
 
-export default async function BugBusterList() {
-  const bugBusters: IBugBusterListResponse = await fetchBugBusterList();
-
-  const bugBusterList = bugBusters.bugList;
-
+interface BugBusterListProps {
+  bugBusterList: IBugBuster[];
+}
+export default function BugBusterList({ bugBusterList }: BugBusterListProps) {
   return (
     <>
       <div>

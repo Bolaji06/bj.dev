@@ -1,6 +1,11 @@
-//import BugBusterList from "@/components/BugBusterList/BugBusterList";
+import BugBusterList from "@/components/BugBusterList/BugBusterList";
+import { fetchBugBusterList } from "@/data/fetchBugBuster";
+import { IBugBusterListResponse } from "@/definition/definition";
 
 export default async function BugBusterPage() {
+  const bugBusters: IBugBusterListResponse = await fetchBugBusterList();
+
+  const bugBusterList = bugBusters.bugList;
   return (
     <>
       <section className="py-16 px-4">
@@ -12,9 +17,7 @@ export default async function BugBusterPage() {
             </p>
           </div>
         </header>
-        <div>
-          {/* <BugBusterList /> */}
-        </div>
+        <div><BugBusterList bugBusterList={bugBusterList}/></div>
       </section>
     </>
   );
