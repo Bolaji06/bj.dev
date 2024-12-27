@@ -1,4 +1,4 @@
-import BugBusterList from "@/components/BugBusterList/BugBusterList";
+//import BugBusterList from "@/components/BugBusterList/BugBusterList";
 
 export default async function BugBusterPage() {
   return (
@@ -13,7 +13,7 @@ export default async function BugBusterPage() {
           </div>
         </header>
         <div>
-          <BugBusterList />
+          {/* <BugBusterList /> */}
         </div>
       </section>
     </>
