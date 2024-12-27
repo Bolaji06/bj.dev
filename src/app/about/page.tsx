@@ -85,7 +85,7 @@ export default async function Page() {
                 width={1000}
                 height={1000}
                 alt={userInfo?.name + "profile image"}
-                className="rounded-full w-full max-w-xs object-cover  aspect-square"
+                className="rounded-full w-full max-w-xs object-contain aspect-square bg-blend-multiply"
               />
             </div>
           </div>

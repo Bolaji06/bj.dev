@@ -12,7 +12,7 @@ export async function getBugBusterList() {
   } catch (error) {
     if (error instanceof Error) {
       console.log("Server error " + error.message);
-      return "Something went wrong while fetching";
+      return "Server error";
     }
   }
 }
