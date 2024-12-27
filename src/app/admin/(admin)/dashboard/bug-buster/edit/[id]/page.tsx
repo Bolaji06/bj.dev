@@ -9,11 +9,8 @@ export default async function EditBugBusterPage({
   const param = await params;
   const paramId = param.id;
 
-  console.log(paramId);
   const bugBusterResponse = await getBugBuster(paramId);
-  const bugBuster = bugBusterResponse.bug
-
-  console.log(bugBuster);
+  const bugBuster = bugBusterResponse.bug;
 
   return (
     <>

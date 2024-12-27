@@ -5,7 +5,7 @@ import AdminCardBug from "@/components/ui/AdminCardBug";
 import { getBugBusterList } from "@/data/fetchBugBuster";
 import { IBugBusterListResponse } from "@/definition/definition";
 
-export default async function AdminBugBuster() {
+export default async function AdminBugBusterPage() {
   const bugBusters: IBugBusterListResponse = await getBugBusterList();
 
   const bugBusterList = bugBusters.bugList;
