@@ -2,7 +2,7 @@ const API = `${process.env.NEXT_PUBLIC_BASE_API_ENDPOINT}`;
 
 export async function getBugBusterList() {
   try {
-    const response = await fetch(`${API}/bug`, { next: { tags: ["bug-busters"] } });
+    const response = await fetch(`${API}/bug`);
     if (!response.ok) {
       return "Error fetching bug buster";
     }
