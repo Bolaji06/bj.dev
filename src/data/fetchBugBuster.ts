@@ -1,4 +1,4 @@
-const API = `${process.env.NEXT_PUBLIC_BASE_API_ENDPOINT}`;
+const API = `${process.env.BASE_API_ENDPOINT}`;
 
 export async function getBugBuster(id: string) {
   try {
