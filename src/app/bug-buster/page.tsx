@@ -1,13 +1,12 @@
 import { getBugBusterList } from "@/data/fetchBugBuster";
 import { IBugBusterListResponse } from "@/definition/definition";
-//import Link from "next/link";
+import Link from "next/link";
+import { Suspense } from "react";
 
 export default async function BugBusterPage() {
   const bugBusters: IBugBusterListResponse = await getBugBusterList();
 
   const bugBusterList = bugBusters.bugList;
-
-  console.log(bugBusterList)
 
   return (
     <>
@@ -21,7 +20,8 @@ export default async function BugBusterPage() {
           </div>
         </header>
 
-        {/* {bugBusterList.map((bugBuster) => (
+      <Suspense fallback={<p>Loading...</p>}>
+        {bugBusterList.map((bugBuster) => (
           <Link
             key={bugBuster.id}
             className="py-4 flex flex-col mt-2 border-b border-border w-full max-w-2xl font-medium hover:text-slate-500 transition-colors duration-200 ease-in-out"
@@ -29,7 +29,8 @@ export default async function BugBusterPage() {
           >
             {bugBuster.title}
           </Link>
-        ))} */}
+        ))}
+        </Suspense>
       </section>
     </>
   );
