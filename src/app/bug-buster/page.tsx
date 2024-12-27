@@ -1,6 +1,7 @@
 import BugBusterList from "@/components/BugBusterList/BugBusterList";
 import { fetchBugBusterList } from "@/data/fetchBugBuster";
 import { IBugBusterListResponse } from "@/definition/definition";
+import { Suspense } from "react";
 
 export default async function BugBusterPage() {
   const bugBusters: IBugBusterListResponse = await fetchBugBusterList();
@@ -17,7 +18,9 @@ export default async function BugBusterPage() {
             </p>
           </div>
         </header>
-        <div><BugBusterList bugBusterList={bugBusterList}/></div>
+        <Suspense fallback={<p>Loading...</p>}>
+          <BugBusterList bugBusterList={bugBusterList} />
+        </Suspense>
       </section>
     </>
   );
