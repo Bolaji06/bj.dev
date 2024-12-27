@@ -3,10 +3,10 @@ import { contactFormAction } from "@/actions/contactFormAction";
 
 import { Input } from "../ui/input";
 import { Textarea } from "../ui/textarea";
-import { ChangeEvent, useActionState, useEffect, useState } from "react";
+import { useActionState, useEffect, useState } from "react";
 import { IContactFormError } from "@/definition/definition";
 import InputError from "../InputError/InputError";
-import { contactFormSchemaType } from "@/definition/validation";
+
 
 import FormButton from "../FormButton/FormButton";
 import toast from "react-hot-toast";
@@ -19,11 +19,6 @@ export default function ContactForm() {
     null
   );
   const [inputError, setInputError] = useState<IContactFormError | null>(null);
-  const [inputState, setInputState] = useState<contactFormSchemaType>({
-    name: "",
-    message: "",
-    email: "",
-  });
 
   const hasMount = useRef(false);
   const router = useRouter();
@@ -34,18 +29,6 @@ export default function ContactForm() {
     }
   }, [state]);
 
-  function handleContactInput(
-    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) {
-    const { name, value } = e.target;
-    setInputState((prevState) => {
-      return {
-        ...prevState,
-        [name]: value,
-      };
-    });
-  }
-
   useEffect(() => {
     if (hasMount.current) {
       if (state?.success) {
@@ -53,9 +36,8 @@ export default function ContactForm() {
           <div className="capitalize font-medium">{state?.message}</div>,
           { duration: 3000 }
         );
-        router.push("/thank-you")
-        
-      } else if(state?.success === false) {
+        router.push("/thank-you");
+      } else if (state?.success === false) {
         toast.error(
           <div className="capitalize font-medium">{state?.message}</div>,
           { duration: 3000 }
@@ -68,7 +50,7 @@ export default function ContactForm() {
 
   return (
     <>
-      <form action={contactAction} className="space-y-4">
+      <form action={contactAction} noValidate className="space-y-4">
         <div>
           <label htmlFor="name" className="text-gray-400 text-sm">
             Name
@@ -76,9 +58,8 @@ export default function ContactForm() {
           <Input
             id="name"
             name="name"
-            onChange={handleContactInput}
             onFocus={() => setInputError(null)}
-            value={inputState.name}
+            defaultValue={state?.input?.name}
           />
           {inputError && (
             <InputError
@@ -96,9 +77,8 @@ export default function ContactForm() {
             id="email"
             name="email"
             type="email"
-            onChange={handleContactInput}
             onFocus={() => setInputError(null)}
-            value={inputState.email}
+            defaultValue={state?.input?.email}
           />
           {inputError && (
             <InputError
@@ -116,9 +96,8 @@ export default function ContactForm() {
           <Textarea
             id="message"
             name="message"
-            onChange={handleContactInput}
             onFocus={() => setInputError(null)}
-            value={inputState.message}
+            defaultValue={state?.input?.message}
           />
           {inputError && (
             <InputError

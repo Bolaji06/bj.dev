@@ -1,5 +1,7 @@
+"use server";
+
 import { getToken } from "@/utils/getToken";
-import { addBugBusterFormData } from "./formData";
+
 import { makeApiRequest } from "@/utils/makeApiRequest";
 import { revalidateTag } from "next/cache";
 
@@ -11,7 +13,28 @@ export async function addBugBuster(prevState: unknown, formData: FormData) {
   if (!token) {
     return "Token is missing";
   }
-  const body = addBugBusterFormData(formData);
+
+  const rawData = {
+    title: formData.get("title"),
+    tags: formData.get("tags"),
+    backstory: formData.get("backstory"),
+    solution: formData.get("solution"),
+  };
+
+  const parseInputSchema = addBugBusterSchema.safeParse(rawData);
+
+  if (!parseInputSchema.success) {
+    const validateInput = parseInputSchema.error?.errors.map((issues) => {
+      return {
+        path: issues.path,
+        message: issues.message,
+        input: rawData,
+      };
+    });
+    return validateInput[0];
+  }
+  const body = parseInputSchema.data;
+
   const url = `${API}/bug`;
   const method = "POST";
 
@@ -21,9 +44,8 @@ export async function addBugBuster(prevState: unknown, formData: FormData) {
     revalidateTag("bug-busters");
     return data;
   } catch (error) {
-    if (error) {
-      console.log(error);
-      return error;
+    if (error instanceof Error) {
+      return "Server error";
     }
   }
 }
@@ -37,7 +59,7 @@ export async function updateBugBuster(id: string, formData: FormData) {
   const body = {
     title: formData.get("title"),
     backstory: formData.get("backstory"),
-    tags: new Array(formData.get("tags")),
+    tags: formData.get("tags"),
     solution: formData.get("solution"),
   };
   const url = `${API}/bug/${id}`;
@@ -46,10 +68,10 @@ export async function updateBugBuster(id: string, formData: FormData) {
   try {
     const data = await makeApiRequest({ url, method, token, body });
     revalidateTag("bug-busters");
+
     return data;
   } catch (error) {
     if (error instanceof Error) {
-      console.log(error);
       return "Server error";
     }
   }
@@ -74,3 +96,25 @@ export async function deleteBugBuster(id: string) {
     }
   }
 }
+
+import { createServerAction } from "zsa";
+import { addBugBusterSchema } from "@/definition/validation";
+
+export const experimentalZsa = createServerAction()
+  .input(addBugBusterSchema, { type: "json" })
+  .handler(async (body) => {
+    const token = await getToken();
+
+    if (!token) {
+      return "Token is missing";
+    }
+    const url = `${API}/bug`;
+    const method = "POST";
+    try {
+      const data = await makeApiRequest({ url, method, token, body });
+      return data;
+    } catch (error) {
+      if (error instanceof Error) {
+      }
+    }
+  });

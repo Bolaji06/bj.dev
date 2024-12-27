@@ -1,7 +1,6 @@
 import { IExperience, IProject, IUser } from "@/definition/definition";
 import { addBugBusterSchema, adminAuthSchema } from "@/definition/validation";
 
-
 /**
  * Experience formData payload
  * @param {FormData} formData payload
@@ -50,8 +49,7 @@ export function userFormData(formData: FormData): IUser {
   };
 }
 
-export function loginFormData(formData: FormData){
-
+export function loginFormData(formData: FormData) {
   const parseSchema = adminAuthSchema.safeParse({
     email: formData.get("email"),
     password: formData.get("password"),
@@ -69,22 +67,27 @@ export function loginFormData(formData: FormData){
   return parseSchema;
 }
 
-export function addBugBusterFormData(formData: FormData){
-
-  const parseBugBuster = addBugBusterSchema.safeParse({
+export function addBugBusterFormData(formData: FormData) {
+  const rawData = {
     title: formData.get("title"),
     backstory: formData.get("backstory"),
     tags: new Array(formData.get("tags")),
-    solution: formData.get("solution")
-  });
+    solution: formData.get("solution"),
+  };
 
-  if(!parseBugBuster.success){
-    return parseBugBuster.error.errors.map((issues) => {
-      return {
-        path: issues.path,
-        message: issues.message
-      }
-    })
-  }
-  return parseBugBuster.data;
+  const parseBugBuster = addBugBusterSchema.safeParse(rawData);
+
+  return parseBugBuster;
+
+  // if (!parseBugBuster.success) {
+  //   return parseBugBuster.error.errors.map((issues) => {
+  //     return {
+  //       success: false,
+  //       path: issues.path,
+  //       message: issues.message,
+  //       input: rawData,
+  //     };
+  //   });
+  // }
+  // return parseBugBuster.data;
 }

@@ -7,13 +7,14 @@ export default async function BusterDetails({
 }: {
   params: Promise<{ id: string }>;
 }): Promise<React.ReactNode> {
-  const bugBusterId = (await params).id;
+  const param = await params;
+  const bugBusterId = param.id;
 
   const bugBusterData: IBugBusterResponse = await getBugBuster(bugBusterId);
 
   const bugBuster = bugBusterData.bug;
 
-  const isUpdated = bugBuster.createdAt === bugBuster.updatedAt;
+  const isUpdated = bugBuster?.createdAt === bugBuster?.updatedAt;
 
   return (
     <>

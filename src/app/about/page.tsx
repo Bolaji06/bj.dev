@@ -1,4 +1,4 @@
-import ContactForm from "@/components/ContactForm/ContactForm";
+//import ContactForm from "@/components/ContactForm/ContactForm";
 import FloatingButton from "@/components/FloatingButton/FloatingButton";
 import { getUserById } from "@/data/fetchUser";
 import { IUserResponse } from "@/definition/definition";
@@ -7,6 +7,7 @@ import { IoLogoWechat } from "react-icons/io5";
 import { Metadata } from "next/types";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import Footer from "@/components/Footer/Footer";
+import ExperimentalContactForm from "@/components/ContactForm/ExperimentalContact";
 
 export const metadata: Metadata = {
   title: "About Me",
@@ -84,7 +85,7 @@ export default async function Page() {
                 width={1000}
                 height={1000}
                 alt={userInfo?.name + "profile image"}
-                className="rounded-full w-full max-w-xs object-cover  aspect-square"
+                className="rounded-full w-full max-w-xs object-contain aspect-square bg-blend-multiply"
               />
             </div>
           </div>
@@ -111,7 +112,8 @@ export default async function Page() {
             </div>
           </header>
           <div className="max-w-xl mx-auto mt-14 mb-10">
-            <ContactForm />
+            {/* <ContactForm /> */}
+            <ExperimentalContactForm />
           </div>
         </section>
         <FloatingButton />

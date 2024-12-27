@@ -26,6 +26,7 @@
     "jose": "^5.9.6",
     "jwt-decode": "^4.0.0",
     "lucide-react": "^0.453.0",
+    "msw": "^2.7.0",
     "next": "15.0.2",
     "next-mdx-remote": "^5.0.0",
     "next-nprogress-bar": "^2.3.15",
@@ -42,7 +43,9 @@
     "tailwindcss-animate": "^1.0.7",
     "ts-jest": "^29.2.5",
     "ts-node": "^10.9.2",
-    "zod": "^3.23.8"
+    "zod": "^3.23.8",
+    "zsa": "^0.6.0",
+    "zsa-react": "^0.2.3"
   },
   "devDependencies": {
     "@babel/preset-typescript": "^7.26.0",

@@ -1,7 +1,7 @@
 
 export interface InputErrorProps {
     message: string;
-    path: string[];
+    path: string[] | undefined;
     name: string;
 }
 
