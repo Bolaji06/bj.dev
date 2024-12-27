@@ -1,8 +1,10 @@
-import BugBusterList from "@/components/BugBusterList/BugBusterList";
+//import BugBusterList from "@/components/BugBusterList/BugBusterList";
 import { fetchBugBusterList } from "@/data/fetchBugBuster";
 import { IBugBusterListResponse } from "@/definition/definition";
+import dynamic from "next/dynamic";
 import { Suspense } from "react";
 
+const DynamicList = dynamic(() => import("@/components/BugBusterList/BugBusterList"));
 export default async function BugBusterPage() {
   const bugBusters: IBugBusterListResponse = await fetchBugBusterList();
 
@@ -19,7 +21,9 @@ export default async function BugBusterPage() {
           </div>
         </header>
         <Suspense fallback={<p>Loading...</p>}>
-          <BugBusterList bugBusterList={bugBusterList} />
+        { bugBusterList && 
+          <DynamicList bugBusterList={bugBusterList}/>
+        }
         </Suspense>
       </section>
     </>
