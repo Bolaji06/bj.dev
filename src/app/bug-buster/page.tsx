@@ -1,14 +1,36 @@
+"use client";
 //import BugBusterList from "@/components/BugBusterList/BugBusterList";
 import BugBusterList from "@/components/BugBusterList/BugBusterList";
 import { fetchBugBusterList } from "@/data/fetchBugBuster";
-import { IBugBusterListResponse } from "@/definition/definition";
+import { IBugBuster, } from "@/definition/definition";
 //import dynamic from "next/dynamic";
-import { Suspense } from "react";
+import {useEffect, useState } from "react";
 
-export default async function BugBusterPage() {
-  const bugBusters: IBugBusterListResponse = await fetchBugBusterList();
+export default  function BugBusterPage() {
+  const [bugBusterList, setBugBusterList] = useState<IBugBuster[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
-  const bugBusterList = bugBusters.bugList;
+  console.log(bugBusterList);
+
+  useEffect(() => {
+    async function fetchBugList(){
+      setIsLoading(false)
+      try{
+        setIsLoading(true);
+        const data = await fetchBugBusterList();
+        const bugList = data.bugList
+        setBugBusterList(bugList);
+
+      }catch(error){
+        if(error instanceof Error){
+          return "Server Error";
+        }
+      }finally{
+        setIsLoading(false);
+      }
+    }
+    fetchBugList();
+  }, [])
   return (
     <>
       <section className="py-16 px-4">
@@ -20,9 +42,9 @@ export default async function BugBusterPage() {
             </p>
           </div>
         </header>
-        <Suspense fallback={<p>Loading...</p>}>
-          <BugBusterList bugBusterList={bugBusterList} />
-        </Suspense>
+       {
+        isLoading ? <p>Loading</p> : <BugBusterList bugBusterList={bugBusterList}/>
+       }
       </section>
     </>
   );

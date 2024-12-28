@@ -13,9 +13,6 @@ const options = {
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
   pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
   images: {
     remotePatterns: [
