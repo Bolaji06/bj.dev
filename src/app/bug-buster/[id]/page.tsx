@@ -1,6 +1,62 @@
 import { getBugBuster } from "@/data/fetchBugBuster";
 import { IBugBusterResponse } from "@/definition/definition";
+
 import { formatTimestamp } from "@/utils/utils";
+import { Metadata } from "next/types";
+
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}): Promise<Metadata> {
+  const param = await params;
+  const paramId = param.id;
+
+  const response: IBugBusterResponse = await getBugBuster(paramId);
+  const bugBuster = response.bug;
+
+  return {
+    title: `bj.dev Bug Buster | ${bugBuster.title}`,
+    description: `${bugBuster.backstory}`,
+    keywords: [`bj.dev Bug Buster, ${bugBuster.title}`, `${bugBuster.backstory}`, bugBuster.tags[0]],
+
+    openGraph: {
+      title: `${bugBuster.title}`,
+      description: `bj.dev: Bug Buster | ${bugBuster.backstory}`,
+      type: "profile",
+      url: `https://bjdev.vercel.app/bug-buster/${bugBuster.title}`,
+      images: [
+        {
+          url: "",
+          width: 1024,
+          height: 576,
+          alt: `${bugBuster.title}`,
+        },
+      ],
+    },
+
+    twitter: {
+      card: "summary_large_image",
+      site: "bj.dev",
+      creator: "Bolaji Bolajoko",
+      title: `bj.dev: Bug Buster | ${bugBuster?.title}`,
+      description: `${bugBuster?.backstory}`,
+
+      images: [
+        {
+          url: "",
+          width: 1024,
+          height: 576,
+          alt: `${bugBuster?.title}`,
+        },
+      ],
+    },
+    alternates: {
+      canonical: `https://bjdev.vercel.app/bug-buster/${bugBuster?.title}`,
+    },
+  };
+}
 
 export default async function BusterDetails({
   params,
@@ -61,9 +117,9 @@ export default async function BusterDetails({
             <p className="mb-4">{bugBuster.solution}</p>
           </div>
           <div className="ref-links text-sm py-3">
-            <p className="text-mute_foreground">
+            {/* <p className="text-mute_foreground">
               Ref links: stackoverflow, githubissues
-            </p>
+            </p> */}
           </div>
         </div>
       </section>
