@@ -1,9 +1,9 @@
 
-const API = `${process.env.NEXT_PUBLIC_BASE_API_ENDPOINT}`;
+const API = `${process.env.BASE_API_ENDPOINT}`;
 
 export async function getBugBuster(id: string) {
   try {
-    const response = await fetch(`${API}/bug/${id}`);
+    const response = await fetch(`${API}/buster/${id}`);
     if (!response.ok) {
       return "Error fetching bug buster";
     }
@@ -18,7 +18,7 @@ export async function getBugBuster(id: string) {
 
 export async function fetchBugBusterList() {
   try {
-    const response = await fetch(`${API}/bug`, {
+    const response = await fetch(`${API}/buster`, {
       next: { tags: ["bug-busters"] },
     });
     if (!response.ok) {
