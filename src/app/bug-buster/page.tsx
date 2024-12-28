@@ -1,6 +1,10 @@
+"use client";
 //import BugBusterList from "@/components/BugBusterList/BugBusterList";
+import BugBusterList from "@/components/BugBusterList/BugBusterList";
 
-export default async function BugBusterPage() {
+
+export default  function BugBusterPage() {
+  
   return (
     <>
       <section className="py-16 px-4">
@@ -12,9 +16,7 @@ export default async function BugBusterPage() {
             </p>
           </div>
         </header>
-        <div>
-          {/* <BugBusterList /> */}
-        </div>
+        <BugBusterList />
       </section>
     </>
   );

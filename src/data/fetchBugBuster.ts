@@ -1,3 +1,4 @@
+
 const API = `${process.env.BASE_API_ENDPOINT}`;
 
 export async function getBugBuster(id: string) {
@@ -17,14 +18,13 @@ export async function getBugBuster(id: string) {
 
 export async function fetchBugBusterList() {
   try {
-    const response = await fetch(`${API}/bug`, {
+    const response = await fetch(`http://localhost:7000/api/bug`, {
       next: { tags: ["bug-busters"] },
     });
     if (!response.ok) {
       return "Error fetching bug buster";
     }
     const data = await response.json();
-
     return data;
   } catch (error) {
     if (error instanceof Error) {

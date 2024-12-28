@@ -1,15 +1,37 @@
-import { fetchBugBusterList } from "@/data/fetchBugBuster";
-import { IBugBusterListResponse } from "@/definition/definition";
+"use client";
+
+import { IBugBuster } from "@/definition/definition";
 import Link from "next/link";
+import { fetchBugBusterList } from "@/data/fetchBugBuster";
+import {useEffect, useState } from "react";
 
-export default async function BugBusterList() {
-  const bugBusters: IBugBusterListResponse = await fetchBugBusterList();
+export default function BugBusterList() {
 
-  const bugBusterList = bugBusters.bugList;
+  const [bugBusterList, setBugBusterList] = useState<IBugBuster[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
+  useEffect(() => {
+    async function fetchBugList(){
+      setIsLoading(false)
+      try{
+        setIsLoading(true);
+        const data = await fetchBugBusterList();
+        const bugList = data.bugList
+        setBugBusterList(bugList);
+
+      }catch(error){
+        if(error instanceof Error){
+          return "Server Error";
+        }
+      }finally{
+        setIsLoading(false);
+      }
+    }
+    fetchBugList();
+  }, [])
   return (
     <>
-      <div>
+      { isLoading ? <p>Loading...</p> : <div>
         {bugBusterList.map((bugBuster) => (
           <Link
             key={bugBuster.id}
@@ -20,6 +42,7 @@ export default async function BugBusterList() {
           </Link>
         ))}
       </div>
+}
     </>
   );
 }
