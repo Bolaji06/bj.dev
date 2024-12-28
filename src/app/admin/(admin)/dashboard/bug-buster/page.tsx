@@ -1,7 +1,7 @@
-//import { deleteBugBuster } from "@/actions/admin/bugBusterAction";
+import { deleteBugBuster } from "@/actions/admin/bugBusterAction";
 import BugBusterForm from "@/components/admin/BugBuster/BugBusterForm";
 import AdminHeaderTitle from "@/components/AdminHeader/AdminHeaderTitle";
-//import AdminCardBug from "@/components/ui/AdminCardBug";
+import AdminCardBug from "@/components/ui/AdminCardBug";
 import { fetchBugBusterList } from "@/data/fetchBugBuster";
 import { IBugBusterListResponse } from "@/definition/definition";
 
@@ -9,8 +9,6 @@ export default async function AdminBugBusterPage() {
   const bugBusters: IBugBusterListResponse = await fetchBugBusterList();
 
   const bugBusterList = bugBusters.bugList;
-
-  console.log(bugBusterList);
 
   return (
     <>
@@ -24,7 +22,7 @@ export default async function AdminBugBusterPage() {
         </div>
 
         <section className="py-6 flex items-center gap-2 w-full max-w-4xl overflow-auto">
-          {/* {bugBusterList.map((bug) => {
+          {bugBusterList.map((bug) => {
             return (
               <div key={bug.id}>
                 <AdminCardBug
@@ -35,7 +33,7 @@ export default async function AdminBugBusterPage() {
                 />
               </div>
             );
-          })} */}
+          })}
         </section>
       </section>
     </>
