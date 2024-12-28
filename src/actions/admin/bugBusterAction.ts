@@ -5,7 +5,7 @@ import { getToken } from "@/utils/getToken";
 import { makeApiRequest } from "@/utils/makeApiRequest";
 import { revalidateTag } from "next/cache";
 
-const API = process.env.NEXT_PUBLIC_BASE_API_ENDPOINT;
+const API = process.env.BASE_API_ENDPOINT;
 
 export async function addBugBuster(prevState: unknown, formData: FormData) {
   const token = await getToken();
@@ -35,7 +35,7 @@ export async function addBugBuster(prevState: unknown, formData: FormData) {
   }
   const body = parseInputSchema.data;
 
-  const url = `${API}/bug`;
+  const url = `${API}/buster`;
   const method = "POST";
 
   try {
@@ -62,7 +62,7 @@ export async function updateBugBuster(id: string, formData: FormData) {
     tags: formData.get("tags"),
     solution: formData.get("solution"),
   };
-  const url = `${API}/bug/${id}`;
+  const url = `${API}/buster/${id}`;
   const method = "PATCH";
 
   try {
@@ -83,7 +83,7 @@ export async function deleteBugBuster(id: string) {
   if (!token) {
     return "Token is missing";
   }
-  const url = `${API}/bug/${id}`;
+  const url = `${API}/buster/${id}`;
   const method = "DELETE";
 
   try {
@@ -108,7 +108,7 @@ export const experimentalZsa = createServerAction()
     if (!token) {
       return "Token is missing";
     }
-    const url = `${API}/bug`;
+    const url = `${API}/buster`;
     const method = "POST";
     try {
       const data = await makeApiRequest({ url, method, token, body });
