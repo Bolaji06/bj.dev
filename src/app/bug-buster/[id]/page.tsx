@@ -4,6 +4,9 @@ import { IBugBusterResponse } from "@/definition/definition";
 import { formatTimestamp } from "@/utils/utils";
 import { Metadata } from "next/types";
 
+import { MDXRemote } from "next-mdx-remote/rsc";
+import rehypePrettyCode from "rehype-pretty-code";
+
 
 export async function generateMetadata({
   params,
@@ -58,6 +61,19 @@ export async function generateMetadata({
   };
 }
 
+/** @type {import('rehype-pretty-code').Options} */
+const options = {
+  theme: {
+    dark: "github-dark-high-contrast",
+    light: "github-light",
+  },
+  keepBackground: true,
+  defaultLang: {
+    inline: "plaintext",
+    block: "javascript",
+  },
+};
+
 export default async function BusterDetails({
   params,
 }: {
@@ -76,11 +92,11 @@ export default async function BusterDetails({
     <>
       <section className="py-14 px-4 max-w-3xl w-full">
         <header className="border-b border-border py-2">
-          <h1 className="text-xl font-semibold">{bugBuster.title}</h1>
+          <h1 className="text-2xl font-semibold">{bugBuster.title}</h1>
           <div>
             <div className="inline-flex gap-2">
               {bugBuster.tags.map((tag) => (
-                <div key={tag} className="py-2 text-sm text-mute_foreground">
+                <div key={tag} className="py-2 text-xs text-mute_foreground">
                   <p>{tag}</p>
                 </div>
               ))}
@@ -102,20 +118,42 @@ export default async function BusterDetails({
           <div>
             <h2 className="text-2xl py-2 font-semibold">Backstory</h2>
           </div>
-          <div>
-            <p className="italic text-mute_foreground py-2">
-              {bugBuster.backstory}
-            </p>
-          </div>
+          <article
+          className={`text-lg w-full max-w-3xl overflow-x-hidden leading-[1.8rem] antialiased mb-20
+          prose-p:my-4 prose-code:my-1 prose-blockquote:bg-gray-800 prose-blockquote:p-2 prose-blockquote:rounded-sm prose-h1:text-4xl prose-h2:text-3xl prose-h3:text-xl prose-headings:py-2 prose-headings:font-bold`}
+        >
+          <MDXRemote
+            source={bugBuster.backstory as string}
+            options={{
+              mdxOptions: {
+                remarkPlugins: [],
+                rehypePlugins: [[rehypePrettyCode, options]],
+                format: "mdx",
+              },
+            }}
+          />
+        </article>
         </div>
 
         <div className="mt-6 border-b border-border py-4 pb-10">
           <div>
             <h2 className="py-2 text-2xl font-semibold">Busted! 🎆</h2>
           </div>
-          <div>
-            <p className="mb-4">{bugBuster.solution}</p>
-          </div>
+          <article
+          className={`text-lg w-full max-w-3xl overflow-x-hidden leading-[1.8rem] antialiased mb-20
+          prose-p:my-4 prose-code:my-1 prose-blockquote:bg-gray-800 prose-blockquote:p-2 prose-blockquote:rounded-sm prose-h1:text-4xl prose-h2:text-3xl prose-h3:text-xl prose-headings:py-2 prose-headings:font-bold`}
+        >
+          <MDXRemote
+            source={bugBuster.solution as string}
+            options={{
+              mdxOptions: {
+                remarkPlugins: [],
+                rehypePlugins: [[rehypePrettyCode, options]],
+                format: "mdx",
+              },
+            }}
+          />
+        </article>
           <div className="ref-links text-sm py-3">
             {/* <p className="text-mute_foreground">
               Ref links: stackoverflow, githubissues
