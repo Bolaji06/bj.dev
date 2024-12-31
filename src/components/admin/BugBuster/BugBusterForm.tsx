@@ -39,7 +39,6 @@ export default function BugBusterForm() {
     });
   }
 
-  
   return (
     <>
       <section>

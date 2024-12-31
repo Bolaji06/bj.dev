@@ -111,3 +111,13 @@ code[data-theme*=" "] span {
     background-color: var(--shiki-dark-bg);
   }
 }
+
+.ai-markdown p > a {
+  position: relative;
+  z-index: 10;
+  color: orange;
+  text-decoration: underline;
+}
+.ai-markdown p > a:hover{
+  cursor: pointer;
+}

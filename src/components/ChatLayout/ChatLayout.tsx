@@ -1,11 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-
 "use client";
+
 import Image from "next/image";
 import logo from "../../../public/logo.png";
 import { useEffect } from "react";
 import ChatLoader from "../ChatLoader/ChatLoader";
-import TypeWriter from "../TypeWriter/TypeWriter";
+//import TypeWriter from "../TypeWriter/TypeWriter";
+import Markdown from "react-markdown";
 
 interface IMessages {
   sender: "ai" | "user";
@@ -52,8 +53,24 @@ export default function ChatLayout({
                     />
                   </div>
 
-                  <div className="bg-gray-800 px-5 py-3 col-span-2 rounded-3xl leading-relaxed text-sm text-slate-200">
-                    {msg.text.length && <TypeWriter streams={[msg.text]} typeSpeed={10} showCursor={false}/>}
+                  <div className="ai-markdown bg-gray-800 px-5 py-3 col-span-2 rounded-3xl leading-relaxed text-sm text-slate-200">
+                    {/* {msg.text.length && <TypeWriter streams={[msg.text]} typeSpeed={10} showCursor={false}/>} */}
+
+                    <Markdown
+                      components={{
+                        a: ({ href, children }) => (
+                          <a
+                            href={href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            {children}
+                          </a>
+                        ),
+                      }}
+                    >
+                      {msg.text}
+                    </Markdown>
                   </div>
                 </div>
               )}

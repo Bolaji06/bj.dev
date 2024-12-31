@@ -1,8 +1,7 @@
 "user server";
 
-const url = `${process.env.NEXT_PUBLIC_BASE_API_ENDPOINT}/profile`;
-
 export async function sendPrompt(prevState: unknown, formData: FormData) {
+  const url = `${process.env.NEXT_PUBLIC_BASE_API_ENDPOINT}/profile`;
   const bodyData = {
     query: formData.get("text-input"),
   };
