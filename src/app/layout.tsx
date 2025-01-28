@@ -1,3 +1,5 @@
+import { Analytics } from '@vercel/analytics/next';
+
 import type { Metadata, Viewport } from "next";
 import { poppins } from "./fonts/font";
 import localFont from "next/font/local";
@@ -69,12 +71,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${poppins.className} ${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`scroll-smooth ${poppins.className} ${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <ProgressBarProvider>
-          <main className="scroll-smooth">
+          <main>
             <NavBar />
             <section className="max-w-4xl mx-auto">{children}</section>
+            <Analytics />
           </main>
         </ProgressBarProvider>
       </body>

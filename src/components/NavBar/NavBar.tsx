@@ -31,7 +31,7 @@ export default function NavBar() {
         className="fixed w-full py-3 px-4 sm:px-10 backdrop-blur-md bg-background/90 border-b border-border"
       >
         <div className="flex justify-between">
-          <Link href={"/"}>
+          <Link href={"/"} prefetch={true}>
             <Logo className="aspect-video" src={logo} />
           </Link>
 
@@ -45,6 +45,7 @@ export default function NavBar() {
                     <Link
                       key={link.title}
                       href={link.href}
+                      prefetch={true}
                       className={`text-sm font-medium text-foreground hover:text-primary-brand
                          ${clsx({
                           "text-primary-brand font-medium border-b-2 border-primary-brand":

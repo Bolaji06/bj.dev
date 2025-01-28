@@ -2,9 +2,9 @@
 import { motion } from "framer-motion";
 
 const pageTransitionVariants = {
-  initial: { opacity: 0, y: 50 },
+  initial: { opacity: 0, y: 30 },
   animate: { opacity: 1, y: 0 },
-  exit: { opacity: 0, y: 50 },
+  exit: { opacity: 0, y: 30 },
 };
 export default function Template({ children }: { children: React.ReactNode }) {
   return (
@@ -14,7 +14,7 @@ export default function Template({ children }: { children: React.ReactNode }) {
         initial="initial"
         animate="animate"
         exit="exit"
-        transition={{ duration: 0.4 }}
+        transition={{ duration: 0.2 }}
       >
         {children}
       </motion.div>

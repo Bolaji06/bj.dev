@@ -17,7 +17,7 @@ export default function Footer() {
             data-testid="trademark"
             className="text-xs text-center text-gray-500 py-4"
           >
-            Bolaji Bolajoko © 2024
+            Bolaji Bolajoko © 2025
           </p>
         </div>
 

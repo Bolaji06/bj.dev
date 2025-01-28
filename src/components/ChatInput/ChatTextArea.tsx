@@ -1,7 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
+import { scan } from "react-scan"
 
-import React, { ChangeEvent, SetStateAction } from "react";
+import React, { ChangeEvent, SetStateAction, useCallback } from "react";
 import Button from "../Button/Button";
 import { ArrowUp } from "lucide-react";
 
@@ -19,9 +20,10 @@ export default function ChatTextArea({
   setTextInput,
   addMessage,
 }: ChatTextAreaProps) {
-  function handleOnChange(e: ChangeEvent<HTMLTextAreaElement>) {
+
+  const handleOnChange = useCallback(function handleOnChange(e: ChangeEvent<HTMLTextAreaElement>) {
     setTextInput(e.target.value);
-  }
+  }, [])
 
   // Increase the textarea height when typing on new lines
   function handleOnInput(e: ChangeEvent<HTMLTextAreaElement>) {
@@ -32,6 +34,13 @@ export default function ChatTextArea({
   function handleButtonClick() {
     addMessage({ sender: "user", text: textInput.trim() });
     //setTextInput("");
+  }
+
+  if(typeof window !== undefined){
+    scan({
+      enabled: true,
+      log: true,
+    })
   }
 
   return (

@@ -21,11 +21,11 @@ export default function AIChatButton() {
       >
         <TooltipProvider>
           <Tooltip>
-            <TooltipTrigger onClick={() => router.push("/ai-chat")}>
+            <TooltipTrigger onClick={() => router.prefetch("/ai-chat")}>
               <AiOutlineWechatWork size={25} className="font-semibold text-white" />
             </TooltipTrigger>
             <TooltipContent className="mb-4 mr-2 max-w-32 bg-gray-700 text-white">
-              <p className="text-xs text-left">
+              <p className="text-xs text-center">
                 Chat with AI assistance to get all latest info about
                 Bolaji
               </p>
