@@ -30,6 +30,7 @@ export default function MobileNav({ closeMobileNav, pathname }: MobileNavProps) 
                  <Link
                  key={link.title}
                  href={link.href}
+                 prefetch={true}
                  className={`font-medium text-foreground hover:text-primary-brand
                   ${clsx({
                    "text-primary-brand font-medium border-b-2 border-primary-brand text-3xl":

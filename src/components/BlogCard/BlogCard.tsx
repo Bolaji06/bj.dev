@@ -23,7 +23,7 @@ export default function BlogCard({ slug, title, description, published_at }: Blo
             <p className="text-xs text-gray-500">{formatTimestamp(published_at)}</p>
             <h2 className="text-lg sm:text-xl text-text_primary font-medium">{title}</h2>
             <p className="text-sm">{description}</p>
-            <Link role="link" className="text-sm text-secondary hover:underline" href={`/blog/${slug}`}>Read more</Link>
+            <Link role="link" prefetch={true} className="text-sm text-secondary hover:underline" href={`/blog/${slug}`}>Read more</Link>
           </div>
         </div>
       </section>

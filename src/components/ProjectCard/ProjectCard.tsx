@@ -57,6 +57,7 @@ export default function ProjectCard({
           ) : (
             <Link
               href={`/project/${title}`}
+              prefetch={true}
               className="font-semibold text-text_primary text-lg underline hover:text-primary-brand cursor-pointer"
             >
               {title}
@@ -102,6 +103,7 @@ export default function ProjectCard({
               {gitMore === "more" ? (
                 <Link
                   href={`project/${title}`}
+                  prefetch={true}
                   className="w-full inline-flex gap-2 justify-center items-center px-4 py-3 text-center"
                   data-testid="ProjectCardReadMoreLink"
                 >

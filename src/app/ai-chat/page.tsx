@@ -5,14 +5,18 @@ import { sendPrompt } from "@/actions/promptAction";
 import { useActionState, useState } from "react";
 import TypeWriter from "@/components/TypeWriter/TypeWriter";
 
+export interface IMessage {
+  sender: "ai" | "user",
+  text: string;
+}
 export default function ChatPage() {
   const [state, action, isPending] = useActionState(sendPrompt, {});
   const [textInput, setTextInput] = useState("");
-  const [messages, setMessages] = useState<{ sender: "ai" | "user"; text: string }[]>(
+  const [messages, setMessages] = useState<IMessage[]>(
     []
   );
 
-  function addMessages(message: { sender: "ai" | "user"; text: string }) {
+  function addMessages(message: IMessage) {
     setMessages((prevState) => {
       return [...prevState, message];
     });

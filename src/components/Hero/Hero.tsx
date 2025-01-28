@@ -44,7 +44,6 @@ export default function Hero() {
             <Button className="w-full px-0 md:w-40 text-text_primary bg-transparent hover:bg-sky-100/10 border border-secondary">
               <Link
                 href={"#contact"}
-                download
                 className="w-full flex gap-1 justify-center items-center"
               >
                 <IoMail size={20} /> Contact Me
@@ -53,7 +52,7 @@ export default function Hero() {
             <Button className="hidden md:inline-flex text-text_primary bg-transparent hover:bg-slate-100/15">
               <Link
                 href={"/project"}
-                download
+                prefetch={true}
                 className="w-full flex gap-2 scroll-smooth justify-center items-center"
               >
                 <HiBriefcase size={20} /> My Works
@@ -61,6 +60,7 @@ export default function Hero() {
             </Button>
           </div>
         </div>
+        
       </section>
     </>
   );

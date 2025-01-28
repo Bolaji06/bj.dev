@@ -73,6 +73,7 @@ export default async function BugBusterPage() {
               {bugBusterList.map((bugBuster) => (
                 <Link
                   key={bugBuster.id}
+                  prefetch={true}
                   className="py-4 flex flex-col mt-2 border-b border-border w-full max-w-2xl font-medium hover:text-slate-500 transition-colors duration-200 ease-in-out"
                   href={`/bug-buster/${bugBuster.id}`}
                 >

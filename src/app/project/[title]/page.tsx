@@ -101,7 +101,7 @@ export default async function ProjectPage({
             gitMore="git"
           />
         </header>
-        <article className="prose-stone prose-h1:text-3xl prose-code:p-2 prose-h1:font-bold prose-h3:text-xl prose-h3:font-bold prose-h1:mb-4 prose-h3:mb-3 prose-p:mb-3 prose-ul:list-disc">
+        <article className="px-3 prose-stone prose-h1:text-3xl prose-code:p-2 prose-h1:font-bold prose-h3:text-xl prose-h3:font-bold prose-h1:mb-4 prose-h3:mb-3 prose-p:mb-3 prose-ul:list-disc">
           <MDXRemote
             source={project.about as string}
             options={{
