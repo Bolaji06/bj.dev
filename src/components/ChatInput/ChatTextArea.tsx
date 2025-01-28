@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
-import { scan } from "react-scan"
 
 import React, { ChangeEvent, SetStateAction, useCallback } from "react";
 import Button from "../Button/Button";
@@ -33,14 +32,6 @@ export default function ChatTextArea({
 
   function handleButtonClick() {
     addMessage({ sender: "user", text: textInput.trim() });
-    //setTextInput("");
-  }
-
-  if(typeof window !== undefined){
-    scan({
-      enabled: true,
-      log: true,
-    })
   }
 
   return (

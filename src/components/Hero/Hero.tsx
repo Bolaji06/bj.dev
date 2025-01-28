@@ -34,6 +34,7 @@ export default function Hero() {
             <Button className="w-full px-0 md:w-40 text-white hover:bg-opacity-65">
               <Link
                 href={"./assets/bolaji_bolajoko_resume.pdf"}
+                prefetch={true}
                 download
                 className="w-full flex gap-1 justify-center items-center"
               >
@@ -60,7 +61,6 @@ export default function Hero() {
             </Button>
           </div>
         </div>
-        
       </section>
     </>
   );

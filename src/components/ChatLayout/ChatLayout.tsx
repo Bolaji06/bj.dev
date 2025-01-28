@@ -5,7 +5,6 @@ import Image from "next/image";
 import logo from "../../../public/logo.png";
 import { useEffect } from "react";
 import ChatLoader from "../ChatLoader/ChatLoader";
-//import TypeWriter from "../TypeWriter/TypeWriter";
 import Markdown from "react-markdown";
 
 interface IMessages {
