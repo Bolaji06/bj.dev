@@ -19,6 +19,7 @@ export default function AIChatButton() {
           <Tooltip>
             <Link
               href={"/ai-chat"}
+              aria-label="ai-chat"
               prefetch={true}
               className="flex justify-center items-center"
             >
@@ -31,7 +32,7 @@ export default function AIChatButton() {
             </Link>
             <TooltipContent className="mb-4 mr-2 max-w-32 bg-gray-700 text-white">
               <p className="text-xs text-center">
-                Chat with AI assistance to get all latest info about Bolaji
+                Chat with AI assistance to get all info about Bolaji
               </p>
             </TooltipContent>
           </Tooltip>
