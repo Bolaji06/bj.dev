@@ -40,22 +40,3 @@ export async function contactFormAction(
   }
 }
 
-import { createServerAction } from "zsa";
-export const contactFormActionWithZsa = createServerAction()
-  .input(contactFormSchema, { type: "formData" })
-  .timeout(2000)
-  .handler(async (body) => {
-    const url = `${process.env.BASE_API_ENDPOINT}/send-email`;
-    const method = "POST";
-
-    try {
-      const data = await makeApiRequest({ url, method, body });
-      return data;
-    } catch (error) {
-      if (error instanceof Error) {
-        console.log(error.message);
-        return error.message;
-      }
-    }
-  });
-

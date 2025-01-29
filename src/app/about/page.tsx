@@ -7,7 +7,7 @@ import { IoLogoWechat } from "react-icons/io5";
 import { Metadata } from "next/types";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import Footer from "@/components/Footer/Footer";
-import ExperimentalContactForm from "@/components/ContactForm/ExperimentalContact";
+import ContactForm from "@/components/ContactForm/ContactForm";
 
 export const metadata: Metadata = {
   title: "About Me",
@@ -113,7 +113,7 @@ export default async function Page() {
           </header>
           <div className="max-w-xl mx-auto mt-14 mb-10">
             {/* <ContactForm /> */}
-            <ExperimentalContactForm />
+            <ContactForm />
           </div>
         </section>
         <FloatingButton />
