@@ -70,6 +70,8 @@ export default async function Home() {
   const projects: IProjectResponse = await getProjects();
   const blogPosts = await fetchAllBlogPosts(1, 4);
 
+  
+
   return (
     <>
       <main className="px-6">
@@ -87,7 +89,7 @@ export default async function Home() {
               talent.
             </p>
           </div>
-          {projects.projects.map((project: IProject) => {
+          {projects?.projects?.map((project: IProject) => {
             return (
               <ProjectCard
                 key={project.id}
@@ -153,6 +155,7 @@ export default async function Home() {
       <footer className="py-6 footer">
         <Footer />
       </footer>
+
     </>
   );
 }

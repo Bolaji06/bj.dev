@@ -7,7 +7,6 @@ import "./globals.css";
 import NavBar from "@/components/NavBar/NavBar";
 
 import ProgressBarProvider from "@/components/ui/ProgressBarProvider";
-
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
