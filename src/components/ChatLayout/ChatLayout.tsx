@@ -5,7 +5,8 @@ import Image from "next/image";
 import logo from "../../../public/logo.png";
 import { useEffect } from "react";
 import ChatLoader from "../ChatLoader/ChatLoader";
-import Markdown from "react-markdown";
+
+import ReactMarkdown from "react-markdown";
 
 interface IMessages {
   sender: "ai" | "user";
@@ -40,7 +41,7 @@ export default function ChatLayout({
                 </div>
               )}
 
-              {msg.sender === "ai" && (
+              {msg.sender === "ai" && msg.text && (
                 <div className="ai-chat text-left p-3 rounded-3xl flex items-start space-x-3">
                   <div className="border w-8 h-8 border-gray-800 rounded-full p-1 flex-shrink-0">
                     <Image
@@ -52,33 +53,36 @@ export default function ChatLayout({
                     />
                   </div>
 
-                  <div className="ai-markdown bg-gray-800 px-5 py-3 col-span-2 rounded-3xl leading-relaxed text-sm text-slate-200">
-                    {/* {msg.text.length && <TypeWriter streams={[msg.text]} typeSpeed={10} showCursor={false}/>} */}
-
-                    <Markdown
-                      components={{
-                        a: ({ href, children }) => (
-                          <a
-                            href={href}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            {children}
-                          </a>
-                        ),
-                      }}
-                    >
-                      {msg.text}
-                    </Markdown>
-                  </div>
+                  {msg.text && (
+                    <div className="ai-markdown bg-gray-800 px-5 py-3 col-span-2 rounded-3xl leading-relaxed text-sm text-slate-200">
+                      <ReactMarkdown
+                        components={{
+                          a: ({ href, children }) => (
+                            <a
+                              href={href}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-blue-500 underline hover:text-blue-700"
+                            >
+                              {children}
+                            </a>
+                          ),
+                        }}
+                        className="markdown-body"
+                      >
+                        {msg.text}
+                      </ReactMarkdown>
+                    </div>
+                  )}
                 </div>
               )}
             </div>
           );
         })}
+
         {isPending && (
-          <div className="flex justify-start items-start">
-            <div className=" bg-gray-800 px-5 py-3 rounded-3xl leading-relaxed text-sm">
+          <div className="ai-chat text-left p-3 rounded-3xl flex items-start space-x-3">
+            <div className="bg-gray-800 px-5 py-3 rounded-3xl leading-relaxed text-sm">
               <ChatLoader />
             </div>
           </div>
