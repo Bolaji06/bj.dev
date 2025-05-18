@@ -13,7 +13,7 @@ export default function AIChatButton() {
     <>
       <div
         data-testid="link"
-        className="hidden fixed bottom-32 w-12 aspect-square right-6 lg:flex flex-col items-center justify-center font-medium text-sm gap-2 border-2 shadow-2xl border-white bg-gray-800 rounded-lg shadow-xl"
+        className="fixed bottom-32 w-12 aspect-square right-6 lg:flex flex-col items-center justify-center font-medium text-sm gap-2 border-2 border-white bg-gray-800 rounded-lg shadow-xl"
       >
         <TooltipProvider>
           <Tooltip>
@@ -21,9 +21,9 @@ export default function AIChatButton() {
               href={"/ai-chat"}
               aria-label="ai-chat"
               prefetch={true}
-              className="flex justify-center items-center"
+              className="flex justify-center items-center w-full h-full"
             >
-              <TooltipTrigger>
+              <TooltipTrigger className="flex justify-center items-center">
                 <AiOutlineWechatWork
                   size={25}
                   className="font-semibold text-white"
