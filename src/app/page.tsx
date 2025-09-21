@@ -4,7 +4,7 @@ import FloatingButton from "@/components/FloatingButton/FloatingButton";
 import Footer from "@/components/ui/footer";
 import Hero from "@/components/Hero/Hero";
 import ProjectCard from "@/components/ProjectCard/ProjectCard";
-import AIChatButton from "@/components/ui/ai-btn";
+//import AIChatButton from "@/components/ui/ai-btn";
 import { fetchAllBlogPosts } from "@/data/fetchBlogPosts";
 import { getProjects } from "@/data/fetchProject";
 import { IBlog, IProject, IProjectResponse } from "@/definition/definition";
@@ -149,7 +149,7 @@ export default async function Home() {
             <ContactForm />
           </div>
         </section>
-        <AIChatButton />
+        {/* <AIChatButton /> */}
         <FloatingButton />
       </main>
       <footer className="py-6 footer">
